@@ -8,13 +8,9 @@
         <param name="android-package" value="com.pushapps.phonegap.PushAppsPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <name>HelloCordova</name>
-    <description>
-        A sample Apache Cordova application that responds to the deviceready event.
-    </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
-    </author>
+    <name>Epsilon</name>
+    <description>Epsilon Client App</description>
+    <author email="sgibson@epsilontechnologies.co.uk" href="http://www.epsilontechnologies.co.uk" />
     <content src="index.html" />
     <access origin="*" />
 </widget>
