@@ -35,9 +35,10 @@ define(function(require) {
     },
 
     registerUser: click.single(function() {
-      var hasError = this.validateForm();
-        //.then(submitData)
-        //.then(handleResponse);
+      if (this.validateForm()) {
+        //submitData()
+        //  .then(handleResponse);
+      }
     }),
 
     validateForm: function() {
