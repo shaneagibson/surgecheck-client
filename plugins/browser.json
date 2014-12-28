@@ -36,6 +36,9 @@
         },
         "org.apache.cordova.device": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
+        },
+        "nl.x-services.plugins.toast": {
+            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         }
     },
     "dependent_plugins": {}

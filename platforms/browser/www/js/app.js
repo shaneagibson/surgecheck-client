@@ -11,13 +11,19 @@ define(function(require) {
   app.addInitializer(function() {
     pushNotification.register()
       .then(initializeBackbone)
+      .then(removeLoadingPage)
       .then(renderLandingPage)
       .catch(handleError);
   });
 
   app.addRegions({
+    loading: '#loading',
     main: '#main'
   });
+
+  var removeLoadingPage = function() {
+    $(app.loading.el).hide();
+  };
 
   var renderLandingPage = function() {
     vent.trigger('navigate', 'landing');
@@ -28,7 +34,16 @@ define(function(require) {
     Backbone.history.start();
     vent.on('navigate', function(arg) {
       Backbone.history.navigate(arg, { trigger: true });
-    })
+    });
+    document.addEventListener("backbutton", handleBackButton, false);
+  };
+
+  var handleBackButton = function() {
+    if (app.main.currentView.onBack) {
+      app.main.currentView.onBack();
+    } else {
+      Backbone.history.history.back();
+    }
   };
 
   var handleError = function(error) {

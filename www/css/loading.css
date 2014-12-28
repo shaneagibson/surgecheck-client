@@ -7,6 +7,13 @@
     margin-left: -3.66667em;
     margin-top: -3.66667em;
 }
+.loader-text {
+    text-align: center;
+    color: #ffffff;
+    top: 100px;
+    position: absolute;
+    width: 100%;
+}
 .loader-block {
     position: absolute;
     top: 0;

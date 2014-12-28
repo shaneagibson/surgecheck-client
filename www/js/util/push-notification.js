@@ -40,11 +40,11 @@ define(function(require) {
   };
 
   var saveDeviceId = function(deviceId) {
-    localStorage.setItem('deviceId', deviceId);
+    localStorage.setItem('deviceid', deviceId);
   };
 
   var deleteDeviceId = function() {
-    localStorage.removeItem('deviceId');
+    localStorage.removeItem('deviceid');
   };
 
   return exports;

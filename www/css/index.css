@@ -36,7 +36,7 @@ body {
     width: 100%;
     bottom: 0px;
     position: absolute;
-    background-color: white;
+    background-color: #FFFFFF;
 }
 .buttons.single .button {
     width: 100%;
@@ -68,7 +68,7 @@ body {
     margin: 0px auto;
     width: 100%;
     text-align: center;
-    color: white;
+    color: #FFFFFF;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
 }
@@ -100,6 +100,10 @@ body {
     right: 3px;
     bottom: 5px;
     color: #D00000;
+    text-align: right;
+}
+.input-container.error input {
+    padding: 20px 70px 0px 10px;
 }
 input{
     background-color: transparent;
@@ -107,7 +111,7 @@ input{
     width: 100%;
     font-size: 20px;
     color: #000000;
-    padding: 20px 60px 0px 10px;
+    padding: 20px 10px 0px 10px;
     box-sizing: border-box;
 }
 input:focus{

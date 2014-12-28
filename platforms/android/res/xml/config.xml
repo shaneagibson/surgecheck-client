@@ -4,6 +4,9 @@
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
+    <feature name="Toast">
+        <param name="android-package" value="nl.xservices.plugins.Toast" />
+    </feature>
     <feature name="PushAppsPlugin">
         <param name="android-package" value="com.pushapps.phonegap.PushAppsPlugin" />
         <param name="onload" value="true" />

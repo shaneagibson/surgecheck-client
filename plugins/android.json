@@ -11,6 +11,10 @@
                         {
                             "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Toast\"><param name=\"android-package\" value=\"nl.xservices.plugins.Toast\" /></feature>",
+                            "count": 1
                         }
                     ],
                     "/widget": [
@@ -99,6 +103,9 @@
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
         "com.pushapps.phonegap": {
+            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
+        },
+        "nl.x-services.plugins.toast": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         }
     },

@@ -1,7 +1,7 @@
 define(function(require) {
 
   var Marionette = require('marionette');
-  var template = require('hbs!../html/sign-in');
+  var template = require('hbs!../html/verify-mobile');
 
   var view = Marionette.LayoutView.extend({
 

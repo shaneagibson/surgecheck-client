@@ -4,6 +4,8 @@ define(function(require) {
   var template = require('hbs!../html/register');
   var click = require('../util/click');
   var vent = require('../util/vent');
+  var validator = require('../util/validator');
+  var serverGateway = require('../util/server-gateway');
 
   var view = Marionette.LayoutView.extend({
 
@@ -28,16 +30,9 @@ define(function(require) {
       passwordInput: 'input.password'
     },
 
-    errors:{
-      'too_short': 'Too Short',
-      'too_long': 'Too Long',
-      'mandatory': 'Required'
-    },
-
     registerUser: click.single(function() {
       if (this.validateForm()) {
-        //submitData()
-        //  .then(handleResponse);
+        this.submit();
       }
     }),
 
@@ -51,58 +46,48 @@ define(function(require) {
       return isValid;
     },
 
+    submit: function() {
+      var self = this;
+      return serverGateway
+        .post('/account/register', {
+          deviceId: localStorage.getItem('deviceId'),
+          firstName: this.ui.firstNameInput.val(),
+          surname: this.ui.surnameInput.val(),
+          emailAddress: this.ui.emailAddressInput.val(),
+          mobileNumber: this.ui.mobileNumberInput.val(),
+          password: this.ui.passwordInput.val()
+        })
+        .then(function(response) {
+          localStorage.setItem('sessionid', response.sessionId);
+          localStorage.setItem('userid', response.userId);
+          vent.trigger('navigate', 'verify-mobile');
+        })
+        .catch(function(response) {
+          switch (response.status) {
+            case 409 : return validator.addError(self.ui.emailAddressInput, 'already_registered');
+          }
+          window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.')
+        })
+    },
+
     validateFirstName: function() {
-      console.log('validating first name');
-      return this.validateField(this.checkName, this.ui.firstNameInput);
+      return validator.renderValidationResult(validator.validateName, this.ui.firstNameInput);
     },
 
     validateSurname: function() {
-      console.log('validating surname');
-      return this.validateField(this.checkName, this.ui.surnameInput);
+      return validator.renderValidationResult(validator.validateName, this.ui.surnameInput);
     },
 
     validateEmailAddress: function() {
-      console.log('validating email');
-      return this.validateField(this.checkEmail, this.ui.emailAddressInput);
+      return validator.renderValidationResult(validator.validateEmail, this.ui.emailAddressInput);
     },
 
     validateMobileNumber: function() {
-      console.log('validating mobile');
-      return this.validateField(this.checkMobileNumber, this.ui.mobileNumberInput);
+      return validator.renderValidationResult(validator.validateMobileNumber, this.ui.mobileNumberInput);
     },
 
     validatePassword: function() {
-      console.log('validating password');
-      return this.validateField(this.checkPassword, this.ui.passwordInput);
-    },
-
-    validateField: function(checkFunction, inputField) {
-      var error = checkFunction(inputField.val());
-      var hasError = error !== undefined;
-      inputField.parent().toggleClass('error', hasError).find('.error-text').html(error ? this.errors[error] : '');
-      return !hasError;
-    },
-
-    checkName: function(value) {
-      if (value.trim().length === 0) {
-        return 'mandatory';
-      } else if (value.trim().length < 2) {
-        return 'too_short';
-      } else if (value.trim().length > 20) {
-        return 'too_long';
-      }
-    },
-
-    checkEmail: function(value) {
-      // TODO - implement
-    },
-
-    checkMobileNumber: function(value) {
-      // TODO - implement
-    },
-
-    checkPassword: function(value) {
-      // TODO - implement
+      return validator.renderValidationResult(validator.validatePassword, this.ui.passwordInput);
     }
 
   });
