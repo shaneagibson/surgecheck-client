@@ -50,7 +50,7 @@ define(function(require) {
       var self = this;
       return serverGateway
         .post('/account/register', {
-          deviceId: localStorage.getItem('deviceId'),
+          deviceId: localStorage.getItem('deviceid'),
           firstName: this.ui.firstNameInput.val(),
           surname: this.ui.surnameInput.val(),
           emailAddress: this.ui.emailAddressInput.val(),
@@ -66,8 +66,8 @@ define(function(require) {
           switch (response.status) {
             case 409 : return validator.addError(self.ui.emailAddressInput, 'already_registered');
           }
-          window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.')
-        })
+          window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
+        });
     },
 
     validateFirstName: function() {

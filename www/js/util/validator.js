@@ -20,7 +20,7 @@ define(function(require) {
     },
 
     validateMobileNumber: function(value) {
-      var mobileNumberRegEx = /((7|447|07)\\d{9})/g;
+      var mobileNumberRegEx = /((7|447|07)\d{9}$)/;
       if (!mobileNumberRegEx.test(value)) {
         return 'invalid_mobile';
       }
@@ -39,6 +39,12 @@ define(function(require) {
       var containsLowerCaseChars = /[a-z]/.test(value);
       if (!(containAlphaChars && containNumericChars && containsUpperCaseChars && containsLowerCaseChars)) {
         return 'too_weak';
+      }
+    },
+
+    validateVerificationCode: function(value) {
+      if (/^\d{3}$/.test(value)) {
+        return 'invalid_verification_code';
       }
     },
 
@@ -71,7 +77,8 @@ define(function(require) {
     'invalid_mobile': 'Invalid Mobile',
     'mandatory': 'Required',
     'already_registered' : 'Already<br/>Registered',
-    'invalid_credentials' : 'Invalid<br/>Credentials'
+    'invalid_credentials' : 'Invalid<br/>Credentials',
+    'invalid_verification_code' : 'Invalid Code'
   };
 
   return exports;

@@ -41,25 +41,25 @@ define(function(require) {
       var self = this;
       return serverGateway
         .post('/account/login', {
-          deviceId: localStorage.getItem('deviceId'),
+          deviceId: localStorage.getItem('deviceid'),
           emailAddress: this.ui.emailAddressInput.val(),
           password: this.ui.passwordInput.val()
         })
         .then(function(response) {
           localStorage.setItem('sessionid', response.sessionId);
           localStorage.setItem('userid', response.userId);
-          if (!response.verified) {
-            vent.trigger('navigate', 'verify-mobile');
-          } else {
+          if (response.verified) {
             vent.trigger('navigate', 'home');
+          } else {
+            vent.trigger('navigate', 'verify-mobile');
           }
         })
         .catch(function(response) {
           switch (response.status) {
             case 401 : return validator.addError(self.ui.emailAddressInput, 'invalid_credentials');
           }
-          window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.')
-        })
+          window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
+        });
     },
 
     validateEmailAddress: function() {

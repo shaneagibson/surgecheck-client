@@ -349,6 +349,7 @@
 /Users/shane/Development/code/client-app/platforms/android/assets/www/js/components/vent/app/scripts/services/event-bus/event-bus.js \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/js/components/vent/dist/amd-tpl.js \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/js/components/vent/dist/vent.js \
+/Users/shane/Development/code/client-app/platforms/android/assets/www/js/html/home.hbs \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/js/html/landing.hbs \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/js/html/register.hbs \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/js/html/sign-in.hbs \
@@ -360,6 +361,7 @@
 /Users/shane/Development/code/client-app/platforms/android/assets/www/js/util/touch.js \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/js/util/validator.js \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/js/util/vent.js \
+/Users/shane/Development/code/client-app/platforms/android/assets/www/js/view/home.js \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/js/view/landing.js \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/js/view/register.js \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/js/view/sign-in.js \

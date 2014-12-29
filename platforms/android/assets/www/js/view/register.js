@@ -50,7 +50,7 @@ define(function(require) {
       var self = this;
       return serverGateway
         .post('/account/register', {
-          deviceId: localStorage.getItem('deviceId'),
+          deviceId: localStorage.getItem('deviceid'),
           firstName: this.ui.firstNameInput.val(),
           surname: this.ui.surnameInput.val(),
           emailAddress: this.ui.emailAddressInput.val(),
