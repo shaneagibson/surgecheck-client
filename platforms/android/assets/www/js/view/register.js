@@ -58,16 +58,16 @@ define(function(require) {
           password: this.ui.passwordInput.val()
         })
         .then(function(response) {
-          localStorage.setItem('sessionid', response.sessionId);
-          localStorage.setItem('userid', response.userId);
+          localStorage.setItem('sessionid', response.session.sessionId);
+          localStorage.setItem('userid', response.user.userId);
           vent.trigger('navigate', 'verify-mobile');
         })
         .catch(function(response) {
           switch (response.status) {
             case 409 : return validator.addError(self.ui.emailAddressInput, 'already_registered');
           }
-          window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.')
-        })
+          window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
+        });
     },
 
     validateFirstName: function() {

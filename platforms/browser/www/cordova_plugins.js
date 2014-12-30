@@ -37,7 +37,8 @@ module.exports.metadata =
     "com.pushapps.phonegap": "1.6.0",
     "org.apache.cordova.console": "0.2.12",
     "org.apache.cordova.device": "0.2.13",
-    "nl.x-services.plugins.toast": "2.0.2"
+    "nl.x-services.plugins.toast": "2.0.2",
+    "nl.x-services.plugins.launchmyapp": "3.2.2"
 }
 // BOTTOM OF METADATA
 });

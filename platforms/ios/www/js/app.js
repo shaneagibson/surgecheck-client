@@ -5,14 +5,15 @@ define(function(require) {
   var Marionette = require('marionette');
   var Backbone = require('backbone');
   var vent = require('./util/vent');
+  var serverGateway = require('../util/server-gateway');
 
   var app = new Marionette.Application();
 
   app.addInitializer(function() {
     pushNotification.register()
       .then(initializeBackbone)
-      .then(removeLoadingPage)
-      .then(renderLandingPage)
+      .then(resolveInitialPage)
+      .then(renderInitialPage)
       .catch(handleError);
   });
 
@@ -21,12 +22,36 @@ define(function(require) {
     main: '#main'
   });
 
-  var removeLoadingPage = function() {
+  var renderInitialPage = function(initialPage) {
     $(app.loading.el).hide();
+    setTimeout(function() {
+      vent.trigger('navigate', initialPage);
+    }, 500);
   };
 
-  var renderLandingPage = function() {
-    vent.trigger('navigate', 'landing');
+  var resolveInitialPage = function() {
+    var sessionId = localStorage.getItem('sessionid');
+    var userId = localStorage.getItem('userid');
+    if (sessionId && userId) {
+      return serverGateway
+        .get('/account/status', null, { userId: userId })
+        .then(function(response) {
+          if (response.verified) {
+            return 'home';
+          } else {
+            return 'verify-mobile';
+          }
+        })
+        .catch(function() {
+          localStorage.removeItem('userid');
+          localStorage.removeItem('sessionid');
+          return 'sign-in';
+        });
+    } else {
+      return new RSVP.Promise(function(resolve, reject) {
+        resolve('landing');
+      });
+    }
   };
 
   var initializeBackbone = function() {

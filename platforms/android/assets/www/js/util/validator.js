@@ -42,6 +42,12 @@ define(function(require) {
       }
     },
 
+    validateVerificationCode: function(value) {
+      if (/^\d{3}$/.test(value)) {
+        return 'invalid_verification_code';
+      }
+    },
+
     renderValidationResult: function(validateFunction, inputField) {
       var error = validateFunction(inputField.val());
       if (error !== undefined) {
@@ -71,7 +77,8 @@ define(function(require) {
     'invalid_mobile': 'Invalid Mobile',
     'mandatory': 'Required',
     'already_registered' : 'Already<br/>Registered',
-    'invalid_credentials' : 'Invalid<br/>Credentials'
+    'invalid_credentials' : 'Invalid<br/>Credentials',
+    'invalid_verification_code' : 'Invalid Code'
   };
 
   return exports;

@@ -11,6 +11,12 @@
       "css": "emo-thumbsup",
       "code": 59392,
       "src": "fontelico"
+    },
+    {
+      "uid": "559647a6f430b3aeadbecd67194451dd",
+      "css": "menu",
+      "code": 59393,
+      "src": "fontawesome"
     }
   ]
 }

@@ -5,6 +5,7 @@ define(function(require) {
   var RegisterView = require('./view/register');
   var VerifyMobileView = require('./view/verify-mobile');
   var HomeView = require('./view/home');
+  var ResetPasswordView = require('./view/reset-password');
   var touch = require('./util/touch');
 
   var exports = {
@@ -13,18 +14,24 @@ define(function(require) {
 
       var AppRouter = Backbone.Router.extend({
         routes: {
+
+          // in-app routes
           "landing": "landing",
           "sign-in": "signIn",
           "register": "register",
           "verify-mobile": "verifyMobile",
-          "home": "home"
+          "home": "home",
+
+          // deep-links
+          "user/:userid/forgottenpassword/token/:token": "resetPassword"
+
         }
       });
 
       var appRouter = new AppRouter;
 
-      var showView = function(View) {
-        app.main.show(new View());
+      var showView = function(View, options) {
+        app.main.show(new View(), options);
         touch.initializeTouchFeedback();
       };
 
@@ -33,6 +40,7 @@ define(function(require) {
       appRouter.on('route:register', function() { showView(RegisterView); });
       appRouter.on('route:verifyMobile', function() { showView(VerifyMobileView); });
       appRouter.on('route:home', function() { showView(HomeView); });
+      appRouter.on('route:resetPassword', function(userId, token) { console.log('HERE with '+userId+" "+token); showView(ResetPasswordView, { userId: userId, token: token }) });
 
     }
 

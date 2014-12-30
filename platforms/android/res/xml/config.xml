@@ -7,6 +7,9 @@
     <feature name="Toast">
         <param name="android-package" value="nl.xservices.plugins.Toast" />
     </feature>
+    <feature name="LaunchMyApp">
+        <param name="android-package" value="nl.xservices.plugins.LaunchMyApp" />
+    </feature>
     <feature name="PushAppsPlugin">
         <param name="android-package" value="com.pushapps.phonegap.PushAppsPlugin" />
         <param name="onload" value="true" />

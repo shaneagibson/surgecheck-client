@@ -28,3 +28,7 @@ document.addEventListener('deviceready', onDeviceReady, false);
 window.onerror = function(error) {
   console.log('error:'+error);
 }
+
+function handleOpenURL(url) {
+  console.log("received url: " + url);
+}

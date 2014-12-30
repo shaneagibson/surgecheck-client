@@ -18,7 +18,7 @@ function onDeviceReady() {
 
   require(['./app'], function(app) {
     'use strict';
-    app.start();
+    setTimeout(function() { app.start(); }, 1000);
   });
 
 };
@@ -27,4 +27,10 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 window.onerror = function(error) {
   console.log('error:'+error);
+}
+
+function handleOpenURL(url) {
+  require(['./app'], function(app) {
+    app.customUrl = url.substring('epsilon://'.length, url.length);
+  });
 }

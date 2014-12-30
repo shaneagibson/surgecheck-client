@@ -1,7 +1,7 @@
 define(function(require) {
 
   var Marionette = require('marionette');
-  var template = require('hbs!../html/sign-in');
+  var template = require('hbs!../html/reset-password');
   var click = require('../util/click');
   var vent = require('../util/vent');
   var validator = require('../util/validator');
@@ -14,40 +14,32 @@ define(function(require) {
     template: template,
 
     events: {
-      'click .sign-in' : 'signIn',
-      'blur input.emailaddress' : 'validateEmailAddress',
-      'blur input.password' : 'validatePassword'
+      'click .reset' : 'resetPassword',
+      'blur input.password' : 'validateFirstName'
     },
 
     ui: {
-      emailAddressInput: 'input.emailaddress',
       passwordInput: 'input.password'
     },
 
-    signIn: click.single(function() {
+    resetPassword: click.single(function() {
       if (this.validateForm()) {
         this.submit();
       }
     }),
 
     validateForm: function() {
-      var isValid = true;
-      isValid = this.validateEmailAddress() && isValid;
-      isValid = this.validatePassword() && isValid;
-      return isValid;
+      return this.validatePassword();
     },
 
     submit: function() {
       var self = this;
       return serverGateway
-        .post('/account/login', {
-          deviceId: localStorage.getItem('deviceid'),
-          emailAddress: this.ui.emailAddressInput.val(),
+        .post('/account/password/reset', {
+          userId: localStorage.getItem('userid'),
           password: this.ui.passwordInput.val()
         })
         .then(function(response) {
-          localStorage.setItem('sessionid', response.session.sessionId);
-          localStorage.setItem('userid', response.user.userId);
           if (response.user.verified) {
             vent.trigger('navigate', 'home');
           } else {
@@ -56,18 +48,19 @@ define(function(require) {
         })
         .catch(function(response) {
           switch (response.status) {
-            case 401 : return validator.addError(self.ui.emailAddressInput, 'invalid_credentials');
+            case 409 : {
+              // TODO - show link already used error
+            }
+            case 410 : {
+              // TODO - show link expired error
+            }
           }
           window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
         });
     },
 
-    validateEmailAddress: function() {
-      return validator.renderValidationResult(validator.validateMandatoryField, this.ui.emailAddressInput);
-    },
-
     validatePassword: function() {
-      return validator.renderValidationResult(validator.validateMandatoryField, this.ui.passwordInput);
+      return validator.renderValidationResult(validator.validatePassword, this.ui.passwordInput);
     }
 
   });
