@@ -13,6 +13,12 @@
       "src": "fontelico"
     },
     {
+      "uid": "0f4cae16f34ae243a6144c18a003f2d8",
+      "css": "cancel-circled",
+      "code": 59394,
+      "src": "fontawesome"
+    },
+    {
       "uid": "559647a6f430b3aeadbecd67194451dd",
       "css": "menu",
       "code": 59393,

@@ -6,6 +6,7 @@ define(function(require) {
   var VerifyMobileView = require('./view/verify-mobile');
   var HomeView = require('./view/home');
   var ResetPasswordView = require('./view/reset-password');
+
   var touch = require('./util/touch');
 
   var exports = {
@@ -40,7 +41,7 @@ define(function(require) {
       appRouter.on('route:register', function() { showView(RegisterView); });
       appRouter.on('route:verifyMobile', function() { showView(VerifyMobileView); });
       appRouter.on('route:home', function() { showView(HomeView); });
-      appRouter.on('route:resetPassword', function(userId, token) { console.log('HERE with '+userId+" "+token); showView(ResetPasswordView, { userId: userId, token: token }) });
+      appRouter.on('route:resetPassword', function(userId, token) { showView(ResetPasswordView, { userId: userId, token: token }) });
 
     }
 

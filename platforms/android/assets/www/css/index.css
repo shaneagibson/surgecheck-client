@@ -91,10 +91,10 @@ body {
 .input-container.error .input-underline{
     border-color: #D00000;
 }
-.input-container .error-text{
+.input-container .error-reason{
     display: none;
 }
-.input-container.error .error-text{
+.input-container.error .error-reason {
     display: inline;
     position: absolute;
     right: 3px;

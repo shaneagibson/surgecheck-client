@@ -36,7 +36,7 @@ define(function(require) {
   var getDeviceId = function() {
     return new RSVP.Promise(function(resolve, reject) {
       PushNotification.getDeviceId(resolve, reject);
-    })
+    });
   };
 
   var saveDeviceId = function(deviceId) {

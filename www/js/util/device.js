@@ -7,7 +7,7 @@ define(function(require) {
     },
 
     isAndroid: function() {
-      return navigator.userAgent.match('/Android/i')
+      return navigator.userAgent.match('/Android/i');
     }
 
   };

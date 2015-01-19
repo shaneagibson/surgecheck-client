@@ -50,9 +50,11 @@ define(function(require) {
           switch (response.status) {
             case 409 : {
               // TODO - show link already used error
+              break;
             }
             case 410 : {
               // TODO - show link expired error
+              break;
             }
           }
           window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
