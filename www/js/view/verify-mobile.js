@@ -28,7 +28,7 @@ define(function(require) {
     }),
 
     validateForm: function() {
-      return this.validateVerificationCode();
+      return validator.validateFields($('.form').find('.field'));
     },
 
     submit: function() {

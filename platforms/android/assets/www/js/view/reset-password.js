@@ -15,7 +15,7 @@ define(function(require) {
 
     events: {
       'click .reset' : 'resetPassword',
-      'blur input.password' : 'validateFirstName'
+      'blur input.password' : 'validateField'
     },
 
     ui: {
@@ -29,7 +29,11 @@ define(function(require) {
     }),
 
     validateForm: function() {
-      return this.validatePassword();
+      return validator.validateFields($('.form').find('.field'));
+    },
+
+    validateField: function(e) {
+      validator.validateFields([ e.srcElement ]);
     },
 
     submit: function() {
@@ -50,17 +54,15 @@ define(function(require) {
           switch (response.status) {
             case 409 : {
               // TODO - show link already used error
+              break;
             }
             case 410 : {
               // TODO - show link expired error
+              break;
             }
           }
           window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
         });
-    },
-
-    validatePassword: function() {
-      return validator.renderValidationResult(validator.validatePassword, this.ui.passwordInput);
     }
 
   });

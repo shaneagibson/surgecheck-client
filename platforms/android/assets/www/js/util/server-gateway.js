@@ -35,7 +35,7 @@ define(function(require) {
           contentType: "application/json; charset=utf-8"
         }
       );
-    })
+    });
   };
 
   return exports;

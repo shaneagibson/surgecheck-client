@@ -15,8 +15,8 @@ define(function(require) {
 
     events: {
       'click .sign-in' : 'signIn',
-      'blur input.emailaddress' : 'validateEmailAddress',
-      'blur input.password' : 'validatePassword'
+      'blur input.emailaddress' : 'validateField',
+      'blur input.password' : 'validateField'
     },
 
     ui: {
@@ -31,10 +31,11 @@ define(function(require) {
     }),
 
     validateForm: function() {
-      var isValid = true;
-      isValid = this.validateEmailAddress() && isValid;
-      isValid = this.validatePassword() && isValid;
-      return isValid;
+      return validator.validateFields($('.form').find('.field'));
+    },
+
+    validateField: function(e) {
+      validator.validateFields([ e.srcElement ]);
     },
 
     submit: function() {
@@ -60,14 +61,6 @@ define(function(require) {
           }
           window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
         });
-    },
-
-    validateEmailAddress: function() {
-      return validator.renderValidationResult(validator.validateMandatoryField, this.ui.emailAddressInput);
-    },
-
-    validatePassword: function() {
-      return validator.renderValidationResult(validator.validateMandatoryField, this.ui.passwordInput);
     }
 
   });

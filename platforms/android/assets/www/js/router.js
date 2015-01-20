@@ -29,7 +29,7 @@ define(function(require) {
         }
       });
 
-      var appRouter = new AppRouter;
+      var appRouter = new AppRouter();
 
       var showView = function(View, options) {
         app.main.show(new View(), options);
@@ -41,7 +41,7 @@ define(function(require) {
       appRouter.on('route:register', function() { showView(RegisterView); });
       appRouter.on('route:verifyMobile', function() { showView(VerifyMobileView); });
       appRouter.on('route:home', function() { showView(HomeView); });
-      appRouter.on('route:resetPassword', function(userId, token) { showView(ResetPasswordView, { userId: userId, token: token }) });
+      appRouter.on('route:resetPassword', function(userId, token) { showView(ResetPasswordView, { userId: userId, token: token }); });
 
     }
 

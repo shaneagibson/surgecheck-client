@@ -35,9 +35,9 @@
 /Users/shane/Development/code/client-app/platforms/android/assets/www/index.html \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/js \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/plugins \
+/Users/shane/Development/code/client-app/platforms/android/assets/www/css/animations.css \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/css/fontello \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/css/index.css \
-/Users/shane/Development/code/client-app/platforms/android/assets/www/css/loading.css \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/css/fontello/config.json \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/css/fontello/fontello-embedded.css \
 /Users/shane/Development/code/client-app/platforms/android/assets/www/js/app.js \

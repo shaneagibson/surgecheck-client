@@ -89,7 +89,7 @@ body {
     position: relative;
 }
 .input-container.error .input-underline{
-    border-color: #D00000;
+    border-color: #000000;
 }
 .input-container .error-reason{
     display: none;
@@ -99,7 +99,7 @@ body {
     position: absolute;
     right: 3px;
     bottom: 5px;
-    color: #D00000;
+    color: #000000;
     text-align: right;
 }
 .input-container.error input {

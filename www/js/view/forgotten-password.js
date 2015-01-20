@@ -15,7 +15,7 @@ define(function(require) {
 
     events: {
       'click .request-reset' : 'requestPasswordReset',
-      'blur input.password' : 'validateFirstName'
+      'blur input.password' : 'validateField'
     },
 
     ui: {
@@ -29,7 +29,11 @@ define(function(require) {
     }),
 
     validateForm: function() {
-      return this.validateEmailAddress();
+      return validator.validateFields($('.form').find('.field'));
+    },
+
+    validateField: function(e) {
+      validator.validateFields([ e.srcElement ]);
     },
 
     submit: function() {
@@ -44,10 +48,6 @@ define(function(require) {
         .catch(function(response) {
           window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
         });
-    },
-
-    validateEmailAddress: function() {
-      return validator.renderValidationResult(validator.validateEmail(), this.ui.emailAddressInput);
     }
 
   });

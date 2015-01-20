@@ -21,7 +21,7 @@ function onDeviceReady() {
     setTimeout(function() { app.start(); }, 1000); // delay for the handle open URL function & to prevent flashing from loading screen to landing screen
   });
 
-};
+}
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
@@ -33,4 +33,4 @@ function handleOpenURL(url) {
   require(['./app'], function(app) {
     app.customUrl = url.substring('epsilon://'.length, url.length);
   });
-};
+}
