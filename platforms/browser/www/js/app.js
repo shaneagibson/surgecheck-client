@@ -5,12 +5,14 @@ define(function(require) {
   var Marionette = require('marionette');
   var Backbone = require('backbone');
   var vent = require('./util/vent');
-  var serverGateway = require('../util/server-gateway');
+  var serverGateway = require('./util/server-gateway');
+  var mockCordova = require('./mock-cordova');
 
   var app = new Marionette.Application();
 
   app.addInitializer(function() {
-    pushNotification.register()
+    initializeForPlatform()
+      .then(pushNotification.register)
       .then(initializeBackbone)
       .then(resolveInitialPage)
       .then(renderInitialPage)
@@ -22,6 +24,14 @@ define(function(require) {
     main: '#main'
   });
 
+  var initializeForPlatform = function() {
+    if (device.platform === 'browser') {
+      mockCordova.mock();
+    }
+    $('body').addClass(device.platform);
+    return new RSVP.Promise(function(resolve, reject) { resolve(); });
+  };
+
   var renderInitialPage = function(initialPage) {
     $(app.loading.el).hide();
     setTimeout(function() {
@@ -30,13 +40,14 @@ define(function(require) {
   };
 
   var resolveInitialPage = function() {
+    if (app.customUrl) return new RSVP.Promise(function(resolve, reject) { resolve(app.customUrl); });
     var sessionId = localStorage.getItem('sessionid');
     var userId = localStorage.getItem('userid');
     if (sessionId && userId) {
       return serverGateway
-        .get('/account/status', null, { userId: userId })
+        .get('/account/session', null, { sessionid: sessionId })
         .then(function(response) {
-          if (response.verified) {
+          if (response.user.verified) {
             return 'home';
           } else {
             return 'verify-mobile';
@@ -48,9 +59,7 @@ define(function(require) {
           return 'sign-in';
         });
     } else {
-      return new RSVP.Promise(function(resolve, reject) {
-        resolve('landing');
-      });
+      return new RSVP.Promise(function(resolve, reject) { resolve('landing'); });
     }
   };
 

@@ -15,11 +15,11 @@ define(function(require) {
 
     events: {
       'click .register' : 'registerUser',
-      'blur input.firstname' : 'validateFirstName',
-      'blur input.surname' : 'validateSurname',
-      'blur input.emailaddress' : 'validateEmailAddress',
-      'blur input.mobilenumber' : 'validateMobileNumber',
-      'blur input.password' : 'validatePassword'
+      'blur input.firstname' : 'validateField',
+      'blur input.surname' : 'validateField',
+      'blur input.emailaddress' : 'validateField',
+      'blur input.mobilenumber' : 'validateField',
+      'blur input.password' : 'validateField'
     },
 
     ui: {
@@ -37,13 +37,11 @@ define(function(require) {
     }),
 
     validateForm: function() {
-      var isValid = true;
-      isValid = this.validateFirstName() && isValid;
-      isValid = this.validateSurname() && isValid;
-      isValid = this.validateEmailAddress() && isValid;
-      isValid = this.validateMobileNumber() && isValid;
-      isValid = this.validatePassword() && isValid;
-      return isValid;
+      return validator.validateFields($('.form').find('.field'));
+    },
+
+    validateField: function(e) {
+      validator.validateFields($(e.currentTarget));
     },
 
     submit: function() {
@@ -58,8 +56,8 @@ define(function(require) {
           password: this.ui.passwordInput.val()
         })
         .then(function(response) {
-          localStorage.setItem('sessionid', response.sessionId);
-          localStorage.setItem('userid', response.userId);
+          localStorage.setItem('sessionid', response.session.sessionId);
+          localStorage.setItem('userid', response.user.userId);
           vent.trigger('navigate', 'verify-mobile');
         })
         .catch(function(response) {
@@ -68,26 +66,6 @@ define(function(require) {
           }
           window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
         });
-    },
-
-    validateFirstName: function() {
-      return validator.renderValidationResult(validator.validateName, this.ui.firstNameInput);
-    },
-
-    validateSurname: function() {
-      return validator.renderValidationResult(validator.validateName, this.ui.surnameInput);
-    },
-
-    validateEmailAddress: function() {
-      return validator.renderValidationResult(validator.validateEmail, this.ui.emailAddressInput);
-    },
-
-    validateMobileNumber: function() {
-      return validator.renderValidationResult(validator.validateMobileNumber, this.ui.mobileNumberInput);
-    },
-
-    validatePassword: function() {
-      return validator.renderValidationResult(validator.validatePassword, this.ui.passwordInput);
     }
 
   });

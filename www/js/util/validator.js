@@ -6,7 +6,7 @@ define(function(require) {
       var self = this;
       var isValid = true;
       inputFields.each(function() {
-        isValid = isValid | self.validateField(this);
+        isValid = isValid | self.validateField($(this));
       });
       return isValid;
     },
@@ -14,10 +14,10 @@ define(function(require) {
     validateField: function(inputField) {
       var self = this;
       var isValid = true;
-      var classNames = inputField.className.split(' ');
-      classNames.forEach(function(className) {
-        if (validators[className]) {
-          var error = validators[className](inputField.value);
+      var rules = inputField.data('validationrules').split(' ');
+      rules.forEach(function(rule) {
+        if (isValid && validators[rule]) {
+          var error = validators[rule](inputField.val());
           if (error !== undefined) {
             self.addError(inputField, error);
             isValid = false;
@@ -30,11 +30,11 @@ define(function(require) {
     },
 
     addError: function(inputField, error) {
-      $(inputField).parent().addClass('error').find('.error-text').html(ErrorMessages[error]);
+      inputField.parent().addClass('error').find('.error-text').html(ErrorMessages[error]);
     },
 
     removeError: function(inputField) {
-      $(inputField).parent().removeClass('error').find('.error-text').html('');
+      inputField.parent().removeClass('error').find('.error-text').html('');
     }
 
   };
