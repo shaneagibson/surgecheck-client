@@ -6,11 +6,13 @@ define(function(require) {
   var Backbone = require('backbone');
   var vent = require('./util/vent');
   var serverGateway = require('./util/server-gateway');
+  var mockCordova = require('./mock-cordova');
 
   var app = new Marionette.Application();
 
   app.addInitializer(function() {
-    pushNotification.register()
+    initializeForPlatform()
+      .then(pushNotification.register)
       .then(initializeBackbone)
       .then(resolveInitialPage)
       .then(renderInitialPage)
@@ -21,6 +23,14 @@ define(function(require) {
     loading: '#loading',
     main: '#main'
   });
+
+  var initializeForPlatform = function() {
+    if (device.platform === 'browser') {
+      mockCordova.mock();
+    }
+    $('body').addClass(device.platform);
+    return new RSVP.Promise(function(resolve, reject) { resolve(); });
+  };
 
   var renderInitialPage = function(initialPage) {
     $(app.loading.el).hide();

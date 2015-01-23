@@ -33,7 +33,7 @@ define(function(require) {
     },
 
     validateField: function(e) {
-      validator.validateFields([ e.srcElement ]);
+      validator.validateFields($(e.currentTarget));
     },
 
     submit: function() {
