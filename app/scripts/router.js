@@ -1,4 +1,4 @@
-define(function(require) {
+define('router', function(require) {
 
   var LandingView = require('./view/landing');
   var SignInView = require('./view/sign-in');

@@ -1,4 +1,4 @@
-define(function(require) {
+define('app', function(require) {
 
   var pushNotification = require('./util/push-notification');
   var Router = require('./router');

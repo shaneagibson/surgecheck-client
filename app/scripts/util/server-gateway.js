@@ -1,4 +1,4 @@
-define(function(require) {
+define('util/server-gateway', function(require) {
 
   var config = require('../config');
 

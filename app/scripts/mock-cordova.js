@@ -1,4 +1,4 @@
-define(function(require){
+define('mock-cordova', function(require){
 
   var exports = {
 

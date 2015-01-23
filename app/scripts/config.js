@@ -1,4 +1,4 @@
-define(function(require){
+define('config', function(require){
 
   var exports = {
     google: {

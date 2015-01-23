@@ -1,10 +1,12 @@
 module.exports = function(grunt) {
 
-  grunt.registerTask('build:dev', [ 'clean', 'jshint:check', 'less:compile', 'concat:css', 'copy:dev' ]);
-  grunt.registerTask('build:prod', [ 'clean', 'jshint:check', 'less:compile', 'requirejs', 'concat:css', 'copy:prod' ]);
+  grunt.registerTask('build:dev', [ 'clean', 'jshint:check', 'karma:unit', 'less:compile', 'concat:css', 'copy:dev' ]);
+  grunt.registerTask('build:prod', [ 'clean', 'jshint:check', 'karma:unit', 'less:compile', 'requirejs', 'concat:css', 'copy:prod' ]);
 
   grunt.registerTask('run:browser', [ 'shell:browser' ]);
   grunt.registerTask('run:android', [ 'shell:android' ]);
+
+  grunt.registerTask('run:test', [ 'karma:continuous' ]);
 
   grunt.initConfig({
 
@@ -82,15 +84,14 @@ module.exports = function(grunt) {
       compile: {
         options: {
           name : 'app',
-          baseUrl: "app/scripts/",
-          mainConfigFile: "app/scripts/index.js",
-          out: "www/js/index.js",
+          baseUrl: 'app/scripts/',
+          mainConfigFile: 'app/scripts/index.js',
+          out: 'www/js/index.js',
           include: ['index'],
           wrap: false,
-          "optimize": "uglify2",
-          "uglify2": {
-            "mangle": true
-          }
+          optimize: 'uglify2',
+          preserveLicenseComments : false,
+          inlineText : true
         }
       }
     },
@@ -101,6 +102,19 @@ module.exports = function(grunt) {
       },
       android: {
         command: 'cordova run android'
+      }
+    },
+
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js',
+        autoWatch: false,
+        singleRun: true
+      },
+      continuous: {
+        configFile: 'karma.conf.js',
+        autoWatch: true,
+        singleRun: false
       }
     }
 
@@ -113,5 +127,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-shell');
- 
+  grunt.loadNpmTasks('grunt-karma');
+
 };
