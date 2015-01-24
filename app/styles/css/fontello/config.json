@@ -13,6 +13,18 @@
       "src": "fontelico"
     },
     {
+      "uid": "474656633f79ea2f1dad59ff63f6bf07",
+      "css": "star",
+      "code": 59404,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "d17030afaecc1e1c22349b99f3c4992a",
+      "css": "star-empty",
+      "code": 59401,
+      "src": "fontawesome"
+    },
+    {
       "uid": "8b80d36d4ef43889db10bc1f0dc9a862",
       "css": "user",
       "code": 59396,
@@ -22,6 +34,12 @@
       "uid": "0f4cae16f34ae243a6144c18a003f2d8",
       "css": "cancel-circled",
       "code": 59394,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "44e04715aecbca7f266a17d5a7863c68",
+      "css": "plus",
+      "code": 59402,
       "src": "fontawesome"
     },
     {
@@ -35,12 +53,6 @@
       "css": "credit-card",
       "code": 59397,
       "src": "fontawesome"
-    },
-    {
-      "uid": "25b34dea4784f72c710454f32ff8fa2b",
-      "css": "star",
-      "code": 59401,
-      "src": "entypo"
     },
     {
       "uid": "3a230e539a4f3b904debd04c6c155034",
@@ -65,6 +77,12 @@
       "css": "share",
       "code": 59398,
       "src": "entypo"
+    },
+    {
+      "uid": "0299bec28699eedda42f46c77239393e",
+      "css": "pencil",
+      "code": 59403,
+      "src": "mfglabs"
     }
   ]
 }

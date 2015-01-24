@@ -55,6 +55,13 @@ module.exports = function(grunt) {
           {
             src: 'app/index.html',
             dest: 'www/index.html'
+          },
+          {
+            expand: true,
+            cwd: 'app/images/',
+            src: ['**'],
+            dest: 'www/images/',
+            filter: 'isFile'
           }
         ]
       },
@@ -75,6 +82,13 @@ module.exports = function(grunt) {
           {
             src: 'app/scripts/components/requirejs/require.js',
             dest: 'www/js/components/requirejs/require.js'
+          },
+          {
+            expand: true,
+            cwd: 'app/images/',
+            src: ['**'],
+            dest: 'www/images/',
+            filter: 'isFile'
           }
         ]
       }
