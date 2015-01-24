@@ -1,4 +1,4 @@
-define(function(require){
+define('config', function(require){
 
   var exports = {
     google: {
@@ -11,7 +11,8 @@ define(function(require){
       scheme: 'http',
       host: '192.168.1.105',
       port: 8090
-    }
+    },
+    mock: true
   };
 
   return exports;

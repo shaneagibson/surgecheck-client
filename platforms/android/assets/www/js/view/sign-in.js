@@ -1,4 +1,4 @@
-define(function(require) {
+define('view/sign-in', function(require) {
 
   var Marionette = require('marionette');
   var template = require('hbs!../html/sign-in');

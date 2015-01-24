@@ -17,7 +17,7 @@ require.config({
   callback: window.__karma__.start,
   paths: {
     "jquery": "app/scripts/components/jquery/dist/jquery.min",
-    "underscore": "app/scripts/components/underscore/underscore-min",
+    "underscore": "app/scripts/components/underscore/underscore",
     "backbone": "app/scripts/components/backbone/backbone",
     "handlebars": "app/scripts/components/handlebars/handlebars.min",
     "hbs-builder": "app/scripts/components/requirejs-hbs/hbs-builder",

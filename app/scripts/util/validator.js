@@ -1,6 +1,6 @@
 define('util/validator', function(require) {
 
-  var nameValidator = require('validation/name-validator');
+  var nameValidator = require('util/validation/name-validator');
 
   var exports = {
 

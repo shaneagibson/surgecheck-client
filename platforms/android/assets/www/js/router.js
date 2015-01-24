@@ -1,4 +1,4 @@
-define(function(require) {
+define('router', function(require) {
 
   var LandingView = require('./view/landing');
   var SignInView = require('./view/sign-in');
@@ -31,17 +31,17 @@ define(function(require) {
 
       var appRouter = new AppRouter();
 
-      var showView = function(View, options) {
-        app.main.show(new View(), options);
+      var showView = function(view, options) {
+        app.main.show(view, options);
         touch.initializeTouchFeedback();
       };
 
-      appRouter.on('route:landing', function() { showView(LandingView); });
-      appRouter.on('route:signIn', function() { showView(SignInView); });
-      appRouter.on('route:register', function() { showView(RegisterView); });
-      appRouter.on('route:verifyMobile', function() { showView(VerifyMobileView); });
-      appRouter.on('route:home', function() { showView(HomeView); });
-      appRouter.on('route:resetPassword', function(userId, token) { showView(ResetPasswordView, { userId: userId, token: token }); });
+      appRouter.on('route:landing', function() { showView(new LandingView()); });
+      appRouter.on('route:signIn', function() { showView(new SignInView()); });
+      appRouter.on('route:register', function() { showView(new RegisterView()); });
+      appRouter.on('route:verifyMobile', function() { showView(new VerifyMobileView()); });
+      appRouter.on('route:home', function() { showView(new HomeView()); });
+      appRouter.on('route:resetPassword', function(userId, token) { showView(new ResetPasswordView(), { userId: userId, token: token }); });
 
     }
 

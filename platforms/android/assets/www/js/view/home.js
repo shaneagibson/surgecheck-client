@@ -1,4 +1,4 @@
-define(function(require) {
+define('view/home', function(require) {
 
   var Marionette = require('marionette');
   var template = require('hbs!../html/home');
@@ -12,12 +12,12 @@ define(function(require) {
     template: template,
 
     events: {
-      'click .menu' : 'showMenu'
+      'click .icon-menu' : 'showMenu'
     },
 
-    showMenu: click.single(function() {
-
-    })
+    showMenu: function(){
+      vent.trigger('menu:show', 'home');
+    }
 
   });
 

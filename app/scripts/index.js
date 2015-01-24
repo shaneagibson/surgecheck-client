@@ -10,7 +10,7 @@ require.config(
       "jquery": "./components/jquery/dist/jquery.min",
       "marionette": "./components/marionette/lib/backbone.marionette.min",
       "text" : "./components/requirejs-text/text",
-      "underscore": "./components/underscore/underscore-min",
+      "underscore": "./components/underscore/underscore",
       "event-bus": "./components/vent/app/scripts/services/event-bus/event-bus"
     }
   }

@@ -1,0 +1,31 @@
+@import "colors.less";
+.buttons {
+  width: 100%;
+  bottom: 0px;
+  position: absolute;
+  background-color: @white;
+}
+.buttons.single .button {
+  width: 100%;
+}
+.buttons.double .button {
+  width: 50%;
+}
+.buttons.triple .button {
+  width: 33.3%;
+}
+.button {
+  padding: 15px 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  float: left;
+}
+.dark-button{
+  color: @white;
+  background-color: @lightgray;
+}
+.light-button{
+  color: @lightgray;
+  background-color: @white;
+}

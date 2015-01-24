@@ -1,4 +1,4 @@
-define(function(require) {
+define('util/click', function(require) {
 
   var _ = require('underscore');
 

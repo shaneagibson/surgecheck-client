@@ -1,4 +1,4 @@
-define(function(require) {
+define('util/push-notification', function(require) {
 
   var config = require('./../config');
 

@@ -1,4 +1,4 @@
-define(function(require) {
+define('view/register', function(require) {
 
   var Marionette = require('marionette');
   var template = require('hbs!../html/register');

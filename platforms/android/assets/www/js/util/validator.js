@@ -1,4 +1,6 @@
-define(function(require) {
+define('util/validator', function(require) {
+
+  var nameValidator = require('util/validation/name-validator');
 
   var exports = {
 
@@ -37,16 +39,6 @@ define(function(require) {
       inputField.parent().removeClass('error').find('.error-text').html('');
     }
 
-  };
-
-  var validateName = function(value) {
-    if (value.trim().length === 0) {
-      return 'mandatory';
-    } else if (value.trim().length < 2) {
-      return 'too_short';
-    } else if (value.trim().length > 20) {
-      return 'too_long';
-    }
   };
 
   var validateEmail = function(value) {
@@ -92,7 +84,7 @@ define(function(require) {
     'password': validatePassword,
     'emailaddress' : validateEmail,
     'mobilenumber' : validateMobileNumber,
-    'name' : validateName,
+    'name' : nameValidator.validate,
     'verificationcode' : validateVerificationCode
   };
 

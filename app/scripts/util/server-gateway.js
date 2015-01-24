@@ -1,6 +1,7 @@
 define('util/server-gateway', function(require) {
 
   var config = require('../config');
+  var mockServer = require('./mock-server');
 
   var exports = {
 
@@ -9,7 +10,7 @@ define('util/server-gateway', function(require) {
     },
 
     get: function(path, queryParams) {
-      return issueRequest('POST', asUrl(path, queryParams));
+      return issueRequest('GET', asUrl(path, queryParams));
     }
 
   };
@@ -22,19 +23,23 @@ define('util/server-gateway', function(require) {
 
   var issueRequest = function(type, url, payload) {
     return new RSVP.Promise(function(resolve, reject) {
-      $.ajax(
-        {
-          url: url,
-          success: resolve,
-          error: function(request, status, error) {
-            reject(request);
-          },
-          type: type,
-          data: JSON.stringify(payload || {}),
-          dataType: 'json',
-          contentType: "application/json; charset=utf-8"
-        }
-      );
+      if (config.mock) {
+        mockServer.findMock(type, url).respond(resolve, reject);
+      } else {
+        $.ajax(
+          {
+            url: url,
+            success: resolve,
+            error: function(request, status, error) {
+              reject(request);
+            },
+            type: type,
+            data: JSON.stringify(payload || {}),
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8"
+          }
+        );
+      }
     });
   };
 

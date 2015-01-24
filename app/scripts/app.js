@@ -5,8 +5,11 @@ define('app', function(require) {
   var Marionette = require('marionette');
   var Backbone = require('backbone');
   var vent = require('./util/vent');
+  var touch = require('./util/touch');
   var serverGateway = require('./util/server-gateway');
   var mockCordova = require('./mock-cordova');
+  var Menu = require('./view/menu');
+  var Loading = require('./view/loading');
 
   var app = new Marionette.Application();
 
@@ -14,6 +17,7 @@ define('app', function(require) {
     initializeForPlatform()
       .then(pushNotification.register)
       .then(initializeBackbone)
+      .then(initializeMenu)
       .then(resolveInitialPage)
       .then(renderInitialPage)
       .catch(handleError);
@@ -21,8 +25,22 @@ define('app', function(require) {
 
   app.addRegions({
     loading: '#loading',
-    main: '#main'
+    main: '#main',
+    menu: '#menu'
   });
+
+  var initializeMenu = function() {
+    app.menu.show(new Menu());
+    vent.on('menu:show', function(activeItem) {
+      app.menu.currentView.setActiveItem(activeItem);
+      $('body').addClass('menu-open');
+      touch.initializeTouchFeedback();
+    });
+    vent.on('menu:hide', function() {
+      $('body').removeClass('menu-open');
+    });
+    return new RSVP.Promise(function(resolve, reject) { resolve(); });
+  };
 
   var initializeForPlatform = function() {
     if (device.platform === 'browser') {

@@ -1,4 +1,4 @@
-define(function(require) {
+define('util/touch', function(require) {
 
   var $ = require('jquery');
 
