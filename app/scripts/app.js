@@ -9,7 +9,6 @@ define('app', function(require) {
   var serverGateway = require('./util/server-gateway');
   var mockCordova = require('./mock-cordova');
   var Menu = require('./view/menu');
-  var Loading = require('./view/loading');
 
   var app = new Marionette.Application();
 
