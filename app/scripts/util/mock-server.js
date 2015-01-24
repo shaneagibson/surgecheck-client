@@ -2,9 +2,6 @@ define('util/mock-server', function(require) {
 
   var UriUtil = require('./uri');
 
-  var registerResponse = require('text!../mocks/register.response.json');
-  var verificationCodeResponse = require('text!../mocks/verification-code.response.json');
-
   var exports = {};
 
   var mocks = [];
@@ -38,8 +35,9 @@ define('util/mock-server', function(require) {
     mocks.push(new Mock(type, pathRegEx, isSuccess, response));
   };
 
-  registerMock('POST', '/account/register', true, JSON.parse(registerResponse));
-  registerMock('POST', '/account/verify', true, JSON.parse(verificationCodeResponse));
+  registerMock('POST', '/account/register', true, JSON.parse(require('text!../mocks/register.response.json')));
+  registerMock('POST', '/account/verify', true, JSON.parse(require('text!../mocks/verification-code.response.json')));
+  registerMock('POST', '/account/login', true, JSON.parse(require('text!../mocks/sign-in.response.json')));
 
   return exports;
 

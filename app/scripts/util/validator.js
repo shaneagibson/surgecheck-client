@@ -6,29 +6,28 @@ define('util/validator', function(require) {
 
     validateFields: function(inputFields) {
       var self = this;
-      var isValid = true;
-      inputFields.each(function() {
-        isValid = isValid | self.validateField($(this));
+      var errors = inputFields.filter(function() {
+        return !self.validateField($(this));
       });
-      return isValid;
+      return errors.length === 0;
     },
 
     validateField: function(inputField) {
       var self = this;
-      var isValid = true;
       var rules = inputField.data('validationrules').split(' ');
-      rules.forEach(function(rule) {
-        if (isValid && validators[rule]) {
-          var error = validators[rule](inputField.val());
-          if (error !== undefined) {
-            self.addError(inputField, error);
-            isValid = false;
-          } else {
-            self.removeError(inputField);
-          }
+      var errors = rules.map(function(rule) {
+        if (validators[rule]) {
+          return validators[rule](inputField.val());
         }
+      }).filter(function(error) {
+        return error;
       });
-      return isValid;
+      if (errors.length > 0) {
+        self.addError(inputField, errors[0]);
+      } else {
+        self.removeError(inputField);
+      }
+      return errors.length === 0;
     },
 
     addError: function(inputField, error) {
@@ -72,7 +71,7 @@ define('util/validator', function(require) {
   };
 
   var validateVerificationCode = function(value) {
-    if (/^\d{3}$/.test(value)) {
+    if (!/^\d{3}$/.test(value)) {
       return 'invalid_verification_code';
     }
   };
