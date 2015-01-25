@@ -43,6 +43,9 @@
         "nl.x-services.plugins.launchmyapp": {
             "URL_SCHEME": "epsilon",
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
+        },
+        "org.apache.cordova.inappbrowser": {
+            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         }
     },
     "dependent_plugins": {}

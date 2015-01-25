@@ -14,6 +14,9 @@
     <feature name="LaunchMyApp">
         <param name="android-package" value="nl.xservices.plugins.LaunchMyApp" />
     </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
     <name>Epsilon</name>
     <description>Epsilon Client App</description>
     <author email="sgibson@epsilontechnologies.co.uk" href="http://www.epsilontechnologies.co.uk" />

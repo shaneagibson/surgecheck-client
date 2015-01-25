@@ -23,6 +23,10 @@
                         {
                             "xml": "<feature name=\"Toast\"><param name=\"ios-package\" value=\"Toast\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -42,6 +46,13 @@
                         }
                     ],
                     "QuartzCore.framework": [
+                        {
+                            "xml": "false",
+                            "count": 1
+                        }
+                    ],
+                    "MessageUI.framework": [],
+                    "CoreGraphics.framework": [
                         {
                             "xml": "false",
                             "count": 1
@@ -86,6 +97,9 @@
         },
         "nl.x-services.plugins.launchmyapp": {
             "URL_SCHEME": "epsilon",
+            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
+        },
+        "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         }
     },

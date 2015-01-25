@@ -6,7 +6,7 @@ body {
   -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
   -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
   -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-  font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+  font-family: Vera;
   font-size: 12px;
   margin: 0px;
   padding: 0px;
@@ -128,10 +128,9 @@ input:focus{
 }
 .context-title{
   font-size: 20px;
-  font-weight: bold;
   color: @white;
   position: relative;
-  top: -22px;
+  top: -20px;
 }
 .profile-photo{
   float: right;
@@ -206,19 +205,58 @@ input:focus{
     font-size: 16px;
   }
 }
-.add-card-button{
-  text-align: right;
-  margin-right: 36px;
-  padding-top: 20px;
-  font-size: 22px;
+.info-text{
   color: @white;
-  .icon-credit-card{
-    position: fixed;
+  font-size: 14px;
+  width: 80%;
+  margin: 10px auto;
+}
+.code{
+  color: white;
+  font-family: CourierPrimeBold;
+  font-size: 30px;
+  background-color: @darkgray;
+  padding: 15px 10px 10px 10px;
+  border-top: 1px solid @ultralightgray;
+  border-bottom: 1px solid @ultralightgray;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.divider {
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+  color: @darkgray;
+  font-weight: bold;
+}
+.divider hr {
+  width: 20%;
+  border-color: @darkgray;
+  &.right{
+    margin-left:auto;
+    margin-right: 10%;
   }
-  .icon-plus{
-    position: relative;
-    left: 20px;
-    top: 13px;
-    font-size: 18px;
+  &.left{
+    margin-right:auto;
+    margin-left: 10%;
   }
+}
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+.center {
+  text-align: center;
+}
+.share-options{
+  width: 90%;
+  margin: 0px auto;
+}
+.bold{
+  font-family: Vera-Bold;
 }

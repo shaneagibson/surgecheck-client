@@ -17,7 +17,6 @@
 .button {
   padding: 15px 0;
   text-align: center;
-  font-weight: bold;
   font-size: 15px;
   float: left;
 }
@@ -28,4 +27,36 @@
 .light-button{
   color: @darkgray;
   background-color: @white;
+}
+.large-icon-button{
+  width: 30%;
+  background-color: @white;
+  border-radius: 5px;
+  padding: 10px;
+  border: 2px solid @darkgray;
+  margin: 20px;
+  float: left;
+  i{
+    font-size: 45px;
+  }
+  .icon-text{
+    text-size: 12px;
+  }
+}
+.add-card-button{
+  margin: 20px;
+  font-size: 22px;
+  color: @white;
+  width: 30px;
+  height: 30px;
+  padding: 10px 20px 10px 10px;
+  .icon-credit-card{
+    position: fixed;
+  }
+  .icon-plus{
+    position: relative;
+    left: 20px;
+    top: 13px;
+    font-size: 18px;
+  }
 }

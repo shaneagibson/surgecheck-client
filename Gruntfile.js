@@ -62,6 +62,13 @@ module.exports = function(grunt) {
             src: ['**'],
             dest: 'www/images/',
             filter: 'isFile'
+          },
+          {
+            expand: true,
+            cwd: 'app/fonts/',
+            src: ['**'],
+            dest: 'www/fonts/',
+            filter: 'isFile'
           }
         ]
       },
@@ -88,6 +95,13 @@ module.exports = function(grunt) {
             cwd: 'app/images/',
             src: ['**'],
             dest: 'www/images/',
+            filter: 'isFile'
+          },
+          {
+            expand: true,
+            cwd: 'app/fonts/',
+            src: ['**'],
+            dest: 'www/fonts/',
             filter: 'isFile'
           }
         ]

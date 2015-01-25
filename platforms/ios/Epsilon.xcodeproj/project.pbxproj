@@ -48,6 +48,7 @@
 		E41602060BBF42BC9D7D5EAF /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 345501758D4241E5AD587B2F /* Toast+UIView.m */; };
 		CB59D06B221B4D3EAD033334 /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22C54B1F6A4F1EBAE96472 /* Toast.m */; };
 		0CE4F6A8FB9547D59058E30C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FB57A44FF69430397342CDA /* QuartzCore.framework */; };
+		8F53AE9BDDA54A2D9A2BAE68 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D408D8190AC4371A8593410 /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,8 @@
 		0B1DFAB98A3248BCBA407202 /* Toast+UIView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Toast+UIView.h"; path = "nl.x-services.plugins.toast/Toast+UIView.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		A19FF077137347199BB674CB /* Toast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Toast.h"; path = "nl.x-services.plugins.toast/Toast.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		3FB57A44FF69430397342CDA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		8D408D8190AC4371A8593410 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		1C88CC0845674D52ADDAFF21 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +250,8 @@
 				5B22C54B1F6A4F1EBAE96472 /* Toast.m */,
 				0B1DFAB98A3248BCBA407202 /* Toast+UIView.h */,
 				A19FF077137347199BB674CB /* Toast.h */,
+				8D408D8190AC4371A8593410 /* CDVInAppBrowser.m */,
+				1C88CC0845674D52ADDAFF21 /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = "Epsilon/Plugins";
@@ -436,6 +441,7 @@
 				767420E26538475F87C291D9 /* CDVPushApps.m in Sources */,
 				E41602060BBF42BC9D7D5EAF /* Toast+UIView.m in Sources */,
 				CB59D06B221B4D3EAD033334 /* Toast.m in Sources */,
+				8F53AE9BDDA54A2D9A2BAE68 /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
