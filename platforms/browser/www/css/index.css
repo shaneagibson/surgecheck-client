@@ -491,6 +491,12 @@ body.modal #modal {
 #modal ul.select li.selected i {
   display: block;
 }
+.field.mmyy {
+  color: #ffffff;
+  font-size: 20px;
+  text-align: left;
+  padding: 19px 10px 0px 10px;
+}
 
 .loader {
   position: absolute;
