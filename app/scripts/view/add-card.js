@@ -3,6 +3,7 @@ define('view/add-card', function(require) {
   var Marionette = require('marionette');
   var template = require('hbs!../html/add-card');
   var vent = require('../util/vent');
+  var mobiscroll = require('mobiscroll');
 
   var view = Marionette.LayoutView.extend({
 
@@ -13,8 +14,28 @@ define('view/add-card', function(require) {
     events: {
       'click .icon-menu' : 'showMenu',
       'click .save-card' : 'saveCard',
-      'click .cancel' : 'cancel',
-      'click .input-select' : 'showSelectCardTypeModal'
+      'click .cancel' : 'cancel'
+    },
+
+    onDomRefresh: function(){
+      var today = new Date();
+      var maxDate = new Date();
+      maxDate.setFullYear(today.getFullYear() + 10);
+      $(".cardtype").mobiscroll().select({
+        display: 'modal',
+        theme: 'epsilon',
+        placeholder: 'Select Card Type',
+        minWidth: 200
+      });
+      $(".mmyy").mobiscroll().date({
+        display: 'modal',
+        dateOrder: 'mmyyyy',
+        mode: 'scroller',
+        dateFormat: 'mm / yyyy',
+        theme: 'epsilon',
+        minDate: today,
+        maxDate: maxDate
+      });
     },
 
     showMenu: function(){

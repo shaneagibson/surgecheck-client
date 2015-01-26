@@ -93,6 +93,7 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/handlebars \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/jquery \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/marionette \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/mobiscroll \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/requirejs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/requirejs-hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/requirejs-json \
@@ -333,6 +334,7 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/marionette/lib/core/backbone.marionette.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/marionette/lib/core/backbone.marionette.map \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/marionette/lib/core/backbone.marionette.min.js \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/mobiscroll/mobiscroll.custom-2.14.4.min.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/requirejs/bower.json \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/requirejs/README.md \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/requirejs/require.js \

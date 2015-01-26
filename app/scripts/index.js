@@ -11,7 +11,17 @@ require.config(
       "marionette": "./components/marionette/lib/backbone.marionette.min",
       "text" : "./components/requirejs-text/text",
       "underscore": "./components/underscore/underscore",
-      "event-bus": "./components/vent/app/scripts/services/event-bus/event-bus"
+      "event-bus": "./components/vent/app/scripts/services/event-bus/event-bus",
+      "mobiscroll": "./components/mobiscroll/mobiscroll.custom-2.14.4.min"
+    },
+    shim: {
+      jquery:{
+        exports: "jquery"
+      },
+      mobiscroll:{
+        deps: ['jquery'],
+        exports: "mobiscroll"
+      }
     }
   }
 );

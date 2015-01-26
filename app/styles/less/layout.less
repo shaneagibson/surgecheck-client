@@ -60,10 +60,10 @@ body {
   width: 80%;
 }
 .input-container.double{
-  width: 40%;
+  width: 50%;
 }
 .input-container.triple{
-  width: 25%;
+  width: 33%;
 }
 .input-container{
   margin: 0 auto;
@@ -199,6 +199,10 @@ input:focus{
   margin-bottom: 2px;
   i{
     float: right;
+    color: @white !important;
+  }
+  &.selected{
+    color: @darkgray;
   }
 }
 .card-image{
@@ -303,6 +307,7 @@ body.modal #modal{
 #modal{
   top: 50%;
   transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
   position: absolute;
   z-index: 30;
   background-color: @white;
@@ -312,31 +317,17 @@ body.modal #modal{
   margin-left: 10%;
   display: none;
 }
-#modal ul.select{
-  margin: 0;
-  list-style: none;
-  width: 100%;
-  padding: 0;
-  font-size: 18px;
-  li{
-    padding: 15px 20px;
-    border-bottom: 1px solid #333333;
-    &:last-child{
-      border-bottom: none;
-    }
-    i{
-      display: none;
-    }
-    &.selected{
-      i{
-        display: block;
-      }
-    }
-  }
+.dwo{
+  opacity: 0.7 !important;
+  background: @darkgray !important;
 }
-.field.mmyy{
-  color: @white;
-  font-size: 20px;
-  text-align: left;
-  padding: 19px 10px 0px 10px;
+.dwwr{
+  border-radius: 10px !important;
+  border: 2px solid @darkgray !important;
+}
+.version{
+  bottom: 10px;
+  font-weight: bold;
+  position: fixed;
+  width: 100%;
 }

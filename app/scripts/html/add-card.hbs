@@ -6,7 +6,7 @@
     <div class="context-title bold">Add Card</div>
     <div class="form">
         <div class="input-container single">
-            <input type="number" step="1" data-validationrules="mandatory cardnumber" class="field cardnumber" placeholder="Card Number"/>
+            <input type="number" step="1" maxlength="16" data-validationrules="mandatory cardnumber" class="field cardnumber" placeholder="Card Number"/>
             <span class="error-reason">
                 <span class="error-text"></span>
                 <i class="icon-cancel-circled"></i>
@@ -15,7 +15,7 @@
         </div>
         <div class="input-container single">
             <div class="input-container double left">
-                <div class="field mmyy" data-value=""><span class="selected-value">MM / YY</span></div>
+                <input type="text" readonly data-validationrules="mandatory mmyy" class="field mmyy" placeholder="MM / YYYY"/>
                 <span class="error-reason">
                     <span class="error-text"></span>
                     <i class="icon-cancel-circled"></i>
@@ -23,7 +23,7 @@
                 <div class="input-underline"></div>
             </div>
             <div class="input-container triple right">
-                <input type="number" step="1" data-validationrules="mandatory cvv" class="field cvv" placeholder="CVV"/>
+                <input type="number" step="1" maxlength="3" data-validationrules="mandatory cvv" class="field cvv" placeholder="CVV"/>
                 <span class="error-reason">
                     <span class="error-text"></span>
                     <i class="icon-cancel-circled"></i>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="input-container single">
-            <input type="text" data-validationrules="mandatory postcode" class="field postcode" placeholder="Postcode"/>
+            <input type="text" maxlength="8" data-validationrules="mandatory postcode" class="field postcode" placeholder="Postcode"/>
             <span class="error-reason">
                 <span class="error-text"></span>
                 <i class="icon-cancel-circled"></i>
@@ -40,7 +40,15 @@
             <div class="input-underline"></div>
         </div>
         <div class="input-container single">
-            <div class="input-select cardtype" data-value="personal" data-keys="personal,business" data-values="Personal,Business"><span class="selected-value">Personal</span><i class="icon-down-dir"></i></div>
+            <select class="cardtype" id="cardtype">
+                <option selected disabled value=""></option>
+                <option value="personal">Personal</option>
+                <option value="business">Business</option>
+            </select>
+            <span class="error-reason">
+                <span class="error-text"></span>
+                <i class="icon-cancel-circled"></i>
+            </span>
             <div class="select-underline"></div>
         </div>
     </div>

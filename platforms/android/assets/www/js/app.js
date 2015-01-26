@@ -50,13 +50,16 @@ define('app', function(require) {
       var keys = srcElement.data('keys').split(',');
       var values = srcElement.data('values').split(',');
       var callback = function(selectedKey, selectedValue) {
-        srcElement.data('key', selectedKey);
+        srcElement.data('value', selectedKey).addClass('selected');
         $('.selected-value', srcElement).html(selectedValue);
       };
+      $('body').addClass('modal');
       app.modal.show(new SelectModal({ selected: selected, keys: keys, values: values, callback: callback }));
+      touch.initializeTouchFeedback();
     });
     vent.on('modal:hide', function() {
-      app.modal.hide();
+      app.modal.empty();
+      $('body').removeClass('modal');
     });
     return new RSVP.Promise(function(resolve, reject) { resolve(); });
   };
