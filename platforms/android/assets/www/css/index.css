@@ -225,7 +225,6 @@ body {
 }
 .input-container {
   margin: 0 auto;
-  position: relative;
 }
 .input-container.error .input-underline {
   border-color: #990000;
@@ -265,9 +264,6 @@ input:focus {
   border-left: 1px solid #ffffff;
   border-right: 1px solid #ffffff;
   border-bottom: 1px solid #ffffff;
-}
-.form {
-  padding-top: 10px;
 }
 .menu-icon-container {
   color: #333333;
