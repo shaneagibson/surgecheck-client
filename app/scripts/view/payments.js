@@ -11,12 +11,24 @@ define('view/payments', function(require) {
     template: template,
 
     events: {
-      'click .icon-menu' : 'showMenu'
+      'click .icon-menu' : 'showMenu',
+      'click .edit-card' : 'editCard',
+      'click .add-card' : 'addCard'
     },
 
     showMenu: function(){
       vent.trigger('menu:show', 'payments');
+    },
+
+    addCard: function(){
+      vent.trigger('navigate', 'add-card');
+    },
+
+    editCard: function(e){
+      var cardId = $(e.currentTarget).closest('.edit-card').data('cardid');
+      vent.trigger('navigate', 'edit-card/'+cardId);
     }
+
 
   });
 

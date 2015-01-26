@@ -12,6 +12,8 @@ define('router', function(require) {
   var PromotionsView = require('./view/promotions');
   var ShareView = require('./view/share');
   var SupportView = require('./view/support');
+  var AddCardView = require('./view/add-card');
+  var EditCardView = require('./view/edit-card');
 
   var touch = require('./util/touch');
 
@@ -34,6 +36,8 @@ define('router', function(require) {
           "promotions": "promotions",
           "share": "share",
           "support": "support",
+          "add-card": "addCard",
+          "edit-card/:cardid": "editCard",
 
           // deep-links
           "user/:userid/forgottenpassword/token/:token": "resetPassword"
@@ -59,6 +63,8 @@ define('router', function(require) {
       appRouter.on('route:promotions', function() { showView(new PromotionsView()); });
       appRouter.on('route:share', function() { showView(new ShareView()); });
       appRouter.on('route:support', function() { showView(new SupportView()); });
+      appRouter.on('route:addCard', function() { showView(new AddCardView()); });
+      appRouter.on('route:editCard', function(cardId) { showView(new EditCardView({ /* TODO - fetch card for cardId */ })); });
       appRouter.on('route:resetPassword', function(userId, token) { showView(new ResetPasswordView(), { userId: userId, token: token }); });
 
     }

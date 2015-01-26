@@ -389,6 +389,8 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/vent/dist/amd-tpl.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/vent/dist/vent.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/about.hbs \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/add-card.hbs \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/edit-card.hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/forgotten-password.hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/home.hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/landing.hbs \
@@ -416,6 +418,8 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/vent.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/validation/name-validator.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/about.js \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/add-card.js \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/edit-card.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/forgotten-password.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/home.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/landing.js \
