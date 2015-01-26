@@ -16,6 +16,27 @@ define('view/edit-card', function(require) {
       'click .cancel' : 'cancel'
     },
 
+    onDomRefresh: function(){
+      var today = new Date();
+      var maxDate = new Date();
+      maxDate.setFullYear(today.getFullYear() + 10);
+      $(".cardtype").mobiscroll().select({
+        display: 'modal',
+        theme: 'epsilon',
+        placeholder: 'Select Card Type',
+        minWidth: 200
+      });
+      $(".mmyy").mobiscroll().date({
+        display: 'modal',
+        dateOrder: 'mmyyyy',
+        mode: 'scroller',
+        dateFormat: 'mm / yyyy',
+        theme: 'epsilon',
+        minDate: today,
+        maxDate: maxDate
+      });
+    },
+
     showMenu: function(){
       vent.trigger('menu:show', 'payments');
     },
