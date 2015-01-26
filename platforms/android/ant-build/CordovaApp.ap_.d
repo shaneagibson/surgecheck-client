@@ -400,11 +400,13 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/promotions.hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/register.hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/reset-password.hbs \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/select-modal.hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/share.hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/sign-in.hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/support.hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/verify-mobile.hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/mocks/register.response.json \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/mocks/session.response.json \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/mocks/sign-in.response.json \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/mocks/verification-code.response.json \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/click.js \
@@ -429,6 +431,7 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/promotions.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/register.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/reset-password.js \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/select-modal.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/share.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/sign-in.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/support.js \

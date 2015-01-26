@@ -13,7 +13,8 @@ define('view/add-card', function(require) {
     events: {
       'click .icon-menu' : 'showMenu',
       'click .save-card' : 'saveCard',
-      'click .cancel' : 'cancel'
+      'click .cancel' : 'cancel',
+      'click .input-select' : 'showSelectCardTypeModal'
     },
 
     showMenu: function(){
@@ -28,6 +29,11 @@ define('view/add-card', function(require) {
 
     cancel: function(){
       vent.trigger('navigate', 'payments');
+    },
+
+    showSelectCardTypeModal: function(e){
+      var selectElement = $(e.currentTarget).closest('.input-select');
+      vent.trigger('modal:show:select', selectElement);
     }
 
   });

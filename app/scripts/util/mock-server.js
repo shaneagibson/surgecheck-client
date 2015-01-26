@@ -38,6 +38,7 @@ define('util/mock-server', function(require) {
   registerMock('POST', '/account/register', true, JSON.parse(require('text!../mocks/register.response.json')));
   registerMock('POST', '/account/verify', true, JSON.parse(require('text!../mocks/verification-code.response.json')));
   registerMock('POST', '/account/login', true, JSON.parse(require('text!../mocks/sign-in.response.json')));
+  registerMock('GET', '/account/session', true, JSON.parse(require('text!../mocks/session.response.json')));
 
   return exports;
 

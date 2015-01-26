@@ -9,6 +9,7 @@ define('app', function(require) {
   var serverGateway = require('./util/server-gateway');
   var mockCordova = require('./mock-cordova');
   var Menu = require('./view/menu');
+  var SelectModal = require('./view/select-modal');
 
   var app = new Marionette.Application();
 
@@ -16,6 +17,7 @@ define('app', function(require) {
     initializeForPlatform()
       .then(pushNotification.register)
       .then(initializeBackbone)
+      .then(initializeModalListeners)
       .then(initializeMenu)
       .then(resolveInitialPage)
       .then(renderInitialPage)
@@ -25,7 +27,8 @@ define('app', function(require) {
   app.addRegions({
     loading: '#loading',
     main: '#main',
-    menu: '#menu'
+    menu: '#menu',
+    modal: '#modal'
   });
 
   var initializeMenu = function() {
@@ -37,6 +40,26 @@ define('app', function(require) {
     });
     vent.on('menu:hide', function() {
       $('body').removeClass('menu-open');
+    });
+    return new RSVP.Promise(function(resolve, reject) { resolve(); });
+  };
+
+  var initializeModalListeners = function() {
+    vent.on('modal:show:select', function(srcElement) {
+      var selected = srcElement.data('value');
+      var keys = srcElement.data('keys').split(',');
+      var values = srcElement.data('values').split(',');
+      var callback = function(selectedKey, selectedValue) {
+        srcElement.data('value', selectedKey);
+        $('.selected-value', srcElement).html(selectedValue);
+      };
+      $('body').addClass('modal');
+      app.modal.show(new SelectModal({ selected: selected, keys: keys, values: values, callback: callback }));
+      touch.initializeTouchFeedback();
+    });
+    vent.on('modal:hide', function() {
+      app.modal.empty();
+      $('body').removeClass('modal');
     });
     return new RSVP.Promise(function(resolve, reject) { resolve(); });
   };
