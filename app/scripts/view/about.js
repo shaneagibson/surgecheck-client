@@ -4,6 +4,7 @@ define('view/about', function(require) {
   var template = require('hbs!../html/about');
   var vent = require('../util/vent');
   var rateme = require('../util/rateme');
+  var config = require('../config');
 
   var view = Marionette.LayoutView.extend({
 

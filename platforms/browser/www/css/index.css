@@ -101,7 +101,7 @@
   background-color: #1e90ff;
 }
 .gray-button {
-  color: #000000;
+  color: #ffffff;
   background-color: #6e6e6e;
 }
 .light-button {
@@ -727,4 +727,5 @@ body.modal #modal {
   text-align: center;
   font-size: 14px;
   padding-bottom: 20px;
+  padding-top: 10px;
 }

@@ -46,7 +46,7 @@ define('view/share', function(require) {
     },
 
     getPromoCode: function(){
-      return 'LI17O0';
+      return 'LI17O0'; // TODO - use promo code for current user
     }
 
   });

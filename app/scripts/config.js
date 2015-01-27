@@ -17,7 +17,7 @@ define('config', function(require){
       ios: '' // TODO - configure App Store URL
     },
     mock: true,
-    version: '0.0.1'
+    version: '0.0.1' // TODO - populate at build-time
   };
 
   return exports;
