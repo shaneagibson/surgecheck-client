@@ -9,6 +9,7 @@ define('app', function(require) {
   var serverGateway = require('./util/server-gateway');
   var mockCordova = require('./mock-cordova');
   var Menu = require('./view/menu');
+  var ModalConfirm = require('./view/modal-confirm');
 
   var app = new Marionette.Application();
 
@@ -16,6 +17,7 @@ define('app', function(require) {
     initializeForPlatform()
       .then(pushNotification.register)
       .then(initializeBackbone)
+      .then(initializeModalListeners)
       .then(initializeMenu)
       .then(resolveInitialPage)
       .then(renderInitialPage)
@@ -38,6 +40,19 @@ define('app', function(require) {
     });
     vent.on('menu:hide', function() {
       $('body').removeClass('menu-open');
+    });
+    return new RSVP.Promise(function(resolve, reject) { resolve(); });
+  };
+
+  var initializeModalListeners = function() {
+    vent.on('modal:confirm', function(options) {
+      $('body').addClass('modal');
+      app.modal.show(new ModalConfirm(options));
+      touch.initializeTouchFeedback();
+    });
+    vent.on('modal:hide', function() {
+      app.modal.empty();
+      $('body').removeClass('modal');
     });
     return new RSVP.Promise(function(resolve, reject) { resolve(); });
   };

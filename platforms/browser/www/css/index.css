@@ -116,12 +116,14 @@
 .large-icon-button .icon-text {
   text-size: 12px;
 }
+.delete-card-button {
+  padding: 10px 10px 10px 10px;
+  text-align: left;
+}
+.delete-card-button .icon-trash {
+  position: fixed;
+}
 .add-card-button {
-  margin: 20px;
-  font-size: 22px;
-  color: #ffffff;
-  width: 30px;
-  height: 30px;
   padding: 10px 20px 10px 10px;
 }
 .add-card-button .icon-credit-card {
@@ -132,6 +134,14 @@
   left: 20px;
   top: 13px;
   font-size: 18px;
+}
+.add-card-button,
+.delete-card-button {
+  margin: 25px;
+  font-size: 22px;
+  color: #ffffff;
+  width: 30px;
+  height: 30px;
 }
 
 
@@ -471,9 +481,7 @@ body.modal #modal {
   position: absolute;
   z-index: 30;
   background-color: #ffffff;
-  border: 2px solid #333333;
   width: 80%;
-  border-radius: 10px;
   margin-left: 10%;
   display: none;
 }

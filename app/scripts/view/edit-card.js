@@ -13,7 +13,8 @@ define('view/edit-card', function(require) {
     events: {
       'click .icon-menu' : 'showMenu',
       'click .save-card' : 'saveCard',
-      'click .cancel' : 'cancel'
+      'click .cancel' : 'cancel',
+      'click .delete-card-button' : 'deleteCard'
     },
 
     onDomRefresh: function(){
@@ -49,6 +50,17 @@ define('view/edit-card', function(require) {
 
     cancel: function(){
       vent.trigger('navigate', 'payments');
+    },
+
+    deleteCard: function(){
+      var view = this;
+      vent.trigger('modal:confirm', { yesCallback: view.confirmDeleteCard });
+    },
+
+    confirmDeleteCard: function(){
+      // TODO - delete card
+      vent.trigger('navigate', 'payments');
+      vent.trigger('modal:hide');
     }
 
   });
