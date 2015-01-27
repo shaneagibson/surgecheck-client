@@ -16,7 +16,8 @@ define('config', function(require){
       android: '', // TODO - configure Play Store URL
       ios: '' // TODO - configure App Store URL
     },
-    mock: true
+    mock: true,
+    version: '0.0.1'
   };
 
   return exports;

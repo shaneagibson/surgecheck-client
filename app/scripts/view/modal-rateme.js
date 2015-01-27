@@ -4,7 +4,6 @@ define('view/modal-rateme', function(require) {
   var template = require('hbs!../html/modal-rateme');
   var vent = require('../util/vent');
   var rateme = require('../util/rateme');
-  var config = require('../config');
 
   var view = Marionette.LayoutView.extend({
 
@@ -28,7 +27,7 @@ define('view/modal-rateme', function(require) {
     },
 
     onRate: function(){
-      window.open(config.app_store[device.platform], '_system');
+      rateme.openAppStore();
       vent.trigger('modal:hide');
     }
 
