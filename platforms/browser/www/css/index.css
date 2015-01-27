@@ -76,7 +76,6 @@
   width: 100%;
   bottom: 0px;
   position: absolute;
-  background-color: #ffffff;
 }
 .buttons.single .button {
   width: 100%;
@@ -502,6 +501,14 @@ body.modal #modal {
 .disabled {
   opacity: .7;
   color: #d8d8d8;
+}
+.confirm .text {
+  font-size: 16px;
+  text-align: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 5px 5px 0px 0px;
+  font-family: Vera-Bold;
 }
 
 .loader {

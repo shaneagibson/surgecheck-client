@@ -61,6 +61,7 @@ define('view/edit-card', function(require) {
       // TODO - delete card
       vent.trigger('navigate', 'payments');
       vent.trigger('modal:hide');
+      window.plugins.toast.showShortCenter('Card Successfully Deleted');
     }
 
   });
