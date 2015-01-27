@@ -15,6 +15,12 @@ define('view/modal-confirm', function(require) {
       'click .no' : 'onNo'
     },
 
+    onDomRefresh: function(){
+      if (this.options.title) {
+        $('.confirm .title').html(this.options.title);
+      }
+    },
+
     onYes: function(){
       this.options.yesCallback();
     },

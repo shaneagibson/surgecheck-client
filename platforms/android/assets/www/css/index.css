@@ -76,7 +76,6 @@
   width: 100%;
   bottom: 0px;
   position: absolute;
-  background-color: #ffffff;
 }
 .buttons.single .button {
   width: 100%;
@@ -116,12 +115,14 @@
 .large-icon-button .icon-text {
   text-size: 12px;
 }
+.delete-card-button {
+  padding: 10px 10px 10px 10px;
+  text-align: left;
+}
+.delete-card-button .icon-trash {
+  position: fixed;
+}
 .add-card-button {
-  margin: 20px;
-  font-size: 22px;
-  color: #ffffff;
-  width: 30px;
-  height: 30px;
   padding: 10px 20px 10px 10px;
 }
 .add-card-button .icon-credit-card {
@@ -132,6 +133,14 @@
   left: 20px;
   top: 13px;
   font-size: 18px;
+}
+.add-card-button,
+.delete-card-button {
+  margin: 25px;
+  font-size: 22px;
+  color: #ffffff;
+  width: 30px;
+  height: 30px;
 }
 
 
@@ -471,9 +480,7 @@ body.modal #modal {
   position: absolute;
   z-index: 30;
   background-color: #ffffff;
-  border: 2px solid #333333;
   width: 80%;
-  border-radius: 10px;
   margin-left: 10%;
   display: none;
 }
@@ -494,6 +501,21 @@ body.modal #modal {
 .disabled {
   opacity: .7;
   color: #d8d8d8;
+}
+.confirm {
+  background-color: #ffffff;
+  border-radius: 5px 5px 0px 0px;
+}
+.confirm .title {
+  font-family: Vera-Bold;
+  font-size: 16px;
+  text-align: center;
+}
+.confirm .text {
+  font-family: Vera;
+  text-align: center;
+  font-size: 14px;
+  padding-bottom: 20px;
 }
 
 .loader {

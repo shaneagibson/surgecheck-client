@@ -54,7 +54,7 @@ define('view/edit-card', function(require) {
 
     deleteCard: function(){
       var view = this;
-      vent.trigger('modal:confirm', { yesCallback: view.confirmDeleteCard });
+      vent.trigger('modal:confirm', { title: 'Delete Card', yesCallback: view.confirmDeleteCard });
     },
 
     confirmDeleteCard: function(){

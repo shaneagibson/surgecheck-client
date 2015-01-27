@@ -397,6 +397,7 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/home.hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/landing.hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/menu.hbs \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/modal-confirm.hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/payments.hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/profile.hbs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/html/promotions.hbs \
@@ -427,6 +428,7 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/home.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/landing.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/menu.js \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/modal-confirm.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/payments.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/profile.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/promotions.js \
