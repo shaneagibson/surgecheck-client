@@ -12,6 +12,10 @@ define('config', function(require){
       host: '192.168.1.105',
       port: 8090
     },
+    app_store: {
+      android: '', // TODO - configure Play Store URL
+      ios: '' // TODO - configure App Store URL
+    },
     mock: true
   };
 

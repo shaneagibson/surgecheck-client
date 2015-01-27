@@ -420,7 +420,12 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/validation \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/validator.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/vent.js \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/validation/email-validator.js \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/validation/mandatory-validator.js \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/validation/mobilenumber-validator.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/validation/name-validator.js \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/validation/password-validator.js \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/validation/verificationcode-validator.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/about.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/add-card.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/edit-card.js \

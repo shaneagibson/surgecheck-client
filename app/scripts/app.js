@@ -6,10 +6,12 @@ define('app', function(require) {
   var Backbone = require('backbone');
   var vent = require('./util/vent');
   var touch = require('./util/touch');
+  var rateme = require('./util/rateme');
   var serverGateway = require('./util/server-gateway');
   var mockCordova = require('./mock-cordova');
   var Menu = require('./view/menu');
   var ModalConfirm = require('./view/modal-confirm');
+  var ModalRateMe = require('./view/modal-rateme');
 
   var app = new Marionette.Application();
 
@@ -19,6 +21,7 @@ define('app', function(require) {
       .then(initializeBackbone)
       .then(initializeModalListeners)
       .then(initializeMenu)
+      .then(showRateMe)
       .then(resolveInitialPage)
       .then(renderInitialPage)
       .catch(handleError);
@@ -50,10 +53,20 @@ define('app', function(require) {
       app.modal.show(new ModalConfirm(options));
       touch.initializeTouchFeedback();
     });
+    vent.on('modal:rateme', function() {
+      $('body').addClass('modal');
+      app.modal.show(new ModalRateMe());
+      touch.initializeTouchFeedback();
+    });
     vent.on('modal:hide', function() {
       app.modal.empty();
       $('body').removeClass('modal');
     });
+    return new RSVP.Promise(function(resolve, reject) { resolve(); });
+  };
+
+  var showRateMe = function(){
+    rateme.showRateMeDialog();
     return new RSVP.Promise(function(resolve, reject) { resolve(); });
   };
 
