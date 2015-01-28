@@ -16,6 +16,10 @@ define('config', function(require){
       android: '', // TODO - configure Play Store URL
       ios: '' // TODO - configure App Store URL
     },
+    jumio: {
+      app_key: '',
+      app_secret: ''
+    },
     mock: true,
     version: '0.0.1' // TODO - populate at build-time
   };

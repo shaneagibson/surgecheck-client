@@ -49,6 +49,7 @@
 		CB59D06B221B4D3EAD033334 /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22C54B1F6A4F1EBAE96472 /* Toast.m */; };
 		0CE4F6A8FB9547D59058E30C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FB57A44FF69430397342CDA /* QuartzCore.framework */; };
 		8F53AE9BDDA54A2D9A2BAE68 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D408D8190AC4371A8593410 /* CDVInAppBrowser.m */; };
+		C61F1BF08BC043B780B042F4 /* NetSwipePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E5AE6DB4B34D1DA2711217 /* NetSwipePlugin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,8 @@
 		3FB57A44FF69430397342CDA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 		8D408D8190AC4371A8593410 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		1C88CC0845674D52ADDAFF21 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		A7E5AE6DB4B34D1DA2711217 /* NetSwipePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NetSwipePlugin.m"; path = "com.clearbon.cordova.netswipe/NetSwipePlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		878AB363627E45B48DF2891B /* NetSwipePlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NetSwipePlugin.h"; path = "com.clearbon.cordova.netswipe/NetSwipePlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +255,8 @@
 				A19FF077137347199BB674CB /* Toast.h */,
 				8D408D8190AC4371A8593410 /* CDVInAppBrowser.m */,
 				1C88CC0845674D52ADDAFF21 /* CDVInAppBrowser.h */,
+				A7E5AE6DB4B34D1DA2711217 /* NetSwipePlugin.m */,
+				878AB363627E45B48DF2891B /* NetSwipePlugin.h */,
 			);
 			name = Plugins;
 			path = "Epsilon/Plugins";
@@ -442,6 +447,7 @@
 				E41602060BBF42BC9D7D5EAF /* Toast+UIView.m in Sources */,
 				CB59D06B221B4D3EAD033334 /* Toast.m in Sources */,
 				8F53AE9BDDA54A2D9A2BAE68 /* CDVInAppBrowser.m in Sources */,
+				C61F1BF08BC043B780B042F4 /* NetSwipePlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

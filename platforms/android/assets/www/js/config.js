@@ -12,7 +12,12 @@ define('config', function(require){
       host: '192.168.1.105',
       port: 8090
     },
-    mock: true
+    app_store: {
+      android: '', // TODO - configure Play Store URL
+      ios: '' // TODO - configure App Store URL
+    },
+    mock: true,
+    version: '0.0.1' // TODO - populate at build-time
   };
 
   return exports;

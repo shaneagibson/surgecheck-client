@@ -46,6 +46,9 @@
         },
         "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
+        },
+        "com.clearbon.cordova.netswipe": {
+            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         }
     },
     "dependent_plugins": {}

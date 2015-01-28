@@ -1,4 +1,4 @@
-define(function(require) {
+define('view/verify-mobile', function(require) {
 
   var Marionette = require('marionette');
   var template = require('hbs!../html/verify-mobile');
@@ -28,7 +28,7 @@ define(function(require) {
     }),
 
     validateForm: function() {
-      return this.validateVerificationCode();
+      return validator.validateFields($('.form').find('.field'));
     },
 
     submit: function() {

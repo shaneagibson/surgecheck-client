@@ -1,4 +1,4 @@
-define(function(require) {
+define('util/push-notification', function(require) {
 
   var config = require('./../config');
 
@@ -36,7 +36,7 @@ define(function(require) {
   var getDeviceId = function() {
     return new RSVP.Promise(function(resolve, reject) {
       PushNotification.getDeviceId(resolve, reject);
-    })
+    });
   };
 
   var saveDeviceId = function(deviceId) {

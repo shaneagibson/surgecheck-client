@@ -1,6 +1,7 @@
 define('app', function(require) {
 
   var pushNotification = require('./util/push-notification');
+  var config = require('./config');
   var Router = require('./router');
   var Marionette = require('marionette');
   var Backbone = require('backbone');
@@ -20,6 +21,7 @@ define('app', function(require) {
       .then(pushNotification.register)
       .then(initializeBackbone)
       .then(initializeModalListeners)
+      .then(initializeJumio)
       .then(initializeMenu)
       .then(showRateMe)
       .then(resolveInitialPage)
@@ -34,6 +36,10 @@ define('app', function(require) {
     modal: '#modal'
   });
 
+  var initializeJumio = function() {
+    CardScanner.init(config.jumio.app_key, config.jumio.app_secret);
+  };
+
   var initializeMenu = function() {
     app.menu.show(new Menu());
     vent.on('menu:show', function(activeItem) {
@@ -44,7 +50,6 @@ define('app', function(require) {
     vent.on('menu:hide', function() {
       $('body').removeClass('menu-open');
     });
-    return new RSVP.Promise(function(resolve, reject) { resolve(); });
   };
 
   var initializeModalListeners = function() {
@@ -62,12 +67,10 @@ define('app', function(require) {
       app.modal.empty();
       $('body').removeClass('modal');
     });
-    return new RSVP.Promise(function(resolve, reject) { resolve(); });
   };
 
   var showRateMe = function(){
     rateme.showRateMeDialog();
-    return new RSVP.Promise(function(resolve, reject) { resolve(); });
   };
 
   var initializeForPlatform = function() {

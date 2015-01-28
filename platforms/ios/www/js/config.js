@@ -1,4 +1,4 @@
-define(function(require){
+define('config', function(require){
 
   var exports = {
     google: {
@@ -11,7 +11,17 @@ define(function(require){
       scheme: 'http',
       host: '192.168.1.105',
       port: 8090
-    }
+    },
+    app_store: {
+      android: '', // TODO - configure Play Store URL
+      ios: '' // TODO - configure App Store URL
+    },
+    jumio: {
+      app_key: '',
+      app_secret: ''
+    },
+    mock: true,
+    version: '0.0.1' // TODO - populate at build-time
   };
 
   return exports;

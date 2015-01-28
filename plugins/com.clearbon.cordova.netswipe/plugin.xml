@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="com.clearbon.cordova.netswipe" version="0.1.0">
+    <name>NetSwipe</name>
+    <description>NetSwipe SDK payment card scanner Plugin</description>
+    <author>Clearbon, Inc. (Adalbert Wysocki)</author>
+    <license>Apache 2.0</license>
+    <keywords>cordova,netswipe,credit card,card,payment,scan,scanner,card.io,paypal</keywords>
+    <repo>https://github.com/clearbon/cordova-plugin-netswipe</repo>
+
+    <js-module src="www/NetSwipe.js" name="CardScanner">
+        <clobbers target="CardScanner" />
+    </js-module>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="NetSwipePlugin" >
+                <param name="ios-package" value="NetSwipePlugin" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/NetSwipePlugin.h" />
+        <source-file src="src/ios/NetSwipePlugin.m" />
+    </platform>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> 
+            <uses-permission android:name="android.permission.INTERNET"/> 
+            <uses-permission android:name="android.permission.CAMERA"/> 
+            <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" /> 
+            <activity android:theme="@style/Theme.JumioNetswipeSDK" 
+                android:name="com.jumio.netswipe.sdk.core.ScanCardActivity" 
+                android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"/>
+            <!-- optional -->
+            <uses-permission android:name="android.permission.VIBRATE"/> 
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> 
+            <uses-feature android:name="android.hardware.camera" android:required="true" />
+        </config-file>
+        <proguard-config>
+-keep class com.jumio.** { *; }
+-keep class netswipe.** { *; }
+        </proguard-config>
+        <source-file src="src/android/NetSwipePlugin.java" target-dir="src/com/clearbon/cordova/netswipe" />
+    </platform>
+</plugin>

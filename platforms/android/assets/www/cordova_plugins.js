@@ -38,6 +38,13 @@ module.exports = [
         "clobbers": [
             "window.open"
         ]
+    },
+    {
+        "file": "plugins/com.clearbon.cordova.netswipe/www/NetSwipe.js",
+        "id": "com.clearbon.cordova.netswipe.CardScanner",
+        "clobbers": [
+            "CardScanner"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -48,7 +55,8 @@ module.exports.metadata =
     "org.apache.cordova.console": "0.2.12",
     "org.apache.cordova.device": "0.2.13",
     "nl.x-services.plugins.launchmyapp": "3.2.2",
-    "org.apache.cordova.inappbrowser": "0.5.4"
+    "org.apache.cordova.inappbrowser": "0.5.4",
+    "com.clearbon.cordova.netswipe": "0.1.0"
 }
 // BOTTOM OF METADATA
 });
