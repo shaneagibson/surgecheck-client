@@ -4,6 +4,7 @@ define('view/profile', function(require) {
   var template = require('hbs!../html/profile');
   var vent = require('../util/vent');
   var context = require('../context');
+  var serverGateway = require('../util/server-gateway');
 
   var view = Marionette.LayoutView.extend({
 
@@ -21,11 +22,19 @@ define('view/profile', function(require) {
     },
 
     signOut: function(){
-      delete context.user;
-      delete context.session;
-      localStorage.removeItem('sessionid');
-      // TODO - logout of account-service
-      vent.trigger('navigate', 'landing');
+      serverGateway
+        .post('/account/logout', {
+          sessionId: context.session.id
+        })
+        .then(function() {
+          localStorage.removeItem('sessionid');
+          delete context.user;
+          delete context.session;
+          vent.trigger('navigate', 'landing');
+        })
+        .catch(function() {
+          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
+        });
     }
 
   });

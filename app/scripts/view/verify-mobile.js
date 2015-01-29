@@ -46,7 +46,7 @@ define('view/verify-mobile', function(require) {
         })
         .catch(function(response) {
           switch (response.status) {
-            case 401 : return validator.addError(self.ui.emailAddressInput, 'invalid_verification_code');
+            case 401 : return validator.addError(self.ui.verificationCodeInput, 'invalid_verification_code');
           }
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
