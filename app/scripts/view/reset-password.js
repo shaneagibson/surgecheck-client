@@ -6,6 +6,7 @@ define('view/reset-password', function(require) {
   var vent = require('../util/vent');
   var validator = require('../util/validator');
   var serverGateway = require('../util/server-gateway');
+  var context = require('../context');
 
   var view = Marionette.LayoutView.extend({
 
@@ -44,6 +45,8 @@ define('view/reset-password', function(require) {
           password: this.ui.passwordInput.val()
         })
         .then(function(response) {
+          context.user = response.user;
+          context.session = response.session;
           if (response.user.verified) {
             vent.trigger('navigate', 'home');
           } else {
@@ -61,7 +64,7 @@ define('view/reset-password', function(require) {
               break;
             }
           }
-          window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
+          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }
 

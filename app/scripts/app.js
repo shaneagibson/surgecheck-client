@@ -13,6 +13,7 @@ define('app', function(require) {
   var Menu = require('./view/menu');
   var ModalConfirm = require('./view/modal-confirm');
   var ModalRateMe = require('./view/modal-rateme');
+  var context = require('./context');
 
   var app = new Marionette.Application();
 
@@ -96,6 +97,8 @@ define('app', function(require) {
       return serverGateway
         .get('/account/session', null, { sessionid: sessionId })
         .then(function(response) {
+          context.user = response.user;
+          context.session = response.session;
           if (response.user.verified) {
             return 'home';
           } else {

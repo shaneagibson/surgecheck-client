@@ -6,6 +6,7 @@ define('view/verify-mobile', function(require) {
   var vent = require('../util/vent');
   var validator = require('../util/validator');
   var serverGateway = require('../util/server-gateway');
+  var context = require('../context');
 
   var view = Marionette.LayoutView.extend({
 
@@ -14,7 +15,8 @@ define('view/verify-mobile', function(require) {
     template: template,
 
     events: {
-      'click .verify' : 'verify'
+      'click .verify' : 'verify',
+      'click .resend-sms' : 'resendSms' // TODO - add resend-sms button
     },
 
     ui: {
@@ -40,21 +42,29 @@ define('view/verify-mobile', function(require) {
         })
         .then(function() {
           vent.trigger('navigate', 'home');
+          context.user.verified = true;
         })
         .catch(function(response) {
           switch (response.status) {
             case 401 : return validator.addError(self.ui.emailAddressInput, 'invalid_verification_code');
           }
-          window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
+          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
-    },
-
-    validateVerificationCode: function() {
-      return validator.renderValidationResult(validator.validateVerificationCode, this.ui.verificationCodeInput);
     },
 
     onBack: function() {
       return false;
+    },
+
+    resendSms: function() {
+      return serverGateway
+        .post('/verification-code/resend?userId='+localStorage.getItem('userid'))
+        .then(function() {
+          window.plugins.toast.showLongBottom('The code has been resent via SMS.');
+        })
+        .catch(function(response){
+          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
+        });
     }
 
   });

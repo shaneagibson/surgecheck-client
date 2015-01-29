@@ -23,10 +23,12 @@ define('view/modal-rateme', function(require) {
     },
 
     onNever: function(){
+      rateme.incrementAppViewCount();
       vent.trigger('modal:hide');
     },
 
     onRate: function(){
+      rateme.incrementAppViewCount();
       rateme.openAppStore();
       vent.trigger('modal:hide');
     }

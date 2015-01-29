@@ -6,6 +6,7 @@ define('view/forgotten-password', function(require) {
   var vent = require('../util/vent');
   var validator = require('../util/validator');
   var serverGateway = require('../util/server-gateway');
+  var context = require('../context');
 
   var view = Marionette.LayoutView.extend({
 
@@ -43,10 +44,10 @@ define('view/forgotten-password', function(require) {
           emailAddress: this.ui.emailAddressInput.val()
         })
         .then(function(response) {
-          // TODO - show email sent notification
+          window.plugins.toast.showLongBottom('An email has been sent to your registered email address.');
         })
         .catch(function(response) {
-          window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
+          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }
 

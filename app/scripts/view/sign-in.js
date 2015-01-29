@@ -6,6 +6,7 @@ define('view/sign-in', function(require) {
   var vent = require('../util/vent');
   var validator = require('../util/validator');
   var serverGateway = require('../util/server-gateway');
+  var context = require('../context');
 
   var view = Marionette.LayoutView.extend({
 
@@ -47,6 +48,8 @@ define('view/sign-in', function(require) {
           password: this.ui.passwordInput.val()
         })
         .then(function(response) {
+          context.user = response.user;
+          context.session = response.session;
           localStorage.setItem('sessionid', response.session.sessionId);
           localStorage.setItem('userid', response.user.userId);
           if (response.user.verified) {
@@ -59,7 +62,7 @@ define('view/sign-in', function(require) {
           switch (response.status) {
             case 401 : return validator.addError(self.ui.emailAddressInput, 'invalid_credentials');
           }
-          window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
+          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }
 

@@ -8,7 +8,7 @@ define('util/rateme', function(require) {
   var exports = {
 
     showRateMeDialog: function(){
-      var appViewCount = incrementAppViewCount();
+      var appViewCount = window.localStorage.getItem(APP_VIEW_COUNT_KEY) | 0;
       if (appViewCount === 5) {
         showRateMeDialog();
       }
@@ -20,15 +20,14 @@ define('util/rateme', function(require) {
 
     openAppStore: function(){
       window.open(config.app_store[device.platform], '_system');
+    },
+
+    incrementAppViewCount: function() {
+      var appViewCount = window.localStorage.getItem(APP_VIEW_COUNT_KEY) | 0;
+      appViewCount = appViewCount + 1;
+      window.localStorage.setItem(APP_VIEW_COUNT_KEY, appViewCount);
     }
 
-  };
-
-  var incrementAppViewCount = function() {
-    var appViewCount = window.localStorage.getItem(APP_VIEW_COUNT_KEY) | 0;
-    appViewCount = appViewCount + 1;
-    window.localStorage.setItem(APP_VIEW_COUNT_KEY, appViewCount);
-    return appViewCount;
   };
 
   var showRateMeDialog = function() {
