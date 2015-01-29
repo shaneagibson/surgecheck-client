@@ -31,6 +31,10 @@ define('view/register', function(require) {
       passwordInput: 'input.password'
     },
 
+    onDomRefresh: function() {
+      window.analytics.trackView('Register');
+    },
+
     registerUser: click.single(function() {
       if (this.validateForm()) {
         this.submit();
@@ -59,6 +63,7 @@ define('view/register', function(require) {
         .then(function(response) {
           context.user = response.user;
           context.session = response.session;
+          window.analytics.setUserId(response.user.id);
           localStorage.setItem('sessionid', response.session.sessionId);
           vent.trigger('navigate', 'verify-mobile');
         })
@@ -66,6 +71,7 @@ define('view/register', function(require) {
           switch (response.status) {
             case 409 : return validator.addError(self.ui.emailAddressInput, 'already_registered');
           }
+          window.analytics.trackException(JSON.stringify(response), false);
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }

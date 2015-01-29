@@ -19,6 +19,7 @@ define('view/share', function(require) {
 
     onDomRefresh: function(){
       $('.code').html(this.getPromoCode());
+      window.analytics.trackView('Share');
     },
 
     showMenu: function(){

@@ -36,6 +36,7 @@ define('view/add-card', function(require) {
         minDate: today,
         maxDate: maxDate
       });
+      window.analytics.trackView('Add Card');
     },
 
     showMenu: function(){

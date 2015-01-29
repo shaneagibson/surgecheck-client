@@ -19,6 +19,7 @@ define('app', function(require) {
 
   app.addInitializer(function() {
     initializeForPlatform()
+      .then(initializeAnalytics)
       .then(pushNotification.register)
       .then(initializeBackbone)
       .then(initializeModalListeners)
@@ -36,6 +37,10 @@ define('app', function(require) {
     menu: '#menu',
     modal: '#modal'
   });
+
+  var initializeAnalytics = function() {
+    window.analytics.startTrackerWithId(config.google.analytics_key);
+  };
 
   var initializeJumio = function() {
     CardScanner.init(config.jumio.app_key, config.jumio.app_secret);
@@ -98,6 +103,7 @@ define('app', function(require) {
         .then(function(response) {
           context.user = response.user;
           context.session = response.session;
+          window.analytics.setUserId(response.user.id);
           if (response.user.verified) {
             return 'home';
           } else {

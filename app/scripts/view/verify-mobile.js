@@ -23,6 +23,10 @@ define('view/verify-mobile', function(require) {
       verificationCodeInput: 'input.code'
     },
 
+    onDomRefresh: function() {
+      window.analytics.trackView('Verify Mobile');
+    },
+
     verify: click.single(function() {
       if (this.validateForm()) {
         this.submit();
@@ -48,6 +52,7 @@ define('view/verify-mobile', function(require) {
           switch (response.status) {
             case 401 : return validator.addError(self.ui.verificationCodeInput, 'invalid_verification_code');
           }
+          window.analytics.trackException(JSON.stringify(response), false);
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     },
@@ -63,6 +68,7 @@ define('view/verify-mobile', function(require) {
           window.plugins.toast.showLongBottom('The code has been resent via SMS.');
         })
         .catch(function(response){
+          window.analytics.trackException(JSON.stringify(response), false);
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }

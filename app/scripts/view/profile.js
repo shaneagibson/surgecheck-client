@@ -17,6 +17,10 @@ define('view/profile', function(require) {
       'click .sign-out' : 'signOut'
     },
 
+    onDomRefresh: function() {
+      window.analytics.trackView('Profile');
+    },
+
     showMenu: function(){
       vent.trigger('menu:show', 'profile');
     },
@@ -32,7 +36,8 @@ define('view/profile', function(require) {
           delete context.session;
           vent.trigger('navigate', 'landing');
         })
-        .catch(function() {
+        .catch(function(response) {
+          window.analytics.trackException(JSON.stringify(response), false);
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }

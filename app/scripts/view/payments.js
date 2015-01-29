@@ -16,6 +16,10 @@ define('view/payments', function(require) {
       'click .add-card' : 'addCard'
     },
 
+    onDomRefresh: function() {
+      window.analytics.trackView('Payments');
+    },
+
     showMenu: function(){
       vent.trigger('menu:show', 'payments');
     },

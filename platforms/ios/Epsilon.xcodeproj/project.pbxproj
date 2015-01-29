@@ -50,6 +50,12 @@
 		0CE4F6A8FB9547D59058E30C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FB57A44FF69430397342CDA /* QuartzCore.framework */; };
 		8F53AE9BDDA54A2D9A2BAE68 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D408D8190AC4371A8593410 /* CDVInAppBrowser.m */; };
 		C61F1BF08BC043B780B042F4 /* NetSwipePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E5AE6DB4B34D1DA2711217 /* NetSwipePlugin.m */; };
+		A94AFDEDD00E4877AF30DF4C /* UniversalAnalyticsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DA138B4E1F4B78BE729E51 /* UniversalAnalyticsPlugin.m */; };
+		E4B3066346494E0A9F8A9C6D /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 556ADAB1F32947DFA92BA14F /* libGoogleAnalyticsServices.a */; };
+		C69DE93506C745EFB574B484 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB8E2399BE64CD4A1D029D8 /* SystemConfiguration.framework */; };
+		2BB0D44670A440409AB386C6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A000811040BE416E9B4A9002 /* CoreData.framework */; };
+		070B836E2BB44EF8A0E591B7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2058A1206B4B17B4D83482 /* libz.dylib */; };
+		D23FA12B09194C5D8F32D416 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B53BEE8BC5794B39AC4E6558 /* libsqlite3.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +141,23 @@
 		1C88CC0845674D52ADDAFF21 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		A7E5AE6DB4B34D1DA2711217 /* NetSwipePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NetSwipePlugin.m"; path = "com.clearbon.cordova.netswipe/NetSwipePlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		878AB363627E45B48DF2891B /* NetSwipePlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NetSwipePlugin.h"; path = "com.clearbon.cordova.netswipe/NetSwipePlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		E3DA138B4E1F4B78BE729E51 /* UniversalAnalyticsPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UniversalAnalyticsPlugin.m"; path = "com.danielcwilson.plugins.googleanalytics/UniversalAnalyticsPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		556ADAB1F32947DFA92BA14F /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libGoogleAnalyticsServices.a"; path = "Epsilon/Plugins/com.danielcwilson.plugins.googleanalytics/libGoogleAnalyticsServices.a"; sourceTree = "<group>"; fileEncoding = 4; };
+		CD4FA29AFF604A3A85044373 /* UniversalAnalyticsPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UniversalAnalyticsPlugin.h"; path = "com.danielcwilson.plugins.googleanalytics/UniversalAnalyticsPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		39F14D9C89FD4E2589FA005C /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAIDictionaryBuilder.h"; path = "com.danielcwilson.plugins.googleanalytics/GAIDictionaryBuilder.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		42B0D1A89C2B42DA8AB8075F /* GAIFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAIFields.h"; path = "com.danielcwilson.plugins.googleanalytics/GAIFields.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		2C779DA4CA6E449BBAB8EAE8 /* GAILogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAILogger.h"; path = "com.danielcwilson.plugins.googleanalytics/GAILogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		86C39C62A3F143509E80B5F6 /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAITrackedViewController.h"; path = "com.danielcwilson.plugins.googleanalytics/GAITrackedViewController.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		C89B6845372346A1BF2C2DD1 /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAI.h"; path = "com.danielcwilson.plugins.googleanalytics/GAI.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		3663CB80CB1C4F7FAB765161 /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAITracker.h"; path = "com.danielcwilson.plugins.googleanalytics/GAITracker.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		0AB9AE85B0904755A3C8DB77 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAIEcommerceFields.h"; path = "com.danielcwilson.plugins.googleanalytics/GAIEcommerceFields.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		56E910171DD04E60B3FDA700 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAIEcommerceProduct.h"; path = "com.danielcwilson.plugins.googleanalytics/GAIEcommerceProduct.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		117F17E9DF7A42D589D1F38A /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAIEcommerceProductAction.h"; path = "com.danielcwilson.plugins.googleanalytics/GAIEcommerceProductAction.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		46E3F07D346B4862B8CED965 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAIEcommercePromotion.h"; path = "com.danielcwilson.plugins.googleanalytics/GAIEcommercePromotion.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		DEB8E2399BE64CD4A1D029D8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		A000811040BE416E9B4A9002 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreData.framework"; path = "System/Library/Frameworks/CoreData.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		2D2058A1206B4B17B4D83482 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libz.dylib"; path = "usr/lib/libz.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		B53BEE8BC5794B39AC4E6558 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsqlite3.0.dylib"; path = "usr/lib/libsqlite3.0.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +173,11 @@
 				D7FE7194B8384D4686B8D8D6 /* Foundation.framework in Frameworks */,
 				C2D0C19561604AFF90C2A81A /* UIKit.framework in Frameworks */,
 				0CE4F6A8FB9547D59058E30C /* QuartzCore.framework in Frameworks */,
+				E4B3066346494E0A9F8A9C6D /* libGoogleAnalyticsServices.a in Frameworks */,
+				C69DE93506C745EFB574B484 /* SystemConfiguration.framework in Frameworks */,
+				2BB0D44670A440409AB386C6 /* CoreData.framework in Frameworks */,
+				070B836E2BB44EF8A0E591B7 /* libz.dylib in Frameworks */,
+				D23FA12B09194C5D8F32D416 /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +254,11 @@
 				175FF8BDC8B44234ABA0F737 /* Foundation.framework */,
 				8ADA3A8BAE0644C1ACEE009A /* UIKit.framework */,
 				3FB57A44FF69430397342CDA /* QuartzCore.framework */,
+				556ADAB1F32947DFA92BA14F /* libGoogleAnalyticsServices.a */,
+				DEB8E2399BE64CD4A1D029D8 /* SystemConfiguration.framework */,
+				A000811040BE416E9B4A9002 /* CoreData.framework */,
+				2D2058A1206B4B17B4D83482 /* libz.dylib */,
+				B53BEE8BC5794B39AC4E6558 /* libsqlite3.0.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -257,6 +290,18 @@
 				1C88CC0845674D52ADDAFF21 /* CDVInAppBrowser.h */,
 				A7E5AE6DB4B34D1DA2711217 /* NetSwipePlugin.m */,
 				878AB363627E45B48DF2891B /* NetSwipePlugin.h */,
+				E3DA138B4E1F4B78BE729E51 /* UniversalAnalyticsPlugin.m */,
+				CD4FA29AFF604A3A85044373 /* UniversalAnalyticsPlugin.h */,
+				39F14D9C89FD4E2589FA005C /* GAIDictionaryBuilder.h */,
+				42B0D1A89C2B42DA8AB8075F /* GAIFields.h */,
+				2C779DA4CA6E449BBAB8EAE8 /* GAILogger.h */,
+				86C39C62A3F143509E80B5F6 /* GAITrackedViewController.h */,
+				C89B6845372346A1BF2C2DD1 /* GAI.h */,
+				3663CB80CB1C4F7FAB765161 /* GAITracker.h */,
+				0AB9AE85B0904755A3C8DB77 /* GAIEcommerceFields.h */,
+				56E910171DD04E60B3FDA700 /* GAIEcommerceProduct.h */,
+				117F17E9DF7A42D589D1F38A /* GAIEcommerceProductAction.h */,
+				46E3F07D346B4862B8CED965 /* GAIEcommercePromotion.h */,
 			);
 			name = Plugins;
 			path = "Epsilon/Plugins";
@@ -448,6 +493,7 @@
 				CB59D06B221B4D3EAD033334 /* Toast.m in Sources */,
 				8F53AE9BDDA54A2D9A2BAE68 /* CDVInAppBrowser.m in Sources */,
 				C61F1BF08BC043B780B042F4 /* NetSwipePlugin.m in Sources */,
+				A94AFDEDD00E4877AF30DF4C /* UniversalAnalyticsPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +539,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Epsilon/Plugins/com.pushapps.phonegap\"",
+					"\"$(SRCROOT)/Epsilon/Plugins/com.danielcwilson.plugins.googleanalytics\"",
 				);
 			};
 			name = Debug;
@@ -526,6 +573,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Epsilon/Plugins/com.pushapps.phonegap\"",
+					"\"$(SRCROOT)/Epsilon/Plugins/com.danielcwilson.plugins.googleanalytics\"",
 				);
 			};
 			name = Release;

@@ -17,6 +17,10 @@ define('view/modal-rateme', function(require) {
       'click .rate' : 'onRate'
     },
 
+    onDomRefresh: function() {
+      window.analytics.trackView('Rate Me');
+    },
+
     onNotNow: function(){
       rateme.reset();
       vent.trigger('modal:hide');

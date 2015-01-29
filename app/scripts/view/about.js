@@ -21,6 +21,7 @@ define('view/about', function(require) {
     },
 
     onDomRefresh: function() {
+      window.analytics.trackView('About');
       $('.version .number').html(config.version);
     },
 

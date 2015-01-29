@@ -45,6 +45,13 @@ module.exports = [
         "clobbers": [
             "CardScanner"
         ]
+    },
+    {
+        "file": "plugins/com.danielcwilson.plugins.googleanalytics/www/analytics.js",
+        "id": "com.danielcwilson.plugins.googleanalytics.UniversalAnalytics",
+        "clobbers": [
+            "analytics"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -56,7 +63,8 @@ module.exports.metadata =
     "org.apache.cordova.device": "0.2.13",
     "nl.x-services.plugins.launchmyapp": "3.2.2",
     "org.apache.cordova.inappbrowser": "0.5.4",
-    "com.clearbon.cordova.netswipe": "0.1.0"
+    "com.clearbon.cordova.netswipe": "0.1.0",
+    "com.danielcwilson.plugins.googleanalytics": "0.6.1"
 }
 // BOTTOM OF METADATA
 });

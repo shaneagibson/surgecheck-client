@@ -14,6 +14,10 @@ define('view/support', function(require) {
       'click .icon-menu' : 'showMenu'
     },
 
+    onDomRefresh: function() {
+      window.analytics.trackView('Support');
+    },
+
     showMenu: function(){
       vent.trigger('menu:show', 'support');
     }

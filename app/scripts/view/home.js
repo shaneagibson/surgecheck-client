@@ -15,6 +15,10 @@ define('view/home', function(require) {
       'click .icon-menu' : 'showMenu'
     },
 
+    onDomRefresh: function() {
+      window.analytics.trackView('Home');
+    },
+
     showMenu: function(){
       vent.trigger('menu:show', 'home');
     }

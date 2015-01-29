@@ -42,4 +42,5 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 window.onerror = function(error) {
   console.log('error:'+error);
+  window.analytics.trackException(error, false);
 };

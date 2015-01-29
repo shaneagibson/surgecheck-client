@@ -49,6 +49,9 @@
         },
         "com.clearbon.cordova.netswipe": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
+        },
+        "com.danielcwilson.plugins.googleanalytics": {
+            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         }
     },
     "dependent_plugins": {}

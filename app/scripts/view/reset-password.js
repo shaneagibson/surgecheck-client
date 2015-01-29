@@ -23,6 +23,10 @@ define('view/reset-password', function(require) {
       passwordInput: 'input.password'
     },
 
+    onDomRefresh: function() {
+      window.analytics.trackView('Reset Password');
+    },
+
     resetPassword: click.single(function() {
       if (this.validateForm()) {
         this.submit();
@@ -48,6 +52,7 @@ define('view/reset-password', function(require) {
         .then(function(response) {
           context.user = response.user;
           context.session = response.session;
+          window.analytics.setUserId(response.user.id);
           if (response.user.verified) {
             vent.trigger('navigate', 'home');
           } else {
@@ -65,6 +70,7 @@ define('view/reset-password', function(require) {
               return window.plugins.toast.showLongBottom('Reset Password Link has expired.');
             }
           }
+          window.analytics.trackException(JSON.stringify(response), false);
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }

@@ -36,6 +36,7 @@ define('view/edit-card', function(require) {
         minDate: today,
         maxDate: maxDate
       });
+      window.analytics.trackView('Edit Card');
     },
 
     showMenu: function(){

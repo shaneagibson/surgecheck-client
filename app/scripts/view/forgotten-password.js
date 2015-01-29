@@ -23,6 +23,10 @@ define('view/forgotten-password', function(require) {
       emailAddressInput: 'input.emailaddress'
     },
 
+    onDomRefresh: function() {
+      window.analytics.trackView('Forgotten Password');
+    },
+
     requestPasswordReset: click.single(function() {
       if (this.validateForm()) {
         this.submit();
@@ -45,7 +49,8 @@ define('view/forgotten-password', function(require) {
         .then(function() {
           window.plugins.toast.showLongBottom('An email has been sent to your registered email address.');
         })
-        .catch(function() {
+        .catch(function(response) {
+          window.analytics.trackException(JSON.stringify(response), false);
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }

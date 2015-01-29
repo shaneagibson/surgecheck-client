@@ -23,6 +23,10 @@ define('view/promotions', function(require) {
       promotionCodeInput: '.promo-code'
     },
 
+    onDomRefresh: function() {
+      window.analytics.trackView('Promotions');
+    },
+
     showMenu: function(){
       vent.trigger('menu:show', 'promotions');
     },
@@ -49,6 +53,7 @@ define('view/promotions', function(require) {
             case 400 : return window.plugins.toast.showLongBottom('Invalid Promotion Code.');
             case 409 : return window.plugins.toast.showLongBottom('This Promotion Code has already been redeemed.');
           }
+          window.analytics.trackException(JSON.stringify(response), false);
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }

@@ -26,6 +26,10 @@ define('view/sign-in', function(require) {
       passwordInput: 'input.password'
     },
 
+    onDomRefresh: function() {
+      window.analytics.trackView('Sign In');
+    },
+
     signIn: click.single(function() {
       if (this.validateForm()) {
         this.submit();
@@ -51,6 +55,7 @@ define('view/sign-in', function(require) {
         .then(function(response) {
           context.user = response.user;
           context.session = response.session;
+          window.analytics.setUserId(response.user.id);
           localStorage.setItem('sessionid', response.session.sessionId);
           if (response.user.verified) {
             vent.trigger('navigate', 'home');
@@ -62,6 +67,7 @@ define('view/sign-in', function(require) {
           switch (response.status) {
             case 401 : return validator.addError(self.ui.emailAddressInput, 'invalid_credentials');
           }
+          window.analytics.trackException(JSON.stringify(response), false);
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     },
