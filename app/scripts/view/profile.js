@@ -3,7 +3,7 @@ define('view/profile', function(require) {
   var Marionette = require('marionette');
   var template = require('hbs!../html/profile');
   var vent = require('../util/vent');
-  var context = require('./context');
+  var context = require('../context');
 
   var view = Marionette.LayoutView.extend({
 
@@ -23,8 +23,10 @@ define('view/profile', function(require) {
     signOut: function(){
       delete context.user;
       delete context.session;
+      localStorage.removeItem('sessionid');
+      localStorage.removeItem('userid');
       // TODO - logout of account-service
-      vent.trigger('menu:show', 'landing');
+      vent.trigger('navigate', 'landing');
     }
 
   });

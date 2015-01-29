@@ -3,6 +3,7 @@ define('view/share', function(require) {
   var Marionette = require('marionette');
   var template = require('hbs!../html/share');
   var vent = require('../util/vent');
+  var context = require('../context');
 
   var view = Marionette.LayoutView.extend({
 
@@ -46,7 +47,7 @@ define('view/share', function(require) {
     },
 
     getPromoCode: function(){
-      return 'LI17O0'; // TODO - use promo code for current user
+      return context.user.inviteCode;
     }
 
   });
