@@ -154,9 +154,16 @@
 .resend-sms-button .icon-text {
   font-size: 12px;
 }
+.forgotten-password-button {
+  padding: 15px;
+}
+.forgotten-password-button .icon-text {
+  font-size: 12px;
+}
 .add-card-button,
 .delete-card-button,
-.resend-sms-button {
+.resend-sms-button,
+.forgotten-password-button {
   margin: 25px;
   font-size: 22px;
   color: #ffffff;

@@ -38,15 +38,14 @@ define('view/forgotten-password', function(require) {
     },
 
     submit: function() {
-      var self = this;
       return serverGateway
         .post('/account/password/forgotten', {
           emailAddress: this.ui.emailAddressInput.val()
         })
-        .then(function(response) {
+        .then(function() {
           window.plugins.toast.showLongBottom('An email has been sent to your registered email address.');
         })
-        .catch(function(response) {
+        .catch(function() {
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }

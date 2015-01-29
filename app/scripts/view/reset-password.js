@@ -57,12 +57,12 @@ define('view/reset-password', function(require) {
         .catch(function(response) {
           switch (response.status) {
             case 409 : {
-              // TODO - show link already used error
-              break;
+              vent.trigger('navigate', 'forgotten-password');
+              return window.plugins.toast.showLongBottom('Reset Password Link has already been used.');
             }
             case 410 : {
-              // TODO - show link expired error
-              break;
+              vent.trigger('navigate', 'forgotten-password');
+              return window.plugins.toast.showLongBottom('Reset Password Link has expired.');
             }
           }
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');

@@ -17,7 +17,8 @@ define('view/sign-in', function(require) {
     events: {
       'click .sign-in' : 'signIn',
       'blur input.emailaddress' : 'validateField',
-      'blur input.password' : 'validateField'
+      'blur input.password' : 'validateField',
+      'click .forgotten-password' : 'forgottenPassword'
     },
 
     ui: {
@@ -63,6 +64,10 @@ define('view/sign-in', function(require) {
           }
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
+    },
+
+    forgottenPassword: function() {
+      vent.trigger('navigate', 'forgotten-password');
     }
 
   });
