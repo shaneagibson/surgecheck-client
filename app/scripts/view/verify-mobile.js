@@ -37,7 +37,7 @@ define('view/verify-mobile', function(require) {
       var self = this;
       return serverGateway
         .post('/account/verify', {
-          userId: localStorage.getItem('userid'),
+          userId: context.user.id,
           code: this.ui.verificationCodeInput.val()
         })
         .then(function() {
@@ -58,7 +58,7 @@ define('view/verify-mobile', function(require) {
 
     resendSms: function() {
       return serverGateway
-        .post('/verification-code/resend?userId='+localStorage.getItem('userid'))
+        .post('/verification-code/resend?userId='+context.user.id)
         .then(function() {
           window.plugins.toast.showLongBottom('The code has been resent via SMS.');
         })

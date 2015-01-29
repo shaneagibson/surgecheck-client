@@ -47,7 +47,7 @@ define('view/promotions', function(require) {
         .catch(function(response) {
           switch (response.status) {
             case 400 : return window.plugins.toast.showLongBottom('Invalid Promotion Code.');
-            case 409 : return window.plugins.toast.showLongBottom('Promotion Code already redeemed.');
+            case 409 : return window.plugins.toast.showLongBottom('This Promotion Code has already been redeemed.');
           }
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });

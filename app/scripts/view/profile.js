@@ -24,7 +24,6 @@ define('view/profile', function(require) {
       delete context.user;
       delete context.session;
       localStorage.removeItem('sessionid');
-      localStorage.removeItem('userid');
       // TODO - logout of account-service
       vent.trigger('navigate', 'landing');
     }

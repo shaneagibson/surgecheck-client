@@ -51,7 +51,6 @@ define('view/sign-in', function(require) {
           context.user = response.user;
           context.session = response.session;
           localStorage.setItem('sessionid', response.session.sessionId);
-          localStorage.setItem('userid', response.user.userId);
           if (response.user.verified) {
             vent.trigger('navigate', 'home');
           } else {

@@ -60,7 +60,6 @@ define('view/register', function(require) {
           context.user = response.user;
           context.session = response.session;
           localStorage.setItem('sessionid', response.session.sessionId);
-          localStorage.setItem('userid', response.user.userId);
           vent.trigger('navigate', 'verify-mobile');
         })
         .catch(function(response) {

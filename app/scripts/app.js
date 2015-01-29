@@ -92,8 +92,7 @@ define('app', function(require) {
   var resolveInitialPage = function() {
     if (app.customUrl) return new RSVP.Promise(function(resolve, reject) { resolve(app.customUrl); });
     var sessionId = localStorage.getItem('sessionid');
-    var userId = localStorage.getItem('userid');
-    if (sessionId && userId) {
+    if (sessionId) {
       return serverGateway
         .get('/account/session', null, { sessionid: sessionId })
         .then(function(response) {
@@ -106,7 +105,6 @@ define('app', function(require) {
           }
         })
         .catch(function() {
-          localStorage.removeItem('userid');
           localStorage.removeItem('sessionid');
           return 'sign-in';
         });

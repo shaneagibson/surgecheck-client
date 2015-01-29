@@ -41,7 +41,7 @@ define('view/reset-password', function(require) {
       var self = this;
       return serverGateway
         .post('/account/password/reset', {
-          userId: localStorage.getItem('userid'),
+          userId: context.user.id,
           password: this.ui.passwordInput.val()
         })
         .then(function(response) {
