@@ -124,13 +124,11 @@
 .large-icon-button .icon-text {
   text-size: 12px;
 }
-.delete-card-button,
-.resend-sms-button {
-  padding: 10px 10px 10px 10px;
+.delete-card-button {
+  padding: 10px;
   text-align: left;
 }
-.delete-card-button .icon-trash,
-.resend-sms-button .icon-trash {
+.delete-card-button .icon-trash {
   position: fixed;
 }
 .add-card-button {
@@ -146,13 +144,22 @@
   font-size: 18px;
 }
 .add-card-button,
+.delete-card-button {
+  height: 30px;
+  width: 30px;
+}
+.resend-sms-button {
+  padding: 15px;
+}
+.resend-sms-button .icon-text {
+  font-size: 12px;
+}
+.add-card-button,
 .delete-card-button,
 .resend-sms-button {
   margin: 25px;
   font-size: 22px;
   color: #ffffff;
-  width: 30px;
-  height: 30px;
 }
 
 
