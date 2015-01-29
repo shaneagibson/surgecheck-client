@@ -16,7 +16,7 @@ define('view/verify-mobile', function(require) {
 
     events: {
       'click .verify' : 'verify',
-      'click .resend-sms' : 'resendSms' // TODO - add resend-sms button
+      'click .resend-sms' : 'resendSms'
     },
 
     ui: {

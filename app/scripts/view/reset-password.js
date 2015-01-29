@@ -41,8 +41,9 @@ define('view/reset-password', function(require) {
       var self = this;
       return serverGateway
         .post('/account/password/reset', {
-          userId: context.user.id,
-          password: this.ui.passwordInput.val()
+          userId: this.options.userId,
+          token: this.options.token,
+          newPassword: this.ui.passwordInput.val()
         })
         .then(function(response) {
           context.user = response.user;
