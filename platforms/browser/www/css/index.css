@@ -238,6 +238,7 @@ body {
 }
 .input-container {
   margin: 0 auto;
+  position: relative;
 }
 .input-container.error .input-underline {
   border-color: #990000;
@@ -264,6 +265,8 @@ input {
   color: #333333;
   padding: 20px 10px 0px 10px;
   box-sizing: border-box;
+  z-index: 1500;
+  position: relative;
 }
 input:focus {
   outline: 0;
@@ -661,7 +664,7 @@ nav ul li.active {
   height: 100%;
   width: 20vw;
   display: none;
-  z-index: 100;
+  z-index: 2000;
 }
 body.menu-open .menu-close {
   display: block;

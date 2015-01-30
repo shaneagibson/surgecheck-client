@@ -3,6 +3,7 @@ define('view/profile', function(require) {
   var Marionette = require('marionette');
   var template = require('hbs!../html/profile');
   var vent = require('../util/vent');
+  var click = require('../util/click');
   var context = require('../context');
   var serverGateway = require('../util/server-gateway');
 
@@ -25,7 +26,7 @@ define('view/profile', function(require) {
       vent.trigger('menu:show', 'profile');
     },
 
-    signOut: function(){
+    signOut: click.single(function(){
       serverGateway
         .post('/account/logout', {
           sessionId: context.session.id
@@ -40,7 +41,7 @@ define('view/profile', function(require) {
           window.analytics.trackException(JSON.stringify(response), false);
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
-    }
+    })
 
   });
 

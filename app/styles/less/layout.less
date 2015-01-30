@@ -67,6 +67,7 @@ body {
 }
 .input-container{
   margin: 0 auto;
+  position: relative;
 }
 .input-container.error .input-underline{
   border-color: @red;
@@ -93,6 +94,8 @@ input{
   color: @darkgray;
   padding: 20px 10px 0px 10px;
   box-sizing: border-box;
+  z-index: 1500;
+  position: relative;
 }
 input:focus{
   outline: 0;
