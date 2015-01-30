@@ -1,7 +1,7 @@
 define('view/forgotten-password', function(require) {
 
   var Marionette = require('marionette');
-  var template = require('hbs!../html/reset-password');
+  var template = require('hbs!../html/forgotten-password');
   var click = require('../util/click');
   var vent = require('../util/vent');
   var validator = require('../util/validator');

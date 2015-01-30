@@ -66,6 +66,10 @@ define('view/sign-in', function(require) {
         .catch(function(response) {
           switch (response.status) {
             case 401 : return validator.addError(self.ui.emailAddressInput, 'invalid_credentials');
+            case 423 : {
+              vent.trigger('navigate', 'forgotten-password');
+              window.plugins.toast.showLongBottom('Your account is locked. To unlock, please reset your password.');
+            }
           }
           window.analytics.trackException(JSON.stringify(response), false);
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
