@@ -14,7 +14,7 @@ define('view/edit-card', function(require) {
       'click .icon-menu' : 'showMenu',
       'click .save-card' : 'saveCard',
       'click .cancel' : 'cancel',
-      'click .delete-card-button' : 'deleteCard'
+      'click .delete-card' : 'deleteCard'
     },
 
     onDomRefresh: function(){
