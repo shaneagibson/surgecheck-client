@@ -124,49 +124,23 @@
 .large-icon-button .icon-text {
   text-size: 12px;
 }
-.delete-card-button {
-  padding: 10px;
-  text-align: left;
+.text-and-icon-button {
+  margin: 25px;
+  font-size: 22px;
+  color: #ffffff;
+  padding: 15px;
 }
-.delete-card-button .icon-trash {
+.text-and-icon-button .text {
+  font-size: 12px;
+}
+.text-and-icon-button .icon-credit-card {
   position: fixed;
 }
-.add-card-button {
-  padding: 10px 20px 10px 10px;
-}
-.add-card-button .icon-credit-card {
-  position: fixed;
-}
-.add-card-button .icon-plus {
+.text-and-icon-button .icon-plus {
   position: relative;
   left: 20px;
   top: 13px;
   font-size: 18px;
-}
-.add-card-button,
-.delete-card-button {
-  height: 30px;
-  width: 30px;
-}
-.resend-sms-button {
-  padding: 15px;
-}
-.resend-sms-button .icon-text {
-  font-size: 12px;
-}
-.forgotten-password-button {
-  padding: 15px;
-}
-.forgotten-password-button .icon-text {
-  font-size: 12px;
-}
-.add-card-button,
-.delete-card-button,
-.resend-sms-button,
-.forgotten-password-button {
-  margin: 25px;
-  font-size: 22px;
-  color: #ffffff;
 }
 
 
