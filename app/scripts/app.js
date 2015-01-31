@@ -14,6 +14,7 @@ define('app', function(require) {
   var ModalConfirm = require('./view/modal-confirm');
   var ModalRateMe = require('./view/modal-rateme');
   var context = require('./context');
+  var braintree = require('braintree');
 
   var app = new Marionette.Application();
 
@@ -22,6 +23,7 @@ define('app', function(require) {
       .then(initializeAnalytics)
       .then(pushNotification.register)
       .then(initializeBackbone)
+      .then(initializeBraintree)
       .then(initializeModalListeners)
       .then(initializeJumio)
       .then(initializeMenu)
@@ -37,6 +39,10 @@ define('app', function(require) {
     menu: '#menu',
     modal: '#modal'
   });
+
+  var initializeBraintree = function() {
+    braintree.setup("CLIENT-TOKEN-FROM-SERVER", "<integration>"); // TODO - finish integration
+  };
 
   var initializeAnalytics = function() {
     window.analytics.startTrackerWithId(config.google.analytics_key);
