@@ -18,6 +18,7 @@ define('view/edit-card', function(require) {
       'click .save-card' : 'saveCard',
       'click .cancel' : 'cancel',
       'click .delete-card' : 'deleteCard'
+      // TODO - validator on blur
     },
 
     onDomRefresh: function(){

@@ -243,6 +243,9 @@ body {
 .input-container.error .input-underline {
   border-color: #990000;
 }
+.input-container.error .select-underline {
+  border-color: #990000;
+}
 .input-container .error-reason {
   display: none;
 }

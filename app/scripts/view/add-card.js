@@ -19,6 +19,7 @@ define('view/add-card', function(require) {
       'click .icon-menu' : 'showMenu',
       'click .save-card' : 'saveCard',
       'click .cancel' : 'cancel'
+      // TODO - validator on blur
     },
 
     onDomRefresh: function(){
