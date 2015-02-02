@@ -40,6 +40,9 @@ define('util/mock-server', function(require) {
   registerMock('POST', '/account/login', true, JSON.parse(require('text!../mocks/sign-in.response.json')));
   registerMock('POST', '/account/logout', true, JSON.parse(require('text!../mocks/sign-out.response.json')));
   registerMock('GET', '/account/session', true, JSON.parse(require('text!../mocks/session.response.json')));
+  registerMock('GET', '/payment/user/.*/payment-method', true, JSON.parse(require('text!../mocks/payment-methods.response.json')));
+  registerMock('DELETE', '/payment/user/.*/payment-method', true, JSON.parse(require('text!../mocks/delete-payment-methods.response.json')));
+  registerMock('GET', '/payment/token', true, JSON.parse(require('text!../mocks/payment-token.response.json')));
 
   return exports;
 

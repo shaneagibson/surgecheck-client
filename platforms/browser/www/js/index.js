@@ -13,7 +13,7 @@ require.config(
       "underscore": "./components/underscore/underscore",
       "event-bus": "./components/vent/app/scripts/services/event-bus/event-bus",
       "mobiscroll": "./components/mobiscroll/mobiscroll.custom-2.14.4.min",
-      "braintree": "https://assets.braintreegateway.com/v2/braintree"
+      "braintree": "./components/braintree-web/dist/braintree"
     },
     shim: {
       jquery:{

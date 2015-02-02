@@ -19,7 +19,7 @@ define('util/rateme', function(require) {
     },
 
     openAppStore: function(){
-      window.open(config.app_store[device.platform], '_system');
+      window.open(config.app_store[device.platform].url, '_system');
     },
 
     incrementAppViewCount: function() {

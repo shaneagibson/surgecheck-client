@@ -6,12 +6,12 @@
     <div class="context-title bold">Edit Card</div>
     <div class="form">
         <div class="input-container single">
-            <input type="text" disabled="disabled" class="field cardnumber disabled" value="•••• •••• •••• 0418"/>
+            <input type="text" disabled="disabled" class="field cardnumber disabled" value=""/>
             <div class="input-underline"></div>
         </div>
         <div class="input-container single">
             <div class="input-container double left">
-                <input type="text" readonly data-validationrules="mandatory mmyy" class="field mmyy" value="12 / 2015" placeholder="MM / YYYY"/>
+                <input type="text" readonly data-validationrules="mandatory mmyy" class="field mmyy" value="" placeholder="MM / YYYY"/>
                 <span class="error-reason">
                     <span class="error-text"></span>
                     <i class="icon-cancel-circled"></i>
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="input-container single">
-            <input type="text" maxlength="8" data-validationrules="mandatory postcode" class="field postcode" value="TW88LF" placeholder="Postcode"/>
+            <input type="text" maxlength="8" data-validationrules="mandatory postcode" class="field postcode" value="" placeholder="Postcode"/>
             <span class="error-reason">
                 <span class="error-text"></span>
                 <i class="icon-cancel-circled"></i>
@@ -36,8 +36,8 @@
             <div class="input-underline"></div>
         </div>
         <div class="input-container single">
-            <select class="cardtype" id="cardtype">
-                <option selected="selected" value="personal">Personal</option>
+            <select class="type" id="type">
+                <option value="personal">Personal</option>
                 <option value="business">Business</option>
             </select>
             <span class="error-reason">

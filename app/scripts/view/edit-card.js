@@ -3,6 +3,9 @@ define('view/edit-card', function(require) {
   var Marionette = require('marionette');
   var template = require('hbs!../html/edit-card');
   var vent = require('../util/vent');
+  var context = require('../context');
+  var validator = require('../util/validator');
+  var serverGateway = require('../util/server-gateway');
 
   var view = Marionette.LayoutView.extend({
 
@@ -18,15 +21,34 @@ define('view/edit-card', function(require) {
     },
 
     onDomRefresh: function(){
+      var paymentMethod = context.getPaymentMethodById(this.options.cardId);
+      this.prepopulate(paymentMethod);
+      this.initializeTypePicker(paymentMethod.type);
+      this.initializeMMYYPicker(new Date('20'+paymentMethod.expiryYear, parseInt(paymentMethod.expiryMonth) - 1));
+      window.analytics.trackView('Edit Card');
+    },
+
+    prepopulate: function(paymentMethod) {
+      $('.cardnumber').val('•••• •••• •••• '+paymentMethod.last4Digits);
+      $('.mmyy').val(paymentMethod.expiryMonth + ' / 20' + paymentMethod.expiryYear);
+      $('.postcode').val(paymentMethod.postcode);
+      $('.type').val(paymentMethod.type);
+    },
+
+    initializeTypePicker: function(defaultValue){
+      $(".type").mobiscroll().select({
+        display: 'modal',
+        theme: 'epsilon',
+        placeholder: 'Select Type',
+        minWidth: 200,
+        defaultValue: defaultValue
+      });
+    },
+
+    initializeMMYYPicker: function(defaultValue){
       var today = new Date();
       var maxDate = new Date();
       maxDate.setFullYear(today.getFullYear() + 10);
-      $(".cardtype").mobiscroll().select({
-        display: 'modal',
-        theme: 'epsilon',
-        placeholder: 'Select Card Type',
-        minWidth: 200
-      });
       $(".mmyy").mobiscroll().date({
         display: 'modal',
         dateOrder: 'mmyyyy',
@@ -34,9 +56,9 @@ define('view/edit-card', function(require) {
         dateFormat: 'mm / yyyy',
         theme: 'epsilon',
         minDate: today,
-        maxDate: maxDate
+        maxDate: maxDate,
+        defaultValue: defaultValue
       });
-      window.analytics.trackView('Edit Card');
     },
 
     showMenu: function(){
@@ -44,6 +66,16 @@ define('view/edit-card', function(require) {
     },
 
     saveCard: function(){
+      if (this.validateForm()) {
+        this.submit();
+      }
+    },
+
+    validateForm: function(){
+      return validator.validateFields($('.form').find('.field'));
+    },
+
+    submit: function(){
       // TODO - validate & update card
       window.plugins.toast.showShortCenter('Card Successfully Updated');
       vent.trigger('navigate', 'payments');
@@ -55,14 +87,20 @@ define('view/edit-card', function(require) {
 
     deleteCard: function(){
       var view = this;
-      vent.trigger('modal:confirm', { title: 'Delete Card', yesCallback: view.confirmDeleteCard });
+      vent.trigger('modal:confirm', { title: 'Delete Card', yesCallback: function() { view.confirmDeleteCard(); } });
     },
 
     confirmDeleteCard: function(){
-      // TODO - delete card
-      vent.trigger('navigate', 'payments');
-      vent.trigger('modal:hide');
-      window.plugins.toast.showShortCenter('Card Successfully Deleted');
+      serverGateway.delete('/payment/user/'+context.user.id+'/payment-method/'+this.options.cardId)
+        .then(function() {
+          vent.trigger('navigate', 'payments');
+          vent.trigger('modal:hide');
+          window.plugins.toast.showShortCenter('Card Successfully Deleted');
+        })
+        .catch(function(err) {
+          window.analytics.trackException(JSON.stringify(err), false);
+          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
+        });
     }
 
   });

@@ -66,7 +66,7 @@ define('router', function(require) {
       appRouter.on('route:share', function() { showView(new ShareView()); });
       appRouter.on('route:support', function() { showView(new SupportView()); });
       appRouter.on('route:addCard', function() { showView(new AddCardView()); });
-      appRouter.on('route:editCard', function(cardId) { showView(new EditCardView({ /* TODO - fetch card for cardId */ })); });
+      appRouter.on('route:editCard', function(cardId) { showView(new EditCardView({ cardId: cardId })); });
       appRouter.on('route:forgottenPassword', function() { showView(new ForgottenPasswordView()); });
       appRouter.on('route:resetPassword', function(userId, token) { showView(new ResetPasswordView(), { userId: userId, token: token }); });
 
