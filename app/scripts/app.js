@@ -19,13 +19,13 @@ define('app', function(require) {
   var app = new Marionette.Application();
 
   app.addInitializer(function() {
+    console.log('--------- ');
     initializeForPlatform()
       .then(initializeAnalytics)
-      .then(pushNotification.register)
+      //.then(pushNotification.register) // TODO - resolve iOS issue with PN
       .then(paymentGateway.initialize)
       .then(initializeBackbone)
       .then(initializeModalListeners)
-      .then(initializeJumio)
       .then(initializeMenu)
       .then(showRateMe)
       .then(resolveInitialPage)
@@ -42,10 +42,6 @@ define('app', function(require) {
 
   var initializeAnalytics = function() {
     window.analytics.startTrackerWithId(config.google.analytics_key);
-  };
-
-  var initializeJumio = function() {
-    CardScanner.init(config.jumio.app_key, config.jumio.app_secret);
   };
 
   var initializeMenu = function() {
@@ -85,7 +81,7 @@ define('app', function(require) {
     if (device.platform === 'browser') {
       mockCordova.mock();
     }
-    $('body').addClass(device.platform);
+    $('body').addClass(device.platform.toLowerCase());
     return new RSVP.Promise(function(resolve, reject) { resolve(); });
   };
 

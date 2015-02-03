@@ -40,17 +40,17 @@
         "nl.x-services.plugins.toast": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
-        "nl.x-services.plugins.launchmyapp": {
-            "URL_SCHEME": "epsilon",
-            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
-        },
         "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
-        "com.clearbon.cordova.netswipe": {
+        "com.danielcwilson.plugins.googleanalytics": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
-        "com.danielcwilson.plugins.googleanalytics": {
+        "com.jsmobile.plugins.sms": {
+            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
+        },
+        "nl.x-services.plugins.launchmyapp": {
+            "URL_SCHEME": "epsilon",
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         }
     },

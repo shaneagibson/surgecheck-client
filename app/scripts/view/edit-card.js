@@ -78,7 +78,7 @@ define('view/edit-card', function(require) {
 
     submit: function(){
       // TODO - validate & update card
-      window.plugins.toast.showShortCenter('Card Successfully Updated');
+      window.plugins.toast.showShortBottom('Card Successfully Updated');
       vent.trigger('navigate', 'payments');
     },
 
@@ -96,7 +96,7 @@ define('view/edit-card', function(require) {
         .then(function() {
           vent.trigger('navigate', 'payments');
           vent.trigger('modal:hide');
-          window.plugins.toast.showShortCenter('Card Successfully Deleted');
+          window.plugins.toast.showShortBottom('Card Successfully Deleted');
         })
         .catch(function(err) {
           window.analytics.trackException(JSON.stringify(err), false);

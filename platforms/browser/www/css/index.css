@@ -115,8 +115,7 @@
   border-radius: 5px;
   padding: 10px;
   border: 2px solid #333333;
-  margin: 20px;
-  float: left;
+  margin: 5%;
 }
 .large-icon-button i {
   font-size: 45px;
@@ -436,7 +435,7 @@ input:focus {
   font-weight: bold;
 }
 .divider hr {
-  width: 20%;
+  width: 15%;
   border-color: #333333;
 }
 .divider hr.right {

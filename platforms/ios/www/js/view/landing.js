@@ -16,6 +16,10 @@ define('view/landing', function(require) {
       'click .sign-in' : 'goToSignIn'
     },
 
+    onDomRefresh: function() {
+      window.analytics.trackView('Landing');
+    },
+
     goToRegister: click.single(function() {
       vent.trigger('navigate', 'register');
     }),

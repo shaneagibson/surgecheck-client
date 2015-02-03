@@ -1,24 +1,17 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/org.apache.cordova.console/www/console-via-logger.js",
-        "id": "org.apache.cordova.console.console",
+        "file": "plugins/com.danielcwilson.plugins.googleanalytics/www/analytics.js",
+        "id": "com.danielcwilson.plugins.googleanalytics.UniversalAnalytics",
         "clobbers": [
-            "console"
+            "analytics"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.console/www/logger.js",
-        "id": "org.apache.cordova.console.logger",
+        "file": "plugins/com.jsmobile.plugins.sms/www/sms.js",
+        "id": "com.jsmobile.plugins.sms.sms",
         "clobbers": [
-            "cordova.logger"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.device/www/device.js",
-        "id": "org.apache.cordova.device.device",
-        "clobbers": [
-            "device"
+            "window.sms"
         ]
     },
     {
@@ -40,10 +33,24 @@ module.exports = [
         "id": "nl.x-services.plugins.toast.tests"
     },
     {
-        "file": "plugins/nl.x-services.plugins.launchmyapp/www/ios/LaunchMyApp.js",
-        "id": "nl.x-services.plugins.launchmyapp.LaunchMyApp",
+        "file": "plugins/org.apache.cordova.console/www/console-via-logger.js",
+        "id": "org.apache.cordova.console.console",
         "clobbers": [
-            "window.plugins.launchmyapp"
+            "console"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.console/www/logger.js",
+        "id": "org.apache.cordova.console.logger",
+        "clobbers": [
+            "cordova.logger"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.device/www/device.js",
+        "id": "org.apache.cordova.device.device",
+        "clobbers": [
+            "device"
         ]
     },
     {
@@ -54,31 +61,24 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/com.clearbon.cordova.netswipe/www/NetSwipe.js",
-        "id": "com.clearbon.cordova.netswipe.CardScanner",
+        "file": "plugins/nl.x-services.plugins.launchmyapp/www/ios/LaunchMyApp.js",
+        "id": "nl.x-services.plugins.launchmyapp.LaunchMyApp",
         "clobbers": [
-            "CardScanner"
-        ]
-    },
-    {
-        "file": "plugins/com.danielcwilson.plugins.googleanalytics/www/analytics.js",
-        "id": "com.danielcwilson.plugins.googleanalytics.UniversalAnalytics",
-        "clobbers": [
-            "analytics"
+            "window.plugins.launchmyapp"
         ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "org.apache.cordova.console": "0.2.12",
-    "org.apache.cordova.device": "0.2.13",
+    "com.danielcwilson.plugins.googleanalytics": "0.6.1",
+    "com.jsmobile.plugins.sms": "0.0.1",
     "com.pushapps.phonegap": "1.6.0",
     "nl.x-services.plugins.toast": "2.0.2",
-    "nl.x-services.plugins.launchmyapp": "3.2.2",
+    "org.apache.cordova.console": "0.2.12",
+    "org.apache.cordova.device": "0.2.13",
     "org.apache.cordova.inappbrowser": "0.5.4",
-    "com.clearbon.cordova.netswipe": "0.1.0",
-    "com.danielcwilson.plugins.googleanalytics": "0.6.1"
+    "nl.x-services.plugins.launchmyapp": "3.2.2"
 }
 // BOTTOM OF METADATA
 });

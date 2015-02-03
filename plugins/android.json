@@ -33,15 +33,19 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"LaunchMyApp\"><param name=\"android-package\" value=\"nl.xservices.plugins.LaunchMyApp\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
                             "count": 1
                         },
                         {
                             "xml": "<feature name=\"UniversalAnalytics\"><param name=\"android-package\" value=\"com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Sms\"><param name=\"android-package\" value=\"com.jsmobile.plugins.sms.Sms\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"LaunchMyApp\"><param name=\"android-package\" value=\"nl.xservices.plugins.LaunchMyApp\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -81,6 +85,10 @@
                         {
                             "xml": "<uses-permission android:name=\"uk.co.epsilontechnologies.ClientApp.permission.C2D_MESSAGE\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.SEND_SMS\" />",
+                            "count": 1
                         }
                     ],
                     "/manifest/application": [
@@ -111,35 +119,11 @@
                     ],
                     "/*": [
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-                            "count": 2
-                        },
-                        {
                             "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-                            "count": 2
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.CAMERA\" />",
                             "count": 1
                         },
                         {
-                            "xml": "<uses-feature android:name=\"android.hardware.camera.autofocus\" android:required=\"false\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<activity android:configChanges=\"orientation|screenSize|screenLayout|keyboardHidden\" android:name=\"com.jumio.netswipe.sdk.core.ScanCardActivity\" android:theme=\"@style/Theme.JumioNetswipeSDK\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-feature android:name=\"android.hardware.camera\" android:required=\"true\" />",
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
                             "count": 1
                         }
                     ]
@@ -160,17 +144,17 @@
         "org.apache.cordova.device": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
-        "nl.x-services.plugins.launchmyapp": {
-            "URL_SCHEME": "epsilon",
-            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
-        },
         "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
-        "com.clearbon.cordova.netswipe": {
+        "com.danielcwilson.plugins.googleanalytics": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
-        "com.danielcwilson.plugins.googleanalytics": {
+        "com.jsmobile.plugins.sms": {
+            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
+        },
+        "nl.x-services.plugins.launchmyapp": {
+            "URL_SCHEME": "epsilon",
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         }
     },

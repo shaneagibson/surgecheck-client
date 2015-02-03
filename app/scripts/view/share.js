@@ -36,7 +36,16 @@ define('view/share', function(require) {
     shareViaSms: function(){
       var promoCode = this.getPromoCode();
       var body = this.bodyMessage(promoCode);
-      window.open('sms:?body='+body, '_system');
+      var handler = {
+        android: function() {
+          window.open('sms:?body='+body, '_system');
+        },
+        ios: function() {
+          sms.sendMessage(body, console.log, console.log);
+        },
+        browser: function() { }
+      };
+      handler[device.platform.toLowerCase()]();
     },
 
     titleMessage: function(){

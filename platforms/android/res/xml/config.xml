@@ -11,18 +11,22 @@
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
-    <feature name="LaunchMyApp">
-        <param name="android-package" value="nl.xservices.plugins.LaunchMyApp" />
-    </feature>
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="UniversalAnalytics">
+        <param name="android-package" value="com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin" />
+    </feature>
+    <feature name="Sms">
+        <param name="android-package" value="com.jsmobile.plugins.sms.Sms" />
+    </feature>
+    <feature name="LaunchMyApp">
+        <param name="android-package" value="nl.xservices.plugins.LaunchMyApp" />
     </feature>
     <name>Epsilon</name>
     <description>Epsilon Client App</description>
     <author email="sgibson@epsilontechnologies.co.uk" href="http://www.epsilontechnologies.co.uk" />
     <content src="index.html" />
     <access origin="*" />
-    <feature name="UniversalAnalytics">
-        <param name="android-package" value="com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin" />
-    </feature>
+    <preference name="DisallowOverscroll" value="true" />
 </widget>

@@ -9,19 +9,23 @@ define('app', function(require) {
   var touch = require('./util/touch');
   var rateme = require('./util/rateme');
   var serverGateway = require('./util/server-gateway');
+  var paymentGateway = require('./util/payment-gateway');
   var mockCordova = require('./mock-cordova');
   var Menu = require('./view/menu');
   var ModalConfirm = require('./view/modal-confirm');
   var ModalRateMe = require('./view/modal-rateme');
+  var context = require('./context');
 
   var app = new Marionette.Application();
 
   app.addInitializer(function() {
+    console.log('--------- ');
     initializeForPlatform()
-      .then(pushNotification.register)
+      .then(initializeAnalytics)
+      //.then(pushNotification.register) // TODO - resolve iOS issue with PN
+      .then(paymentGateway.initialize)
       .then(initializeBackbone)
       .then(initializeModalListeners)
-      .then(initializeJumio)
       .then(initializeMenu)
       .then(showRateMe)
       .then(resolveInitialPage)
@@ -36,8 +40,8 @@ define('app', function(require) {
     modal: '#modal'
   });
 
-  var initializeJumio = function() {
-    CardScanner.init(config.jumio.app_key, config.jumio.app_secret);
+  var initializeAnalytics = function() {
+    window.analytics.startTrackerWithId(config.google.analytics_key);
   };
 
   var initializeMenu = function() {
@@ -77,7 +81,7 @@ define('app', function(require) {
     if (device.platform === 'browser') {
       mockCordova.mock();
     }
-    $('body').addClass(device.platform);
+    $('body').addClass(device.platform.toLowerCase());
     return new RSVP.Promise(function(resolve, reject) { resolve(); });
   };
 
@@ -91,11 +95,13 @@ define('app', function(require) {
   var resolveInitialPage = function() {
     if (app.customUrl) return new RSVP.Promise(function(resolve, reject) { resolve(app.customUrl); });
     var sessionId = localStorage.getItem('sessionid');
-    var userId = localStorage.getItem('userid');
-    if (sessionId && userId) {
+    if (sessionId) {
       return serverGateway
         .get('/account/session', null, { sessionid: sessionId })
         .then(function(response) {
+          context.user = response.user;
+          context.session = response.session;
+          window.analytics.setUserId(response.user.id);
           if (response.user.verified) {
             return 'home';
           } else {
@@ -103,7 +109,6 @@ define('app', function(require) {
           }
         })
         .catch(function() {
-          localStorage.removeItem('userid');
           localStorage.removeItem('sessionid');
           return 'sign-in';
         });

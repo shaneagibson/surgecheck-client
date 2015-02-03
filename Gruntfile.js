@@ -5,6 +5,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('run:browser', [ 'shell:browser' ]);
   grunt.registerTask('run:android', [ 'shell:android' ]);
+  grunt.registerTask('run:ios', [ 'shell:ios' ]);
 
   grunt.registerTask('run:test', [ 'karma:continuous' ]);
 
@@ -130,6 +131,19 @@ module.exports = function(grunt) {
       },
       android: {
         command: 'cordova run android'
+      },
+      ios: {
+        command:
+          'cordova build ios && ' +
+          'cd platforms/ios && ' +
+          'xcodebuild -scheme Epsilon -configuration Debug -sdk iphoneos && ' +
+          'cd ../.. && ' +
+          '~/Development/Tools/fruitstrap/fruitstrap -b /Users/shane/Library/Developer/Xcode/DerivedData/Epsilon-ayjltquvoopecnadwedexemncwmj/Build/Products/Debug-iphoneos/Epsilon.app',
+        options: {
+          execOptions: {
+            maxBuffer: Infinity
+          }
+        }
       }
     },
 

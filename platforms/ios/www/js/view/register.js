@@ -6,6 +6,7 @@ define('view/register', function(require) {
   var vent = require('../util/vent');
   var validator = require('../util/validator');
   var serverGateway = require('../util/server-gateway');
+  var context = require('../context');
 
   var view = Marionette.LayoutView.extend({
 
@@ -28,6 +29,10 @@ define('view/register', function(require) {
       emailAddressInput: 'input.emailaddress',
       mobileNumberInput: 'input.mobilenumber',
       passwordInput: 'input.password'
+    },
+
+    onDomRefresh: function() {
+      window.analytics.trackView('Register');
     },
 
     registerUser: click.single(function() {
@@ -56,15 +61,18 @@ define('view/register', function(require) {
           password: this.ui.passwordInput.val()
         })
         .then(function(response) {
+          context.user = response.user;
+          context.session = response.session;
+          window.analytics.setUserId(response.user.id);
           localStorage.setItem('sessionid', response.session.sessionId);
-          localStorage.setItem('userid', response.user.userId);
           vent.trigger('navigate', 'verify-mobile');
         })
         .catch(function(response) {
           switch (response.status) {
             case 409 : return validator.addError(self.ui.emailAddressInput, 'already_registered');
           }
-          window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
+          window.analytics.trackException(JSON.stringify(response), false);
+          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }
 

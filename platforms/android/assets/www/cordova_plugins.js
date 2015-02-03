@@ -26,13 +26,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/nl.x-services.plugins.launchmyapp/www/android/LaunchMyApp.js",
-        "id": "nl.x-services.plugins.launchmyapp.LaunchMyApp",
-        "clobbers": [
-            "window.plugins.launchmyapp"
-        ]
-    },
-    {
         "file": "plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js",
         "id": "org.apache.cordova.inappbrowser.inappbrowser",
         "clobbers": [
@@ -40,17 +33,24 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/com.clearbon.cordova.netswipe/www/NetSwipe.js",
-        "id": "com.clearbon.cordova.netswipe.CardScanner",
-        "clobbers": [
-            "CardScanner"
-        ]
-    },
-    {
         "file": "plugins/com.danielcwilson.plugins.googleanalytics/www/analytics.js",
         "id": "com.danielcwilson.plugins.googleanalytics.UniversalAnalytics",
         "clobbers": [
             "analytics"
+        ]
+    },
+    {
+        "file": "plugins/com.jsmobile.plugins.sms/www/sms.js",
+        "id": "com.jsmobile.plugins.sms.sms",
+        "clobbers": [
+            "window.sms"
+        ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.launchmyapp/www/android/LaunchMyApp.js",
+        "id": "nl.x-services.plugins.launchmyapp.LaunchMyApp",
+        "clobbers": [
+            "window.plugins.launchmyapp"
         ]
     }
 ];
@@ -61,10 +61,10 @@ module.exports.metadata =
     "nl.x-services.plugins.toast": "2.0.2",
     "org.apache.cordova.console": "0.2.12",
     "org.apache.cordova.device": "0.2.13",
-    "nl.x-services.plugins.launchmyapp": "3.2.2",
     "org.apache.cordova.inappbrowser": "0.5.4",
-    "com.clearbon.cordova.netswipe": "0.1.0",
-    "com.danielcwilson.plugins.googleanalytics": "0.6.1"
+    "com.danielcwilson.plugins.googleanalytics": "0.6.1",
+    "com.jsmobile.plugins.sms": "0.0.1",
+    "nl.x-services.plugins.launchmyapp": "3.2.2"
 }
 // BOTTOM OF METADATA
 });

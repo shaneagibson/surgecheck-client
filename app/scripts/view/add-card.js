@@ -77,7 +77,7 @@ define('view/add-card', function(require) {
         .then(function(nonce) {
           return serverGateway.put('/payment/user/'+context.user.id+'/card', { nonce: nonce })
             .then(function() {
-              window.plugins.toast.showShortCenter('Card Successfully Added');
+              window.plugins.toast.showShortBottom('Card Successfully Added');
               vent.trigger('navigate', 'payments');
             });
         })

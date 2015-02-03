@@ -6,6 +6,7 @@ define('view/verify-mobile', function(require) {
   var vent = require('../util/vent');
   var validator = require('../util/validator');
   var serverGateway = require('../util/server-gateway');
+  var context = require('../context');
 
   var view = Marionette.LayoutView.extend({
 
@@ -14,11 +15,16 @@ define('view/verify-mobile', function(require) {
     template: template,
 
     events: {
-      'click .verify' : 'verify'
+      'click .verify' : 'verify',
+      'click .resend-sms' : 'resendSms'
     },
 
     ui: {
       verificationCodeInput: 'input.code'
+    },
+
+    onDomRefresh: function() {
+      window.analytics.trackView('Verify Mobile');
     },
 
     verify: click.single(function() {
@@ -35,26 +41,36 @@ define('view/verify-mobile', function(require) {
       var self = this;
       return serverGateway
         .post('/account/verify', {
-          userId: localStorage.getItem('userid'),
+          userId: context.user.id,
           code: this.ui.verificationCodeInput.val()
         })
         .then(function() {
           vent.trigger('navigate', 'home');
+          context.user.verified = true;
         })
         .catch(function(response) {
           switch (response.status) {
-            case 401 : return validator.addError(self.ui.emailAddressInput, 'invalid_verification_code');
+            case 401 : return validator.addError(self.ui.verificationCodeInput, 'invalid_verification_code');
           }
-          window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
+          window.analytics.trackException(JSON.stringify(response), false);
+          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
-    },
-
-    validateVerificationCode: function() {
-      return validator.renderValidationResult(validator.validateVerificationCode, this.ui.verificationCodeInput);
     },
 
     onBack: function() {
       return false;
+    },
+
+    resendSms: function() {
+      return serverGateway
+        .post('/verification-code/resend?userId='+context.user.id)
+        .then(function() {
+          window.plugins.toast.showLongBottom('The code has been resent via SMS.');
+        })
+        .catch(function(response){
+          window.analytics.trackException(JSON.stringify(response), false);
+          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
+        });
     }
 
   });

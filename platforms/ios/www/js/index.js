@@ -12,7 +12,8 @@ require.config(
       "text" : "./components/requirejs-text/text",
       "underscore": "./components/underscore/underscore",
       "event-bus": "./components/vent/app/scripts/services/event-bus/event-bus",
-      "mobiscroll": "./components/mobiscroll/mobiscroll.custom-2.14.4.min"
+      "mobiscroll": "./components/mobiscroll/mobiscroll.custom-2.14.4.min",
+      "braintree": "./components/braintree-web/dist/braintree"
     },
     shim: {
       jquery:{
@@ -42,4 +43,5 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 window.onerror = function(error) {
   console.log('error:'+error);
+  window.analytics.trackException(error, false);
 };

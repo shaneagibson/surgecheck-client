@@ -23,7 +23,7 @@ define('view/about', function(require) {
     onDomRefresh: function() {
       window.analytics.trackView('About');
       $('.version .number').html(config.version);
-      $('.rate-us .store').html(config.app_store[device.platform].name);
+      $('.rate-us .store').html(config.app_store[device.platform.toLowerCase()].name);
     },
 
     showMenu: function(){

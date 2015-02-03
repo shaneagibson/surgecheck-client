@@ -22,7 +22,8 @@ define('util/validator', function(require) {
       var rules = inputField.data('validationrules').split(' ');
       var errors = rules.map(function(rule) {
         if (validators[rule]) {
-          return validators[rule].validate(inputField.val());
+          var value = inputField.val();
+          return validators[rule].validate(value);
         }
       }).filter(function(error) {
         return error;

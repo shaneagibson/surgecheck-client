@@ -6,6 +6,7 @@ define('view/reset-password', function(require) {
   var vent = require('../util/vent');
   var validator = require('../util/validator');
   var serverGateway = require('../util/server-gateway');
+  var context = require('../context');
 
   var view = Marionette.LayoutView.extend({
 
@@ -20,6 +21,10 @@ define('view/reset-password', function(require) {
 
     ui: {
       passwordInput: 'input.password'
+    },
+
+    onDomRefresh: function() {
+      window.analytics.trackView('Reset Password');
     },
 
     resetPassword: click.single(function() {
@@ -40,10 +45,14 @@ define('view/reset-password', function(require) {
       var self = this;
       return serverGateway
         .post('/account/password/reset', {
-          userId: localStorage.getItem('userid'),
-          password: this.ui.passwordInput.val()
+          userId: this.options.userId,
+          token: this.options.token,
+          newPassword: this.ui.passwordInput.val()
         })
         .then(function(response) {
+          context.user = response.user;
+          context.session = response.session;
+          window.analytics.setUserId(response.user.id);
           if (response.user.verified) {
             vent.trigger('navigate', 'home');
           } else {
@@ -53,15 +62,16 @@ define('view/reset-password', function(require) {
         .catch(function(response) {
           switch (response.status) {
             case 409 : {
-              // TODO - show link already used error
-              break;
+              vent.trigger('navigate', 'forgotten-password');
+              return window.plugins.toast.showLongBottom('Reset Password Link has already been used.');
             }
             case 410 : {
-              // TODO - show link expired error
-              break;
+              vent.trigger('navigate', 'forgotten-password');
+              return window.plugins.toast.showLongBottom('Reset Password Link has expired.');
             }
           }
-          window.plugins.toast.showLongCenter('Something unexpected happened. Please try again.');
+          window.analytics.trackException(JSON.stringify(response), false);
+          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }
 
