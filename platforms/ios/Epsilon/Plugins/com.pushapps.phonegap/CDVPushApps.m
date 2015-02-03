@@ -42,16 +42,19 @@
 - (void)registerUser:(CDVInvokedUrlCommand *)command
 {
     NSString *appToken = [[command.arguments objectAtIndex:0] objectForKey:@"appToken"];
-    
+
     if ([appToken isKindOfClass:[NSString class]]) {
-        
+
         // Saving callback to user defaults
         [self saveCallbackWithName:Callback_RegisterUser andId:command.callbackId];
-        
+
         // Starting the push apps manager
         [[PushAppsManager sharedInstance] setDelegate:self];
         [[PushAppsManager sharedInstance] startPushAppsWithAppToken:appToken withLaunchOptions:nil];
-        
+
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@""];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
     } else {
         
         // Clear callback to user defaults

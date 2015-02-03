@@ -28,9 +28,6 @@
         }
     },
     "installed_plugins": {
-        "com.pushapps.phonegap": {
-            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
-        },
         "org.apache.cordova.console": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
@@ -47,6 +44,9 @@
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
         "com.jsmobile.plugins.sms": {
+            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
+        },
+        "com.pushapps.phonegap": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
         "nl.x-services.plugins.launchmyapp": {

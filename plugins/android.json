@@ -55,6 +55,10 @@
                 "parents": {
                     "/manifest": [
                         {
+                            "xml": "<uses-permission android:name=\"android.permission.SEND_SMS\" />",
+                            "count": 1
+                        },
+                        {
                             "xml": "<permission android:name=\"uk.co.epsilontechnologies.ClientApp.permission.C2D_MESSAGE\" android:protectionLevel=\"signature\" />",
                             "count": 1
                         },
@@ -84,10 +88,6 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"uk.co.epsilontechnologies.ClientApp.permission.C2D_MESSAGE\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.SEND_SMS\" />",
                             "count": 1
                         }
                     ],
@@ -132,9 +132,6 @@
         }
     },
     "installed_plugins": {
-        "com.pushapps.phonegap": {
-            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
-        },
         "nl.x-services.plugins.toast": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
@@ -151,6 +148,9 @@
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
         "com.jsmobile.plugins.sms": {
+            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
+        },
+        "com.pushapps.phonegap": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
         "nl.x-services.plugins.launchmyapp": {

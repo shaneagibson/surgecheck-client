@@ -40,6 +40,7 @@ define('util/push-notification', function(require) {
   };
 
   var saveDeviceId = function(deviceId) {
+    console.log('DEVICEID: '+deviceId);
     localStorage.setItem('deviceid', deviceId);
   };
 

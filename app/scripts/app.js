@@ -19,10 +19,9 @@ define('app', function(require) {
   var app = new Marionette.Application();
 
   app.addInitializer(function() {
-    console.log('--------- ');
     initializeForPlatform()
       .then(initializeAnalytics)
-      //.then(pushNotification.register) // TODO - resolve iOS issue with PN
+      .then(pushNotification.register)
       .then(paymentGateway.initialize)
       .then(initializeBackbone)
       .then(initializeModalListeners)
@@ -136,6 +135,7 @@ define('app', function(require) {
 
   var handleError = function(error) {
     console.log(error);
+    window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
   };
 
   return app;

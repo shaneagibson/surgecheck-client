@@ -1,11 +1,11 @@
 module.exports = function(grunt) {
 
-  grunt.registerTask('build:dev', [ 'clean', 'jshint:check', 'karma:unit', 'less:compile', 'concat:css', 'copy:dev' ]);
-  grunt.registerTask('build:prod', [ 'clean', 'jshint:check', 'karma:unit', 'less:compile', 'requirejs', 'concat:css', 'copy:prod' ]);
+  grunt.registerTask('build:dev', [ 'clean', 'jshint:check', 'karma:unit', 'less:compile', 'concat:css', 'copy:dev', 'shell:build_debug_ios' ]);
+  grunt.registerTask('build:prod', [ 'clean', 'jshint:check', 'karma:unit', 'less:compile', 'requirejs', 'concat:css', 'copy:prod', 'shell:build_release_ios', 'shell:verify_release_ios' ]);
 
-  grunt.registerTask('run:browser', [ 'shell:browser' ]);
-  grunt.registerTask('run:android', [ 'shell:android' ]);
-  grunt.registerTask('run:ios', [ 'shell:ios' ]);
+  grunt.registerTask('run:browser', [ 'shell:deploy_browser' ]);
+  grunt.registerTask('run:android', [ 'shell:deploy_android' ]);
+  grunt.registerTask('run:ios', [ 'shell:deploy_debug_ios' ]);
 
   grunt.registerTask('run:test', [ 'karma:continuous' ]);
 
@@ -126,19 +126,46 @@ module.exports = function(grunt) {
     },
 
     shell: {
-      browser: {
+      deploy_browser: {
         command: 'cordova run browser'
       },
-      android: {
+      deploy_android: {
         command: 'cordova run android'
       },
-      ios: {
+      build_debug_ios: {
         command:
-          'cordova build ios && ' +
-          'cd platforms/ios && ' +
-          'xcodebuild -scheme Epsilon -configuration Debug -sdk iphoneos && ' +
-          'cd ../.. && ' +
-          '~/Development/Tools/fruitstrap/fruitstrap -b /Users/shane/Library/Developer/Xcode/DerivedData/Epsilon-ayjltquvoopecnadwedexemncwmj/Build/Products/Debug-iphoneos/Epsilon.app',
+        'cordova build ios && ' +
+        'cd platforms/ios && ' +
+        'xcodebuild -scheme Epsilon -configuration Debug -sdk iphoneos && ' +
+        'cd ../..',
+        options: {
+          execOptions: {
+            maxBuffer: Infinity
+          }
+        }
+      },
+      build_release_ios: {
+        command:
+        'cordova build ios && ' +
+        'cd platforms/ios && ' +
+        'xcodebuild -scheme Epsilon -configuration Release -sdk iphoneos && ' +
+        'cd ../..',
+        options: {
+          execOptions: {
+            maxBuffer: Infinity
+          }
+        }
+      },
+      deploy_debug_ios: {
+        command: '~/Development/Tools/fruitstrap/fruitstrap -b /Users/shane/Library/Developer/Xcode/DerivedData/Epsilon-ayjltquvoopecnadwedexemncwmj/Build/Products/Debug-iphoneos/Epsilon.app',
+        options: {
+          execOptions: {
+            maxBuffer: Infinity
+          }
+        }
+      },
+      verify_release_ios: {
+        command: 'xcrun -sdk iphoneos PackageApplication -v "/Users/shane/Library/Developer/Xcode/DerivedData/Epsilon-ayjltquvoopecnadwedexemncwmj/Build/Products/Release-iphoneos/Epsilon.app" -o "/Users/shane/Desktop/Epsilon.ipa" --sign "iPhone Distribution" --embed "/Users/shane/Downloads/Epsilon_Distribution.mobileprovision"',
         options: {
           execOptions: {
             maxBuffer: Infinity

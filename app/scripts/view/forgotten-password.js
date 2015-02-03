@@ -16,7 +16,8 @@ define('view/forgotten-password', function(require) {
 
     events: {
       'click .request-reset' : 'requestPasswordReset',
-      'blur input.password' : 'validateField'
+      'blur input.password' : 'validateField',
+      'click .sign-in' : 'signIn'
     },
 
     ui: {
@@ -53,6 +54,10 @@ define('view/forgotten-password', function(require) {
           window.analytics.trackException(JSON.stringify(response), false);
           window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
         });
+    },
+
+    signIn: function() {
+      vent.trigger('navigate', 'sign-in');
     }
 
   });
