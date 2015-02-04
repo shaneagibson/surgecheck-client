@@ -6,6 +6,8 @@ define('view/forgotten-password', function(require) {
   var vent = require('../util/vent');
   var validator = require('../util/validator');
   var serverGateway = require('../util/server-gateway');
+  var toast = require('../util/toast');
+  var analytics = require('../util/analytics');
   var context = require('../context');
 
   var view = Marionette.LayoutView.extend({
@@ -25,7 +27,7 @@ define('view/forgotten-password', function(require) {
     },
 
     onDomRefresh: function() {
-      window.analytics.trackView('Forgotten Password');
+      analytics.trackView('Forgotten Password');
     },
 
     requestPasswordReset: click.single(function() {
@@ -48,11 +50,11 @@ define('view/forgotten-password', function(require) {
           emailAddress: this.ui.emailAddressInput.val()
         })
         .then(function() {
-          window.plugins.toast.showLongBottom('An email has been sent to your registered email address.');
+          toast.showLongBottom('An email has been sent to your registered email address.');
         })
         .catch(function(response) {
-          window.analytics.trackException(JSON.stringify(response), false);
-          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
+          analytics.trackError(JSON.stringify(response));
+          toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     },
 

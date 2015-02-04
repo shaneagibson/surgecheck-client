@@ -3,6 +3,7 @@ define('view/modal-rateme', function(require) {
   var Marionette = require('marionette');
   var template = require('hbs!../html/modal-rateme');
   var vent = require('../util/vent');
+  var analytics = require('../util/analytics');
   var rateme = require('../util/rateme');
 
   var view = Marionette.LayoutView.extend({
@@ -18,7 +19,7 @@ define('view/modal-rateme', function(require) {
     },
 
     onDomRefresh: function() {
-      window.analytics.trackView('Rate Me');
+      analytics.trackView('Rate Me');
     },
 
     onNotNow: function(){

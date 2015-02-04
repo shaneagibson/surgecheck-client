@@ -3,6 +3,7 @@ define('view/home', function(require) {
   var Marionette = require('marionette');
   var template = require('hbs!../html/home');
   var click = require('../util/click');
+  var analytics = require('../util/analytics');
   var vent = require('../util/vent');
 
   var view = Marionette.LayoutView.extend({
@@ -16,7 +17,7 @@ define('view/home', function(require) {
     },
 
     onDomRefresh: function() {
-      window.analytics.trackView('Home');
+      analytics.trackView('Home');
     },
 
     showMenu: function(){

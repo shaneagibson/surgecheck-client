@@ -3,6 +3,7 @@ define('view/landing', function(require) {
   var Marionette = require('marionette');
   var template = require('hbs!../html/landing');
   var click = require('../util/click');
+  var analytics = require('../util/analytics');
   var vent = require('../util/vent');
 
   var view = Marionette.LayoutView.extend({
@@ -17,7 +18,7 @@ define('view/landing', function(require) {
     },
 
     onDomRefresh: function() {
-      window.analytics.trackView('Landing');
+      analytics.trackView('Landing');
     },
 
     goToRegister: click.single(function() {

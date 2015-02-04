@@ -2,6 +2,7 @@ define('view/support', function(require) {
 
   var Marionette = require('marionette');
   var template = require('hbs!../html/support');
+  var analytics = require('../util/analytics');
   var vent = require('../util/vent');
 
   var view = Marionette.LayoutView.extend({
@@ -15,7 +16,7 @@ define('view/support', function(require) {
     },
 
     onDomRefresh: function() {
-      window.analytics.trackView('Support');
+      analytics.trackView('Support');
     },
 
     showMenu: function(){

@@ -6,6 +6,8 @@ define('view/verify-mobile', function(require) {
   var vent = require('../util/vent');
   var validator = require('../util/validator');
   var serverGateway = require('../util/server-gateway');
+  var toast = require('../util/toast');
+  var analytics = require('../util/analytics');
   var context = require('../context');
 
   var view = Marionette.LayoutView.extend({
@@ -24,7 +26,7 @@ define('view/verify-mobile', function(require) {
     },
 
     onDomRefresh: function() {
-      window.analytics.trackView('Verify Mobile');
+      analytics.trackView('Verify Mobile');
     },
 
     verify: click.single(function() {
@@ -52,8 +54,8 @@ define('view/verify-mobile', function(require) {
           switch (response.status) {
             case 401 : return validator.addError(self.ui.verificationCodeInput, 'invalid_verification_code');
           }
-          window.analytics.trackException(JSON.stringify(response), false);
-          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
+          analytics.trackError(JSON.stringify(response));
+          toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     },
 
@@ -65,11 +67,11 @@ define('view/verify-mobile', function(require) {
       return serverGateway
         .post('/verification-code/resend?userId='+context.user.id)
         .then(function() {
-          window.plugins.toast.showLongBottom('The code has been resent via SMS.');
+          toast.showLongBottom('The code has been resent via SMS.');
         })
         .catch(function(response){
-          window.analytics.trackException(JSON.stringify(response), false);
-          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
+          analytics.trackError(JSON.stringify(response));
+          toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }
 

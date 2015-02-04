@@ -6,6 +6,8 @@ define('view/edit-card', function(require) {
   var context = require('../context');
   var validator = require('../util/validator');
   var serverGateway = require('../util/server-gateway');
+  var analytics = require('../util/analytics');
+  var toast = require('../util/toast');
 
   var view = Marionette.LayoutView.extend({
 
@@ -26,7 +28,7 @@ define('view/edit-card', function(require) {
       this.prepopulate(paymentMethod);
       this.initializeTypePicker(paymentMethod.type);
       this.initializeMMYYPicker(new Date('20'+paymentMethod.expiryYear, parseInt(paymentMethod.expiryMonth) - 1));
-      window.analytics.trackView('Edit Card');
+      analytics.trackView('Edit Card');
     },
 
     prepopulate: function(paymentMethod) {
@@ -78,7 +80,7 @@ define('view/edit-card', function(require) {
 
     submit: function(){
       // TODO - validate & update card
-      window.plugins.toast.showShortBottom('Card Successfully Updated');
+      toast.showShortBottom('Card Successfully Updated');
       vent.trigger('navigate', 'payments');
     },
 
@@ -96,11 +98,11 @@ define('view/edit-card', function(require) {
         .then(function() {
           vent.trigger('navigate', 'payments');
           vent.trigger('modal:hide');
-          window.plugins.toast.showShortBottom('Card Successfully Deleted');
+          toast.showShortBottom('Card Successfully Deleted');
         })
         .catch(function(err) {
-          window.analytics.trackException(JSON.stringify(err), false);
-          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
+          analytics.trackError(JSON.stringify(err));
+          toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }
 

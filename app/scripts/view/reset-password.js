@@ -6,6 +6,8 @@ define('view/reset-password', function(require) {
   var vent = require('../util/vent');
   var validator = require('../util/validator');
   var serverGateway = require('../util/server-gateway');
+  var toast = require('../util/toast');
+  var analytics = require('../util/analytics');
   var context = require('../context');
 
   var view = Marionette.LayoutView.extend({
@@ -24,7 +26,7 @@ define('view/reset-password', function(require) {
     },
 
     onDomRefresh: function() {
-      window.analytics.trackView('Reset Password');
+      analytics.trackView('Reset Password');
     },
 
     resetPassword: click.single(function() {
@@ -52,7 +54,7 @@ define('view/reset-password', function(require) {
         .then(function(response) {
           context.user = response.user;
           context.session = response.session;
-          window.analytics.setUserId(response.user.id);
+          analytics.setUserId(response.user.id);
           if (response.user.verified) {
             vent.trigger('navigate', 'home');
           } else {
@@ -63,15 +65,15 @@ define('view/reset-password', function(require) {
           switch (response.status) {
             case 409 : {
               vent.trigger('navigate', 'forgotten-password');
-              return window.plugins.toast.showLongBottom('Reset Password Link has already been used.');
+              return toast.showLongBottom('Reset Password Link has already been used.');
             }
             case 410 : {
               vent.trigger('navigate', 'forgotten-password');
-              return window.plugins.toast.showLongBottom('Reset Password Link has expired.');
+              return toast.showLongBottom('Reset Password Link has expired.');
             }
           }
-          window.analytics.trackException(JSON.stringify(response), false);
-          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
+          analytics.trackError(JSON.stringify(response));
+          toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }
 

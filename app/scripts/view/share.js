@@ -3,6 +3,7 @@ define('view/share', function(require) {
   var Marionette = require('marionette');
   var template = require('hbs!../html/share');
   var vent = require('../util/vent');
+  var analytics = require('../util/analytics');
   var context = require('../context');
 
   var view = Marionette.LayoutView.extend({
@@ -19,7 +20,7 @@ define('view/share', function(require) {
 
     onDomRefresh: function(){
       $('.code').html(this.getPromoCode());
-      window.analytics.trackView('Share');
+      analytics.trackView('Share');
     },
 
     showMenu: function(){

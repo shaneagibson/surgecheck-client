@@ -6,6 +6,8 @@ define('view/promotions', function(require) {
   var click = require('../util/click');
   var validator = require('../util/validator');
   var serverGateway = require('../util/server-gateway');
+  var toast = require('../util/toast');
+  var analytics = require('../util/analytics');
   var context = require('../context');
 
   var view = Marionette.LayoutView.extend({
@@ -24,7 +26,7 @@ define('view/promotions', function(require) {
     },
 
     onDomRefresh: function() {
-      window.analytics.trackView('Promotions');
+      analytics.trackView('Promotions');
     },
 
     showMenu: function(){
@@ -46,15 +48,15 @@ define('view/promotions', function(require) {
         .post('/user/'+context.user.id+'/redeem/'+view.ui.promotionCodeInput.val())
         .then(function() {
           vent.trigger('navigate', 'home');
-          window.plugins.toast.showLongBottom('Successfully applied Promotion Code');
+          toast.showLongBottom('Successfully applied Promotion Code');
         })
         .catch(function(response) {
           switch (response.status) {
-            case 400 : return window.plugins.toast.showLongBottom('Invalid Promotion Code.');
-            case 409 : return window.plugins.toast.showLongBottom('This Promotion Code has already been redeemed.');
+            case 400 : return toast.showLongBottom('Invalid Promotion Code.');
+            case 409 : return toast.showLongBottom('This Promotion Code has already been redeemed.');
           }
-          window.analytics.trackException(JSON.stringify(response), false);
-          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
+          analytics.trackError(JSON.stringify(response));
+          toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     }
 

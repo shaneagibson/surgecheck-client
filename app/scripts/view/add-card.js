@@ -7,6 +7,8 @@ define('view/add-card', function(require) {
   var mobiscroll = require('mobiscroll');
   var serverGateway = require('../util/server-gateway');
   var paymentGateway = require('../util/payment-gateway');
+  var toast = require('../util/toast');
+  var analytics = require('../util/analytics');
   var context = require('../context');
 
   var view = Marionette.LayoutView.extend({
@@ -25,7 +27,7 @@ define('view/add-card', function(require) {
     onDomRefresh: function(){
       this.initializeTypePicker();
       this.initializeMMYYPicker();
-      window.analytics.trackView('Add Card');
+      analytics.trackView('Add Card');
     },
 
     initializeTypePicker: function(){
@@ -77,13 +79,13 @@ define('view/add-card', function(require) {
         .then(function(nonce) {
           return serverGateway.put('/payment/user/'+context.user.id+'/card', { nonce: nonce })
             .then(function() {
-              window.plugins.toast.showShortBottom('Card Successfully Added');
+              toast.showShortBottom('Card Successfully Added');
               vent.trigger('navigate', 'payments');
             });
         })
         .catch(function(err) {
-          window.analytics.trackException(JSON.stringify(err), false);
-          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
+          analytics.trackError(JSON.stringify(err));
+          toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     },
 

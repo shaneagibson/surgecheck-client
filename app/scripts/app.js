@@ -14,13 +14,15 @@ define('app', function(require) {
   var Menu = require('./view/menu');
   var ModalConfirm = require('./view/modal-confirm');
   var ModalRateMe = require('./view/modal-rateme');
+  var toast = require('./util/toast');
+  var analytics = require('./util/analytics');
   var context = require('./context');
 
   var app = new Marionette.Application();
 
   app.addInitializer(function() {
     initializeForPlatform()
-      .then(initializeAnalytics)
+      .then(analytics.initialize)
       .then(pushNotification.register)
       .then(paymentGateway.initialize)
       .then(initializeBackbone)
@@ -38,10 +40,6 @@ define('app', function(require) {
     menu: '#menu',
     modal: '#modal'
   });
-
-  var initializeAnalytics = function() {
-    window.analytics.startTrackerWithId(config.google.analytics_key);
-  };
 
   var initializeMenu = function() {
     app.menu.show(new Menu());
@@ -100,7 +98,7 @@ define('app', function(require) {
         .then(function(response) {
           context.user = response.user;
           context.session = response.session;
-          window.analytics.setUserId(response.user.id);
+          analytics.setUserId(response.user.id);
           if (response.user.verified) {
             return 'home';
           } else {
@@ -135,7 +133,7 @@ define('app', function(require) {
 
   var handleError = function(error) {
     console.log(error);
-    window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
+    toast.showLongBottom('Something unexpected happened. Please try again.');
   };
 
   return app;

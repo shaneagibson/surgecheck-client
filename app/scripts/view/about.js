@@ -4,6 +4,7 @@ define('view/about', function(require) {
   var template = require('hbs!../html/about');
   var vent = require('../util/vent');
   var rateme = require('../util/rateme');
+  var analytics = require('../util/analytics');
   var config = require('../config');
 
   var view = Marionette.LayoutView.extend({
@@ -21,7 +22,7 @@ define('view/about', function(require) {
     },
 
     onDomRefresh: function() {
-      window.analytics.trackView('About');
+      analytics.trackView('About');
       $('.version .number').html(config.version);
       $('.rate-us .store').html(config.app_store[device.platform.toLowerCase()].name);
     },

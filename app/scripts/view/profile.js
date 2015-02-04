@@ -5,6 +5,8 @@ define('view/profile', function(require) {
   var vent = require('../util/vent');
   var click = require('../util/click');
   var context = require('../context');
+  var toast = require('../util/toast');
+  var analytics = require('../util/analytics');
   var serverGateway = require('../util/server-gateway');
 
   var view = Marionette.LayoutView.extend({
@@ -19,7 +21,7 @@ define('view/profile', function(require) {
     },
 
     onDomRefresh: function() {
-      window.analytics.trackView('Profile');
+      analytics.trackView('Profile');
     },
 
     showMenu: function(){
@@ -36,10 +38,11 @@ define('view/profile', function(require) {
           delete context.user;
           delete context.session;
           vent.trigger('navigate', 'landing');
+          toast.showShortBottom("Successfully Signed Out");
         })
         .catch(function(response) {
-          window.analytics.trackException(JSON.stringify(response), false);
-          window.plugins.toast.showLongBottom('Something unexpected happened. Please try again.');
+          analytics.trackError(JSON.stringify(response));
+          toast.showLongBottom('Something unexpected happened. Please try again.');
         });
     })
 
