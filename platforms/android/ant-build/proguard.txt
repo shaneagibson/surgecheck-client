@@ -1,10 +1,10 @@
-# view AndroidManifest.xml #generated:28
+# view AndroidManifest.xml #generated:22
 -keep class com.groboot.pushapps.GCMBaseIntentServiceImpl { <init>(...); }
 
-# view AndroidManifest.xml #generated:21
+# view AndroidManifest.xml #generated:15
 -keep class com.groboot.pushapps.GCMBroadcastReceiver { <init>(...); }
 
-# view AndroidManifest.xml #generated:29
+# view AndroidManifest.xml #generated:23
 -keep class com.groboot.pushapps.PushActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:5

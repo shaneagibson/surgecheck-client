@@ -27,11 +27,11 @@
     
     MFMessageComposeViewController *composeViewController = [[MFMessageComposeViewController alloc] init];
     composeViewController.messageComposeDelegate = self;
-
+    
     NSMutableArray *recipients = [[NSMutableArray alloc] init];
     
     [recipients addObject:phoneNumber];
-
+    
     [composeViewController setBody:textMessage];
     [composeViewController setRecipients:recipients];
     

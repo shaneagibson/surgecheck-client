@@ -5,6 +5,9 @@ define('util/push-notification', function(require) {
   var exports = {
 
     register: function() {
+
+      PushNotification.isPushEnabled(function() { console.log('YES'); }, function() { console.log('NO'); });
+
       return registerDevice()
         .then(getDeviceId)
         .then(saveDeviceId);

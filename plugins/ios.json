@@ -106,16 +106,6 @@
                         }
                     ]
                 }
-            },
-            "*-Info.plist": {
-                "parents": {
-                    "CFBundleURLTypes": [
-                        {
-                            "xml": "<array><dict><key>CFBundleURLSchemes</key><array><string>epsilon</string></array></dict></array>",
-                            "count": 1
-                        }
-                    ]
-                }
             }
         }
     },
@@ -139,10 +129,6 @@
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
         "org.apache.cordova.inappbrowser": {
-            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
-        },
-        "nl.x-services.plugins.launchmyapp": {
-            "URL_SCHEME": "epsilon",
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         }
     },

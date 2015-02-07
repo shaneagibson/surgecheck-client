@@ -1,9 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="uk.co.epsilontechnologies.ClientApp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="uk.co.epsilontechnologies.ClientApp" version="0.0.11" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
-    <feature name="PushAppsPlugin">
-        <param name="android-package" value="com.pushapps.phonegap.PushAppsPlugin" />
-        <param name="onload" value="true" />
+    <feature name="UniversalAnalytics">
+        <param name="android-package" value="com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin" />
+    </feature>
+    <feature name="Sms">
+        <param name="android-package" value="com.jsmobile.plugins.sms.Sms" />
     </feature>
     <feature name="Toast">
         <param name="android-package" value="nl.xservices.plugins.Toast" />
@@ -14,14 +16,9 @@
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
     </feature>
-    <feature name="UniversalAnalytics">
-        <param name="android-package" value="com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin" />
-    </feature>
-    <feature name="Sms">
-        <param name="android-package" value="com.jsmobile.plugins.sms.Sms" />
-    </feature>
-    <feature name="LaunchMyApp">
-        <param name="android-package" value="nl.xservices.plugins.LaunchMyApp" />
+    <feature name="PushAppsPlugin">
+        <param name="android-package" value="com.pushapps.phonegap.PushAppsPlugin" />
+        <param name="onload" value="true" />
     </feature>
     <name>Epsilon</name>
     <description>Epsilon Client App</description>

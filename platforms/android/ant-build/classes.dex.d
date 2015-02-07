@@ -7,10 +7,6 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/com/pushapps/phonegap/PushAppsPlugin$3.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/com/pushapps/phonegap/PushAppsPlugin$4.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/com/pushapps/phonegap/PushAppsPlugin.class \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/de/appplant/cordova/plugin/emailcomposer/AttachmentProvider.class \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/de/appplant/cordova/plugin/emailcomposer/EmailComposer$1.class \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/de/appplant/cordova/plugin/emailcomposer/EmailComposer.class \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/nl/xservices/plugins/LaunchMyApp.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/nl/xservices/plugins/Toast$1.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/nl/xservices/plugins/Toast.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/device/Device.class \

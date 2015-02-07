@@ -5,25 +5,17 @@
     },
     "config_munge": {
         "files": {
-            "undefined": {
-                "parents": {
-                    "undefined": [
-                        {
-                            "xml": "<access origin=\"*.pushapps.mobi\" />",
-                            "count": 1
-                        }
-                    ]
-                }
-            },
             "res/xml/config.xml": {
                 "parents": {
-                    "/widget": [
-                        {
-                            "xml": "<feature name=\"PushAppsPlugin\"><param name=\"android-package\" value=\"com.pushapps.phonegap.PushAppsPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        }
-                    ],
                     "/*": [
+                        {
+                            "xml": "<feature name=\"UniversalAnalytics\"><param name=\"android-package\" value=\"com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Sms\"><param name=\"android-package\" value=\"com.jsmobile.plugins.sms.Sms\" /></feature>",
+                            "count": 1
+                        },
                         {
                             "xml": "<feature name=\"Toast\"><param name=\"android-package\" value=\"nl.xservices.plugins.Toast\" /></feature>",
                             "count": 1
@@ -35,17 +27,11 @@
                         {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
                             "count": 1
-                        },
+                        }
+                    ],
+                    "/widget": [
                         {
-                            "xml": "<feature name=\"UniversalAnalytics\"><param name=\"android-package\" value=\"com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Sms\"><param name=\"android-package\" value=\"com.jsmobile.plugins.sms.Sms\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"LaunchMyApp\"><param name=\"android-package\" value=\"nl.xservices.plugins.LaunchMyApp\" /></feature>",
+                            "xml": "<feature name=\"PushAppsPlugin\"><param name=\"android-package\" value=\"com.pushapps.phonegap.PushAppsPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -53,6 +39,16 @@
             },
             "AndroidManifest.xml": {
                 "parents": {
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        }
+                    ],
                     "/manifest": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.SEND_SMS\" />",
@@ -110,20 +106,14 @@
                             "xml": "<intent-filter><action android:name=\"uk.co.epsilontechnologies.ClientApp.MESSAGE\" /><category android:name=\"android.intent.category.DEFAULT\" /></intent-filter>",
                             "count": 1
                         }
-                    ],
-                    "/*/application/activity": [
+                    ]
+                }
+            },
+            "undefined": {
+                "parents": {
+                    "undefined": [
                         {
-                            "xml": "<intent-filter><data android:scheme=\"epsilon\" /><action android:name=\"android.intent.action.VIEW\" /><category android:name=\"android.intent.category.DEFAULT\" /><category android:name=\"android.intent.category.BROWSABLE\" /></intent-filter>",
-                            "count": 1
-                        }
-                    ],
-                    "/*": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "xml": "<access origin=\"*.pushapps.mobi\" />",
                             "count": 1
                         }
                     ]
@@ -132,6 +122,12 @@
         }
     },
     "installed_plugins": {
+        "com.danielcwilson.plugins.googleanalytics": {
+            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
+        },
+        "com.jsmobile.plugins.sms": {
+            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
+        },
         "nl.x-services.plugins.toast": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
@@ -144,17 +140,7 @@
         "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
-        "com.danielcwilson.plugins.googleanalytics": {
-            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
-        },
-        "com.jsmobile.plugins.sms": {
-            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
-        },
         "com.pushapps.phonegap": {
-            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
-        },
-        "nl.x-services.plugins.launchmyapp": {
-            "URL_SCHEME": "epsilon",
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         }
     },
