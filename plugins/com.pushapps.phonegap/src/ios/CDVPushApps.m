@@ -76,7 +76,13 @@
 
 - (void)isPushEnabled:(CDVInvokedUrlCommand*)command
 {
-    UIRemoteNotificationType types = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
+    #define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+    NSUInteger types;
+      if (!SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+       types = [[[UIApplication sharedApplication] currentUserNotificationSettings] types];
+    }else{
+       types = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
+    }
     if (types == UIRemoteNotificationTypeNone) {
         CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"False"];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
