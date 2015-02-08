@@ -5,9 +5,6 @@ define('util/push-notification', function(require) {
   var exports = {
 
     register: function() {
-
-      PushNotification.isPushEnabled(function() { console.log('YES'); }, function() { console.log('NO'); });
-
       return registerDevice()
         .then(getDeviceId)
         .then(saveDeviceId);
@@ -25,7 +22,10 @@ define('util/push-notification', function(require) {
       PushNotification.registerDevice(
         config.google.project_number,
         config.pushapps.app_token,
-        resolve,
+        function(pushToken) {
+          console.log('pushapps - PUSH TOKEN: '+pushToken);
+          resolve();
+        },
         reject);
     });
   };
@@ -43,7 +43,7 @@ define('util/push-notification', function(require) {
   };
 
   var saveDeviceId = function(deviceId) {
-    console.log('DEVICEID: '+deviceId);
+    console.log('pushapps - DEVICE ID: '+deviceId);
     localStorage.setItem('deviceid', deviceId);
   };
 
