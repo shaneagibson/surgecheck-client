@@ -18,7 +18,7 @@ body {
 }
 .background {
   vertical-align: middle;
-  background: @blue;
+  background: @primary;
 }
 .background:before {
   content: '';
@@ -70,10 +70,10 @@ body {
   position: relative;
 }
 .input-container.error .input-underline{
-  border-color: @red;
+  border-color: @error;
 }
 .input-container.error .select-underline{
-  border-color: @red;
+  border-color: @error;
 }
 .input-container .error-reason{
   display: none;
@@ -83,7 +83,7 @@ body {
   position: absolute;
   right: 3px;
   bottom: 5px;
-  color: @red;
+  color: @error;
   text-align: right;
 }
 .input-container.error input {
