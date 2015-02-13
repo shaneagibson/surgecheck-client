@@ -93,8 +93,7 @@ define('app', function(require) {
     if (app.customUrl) return new RSVP.Promise(function(resolve, reject) { resolve(app.customUrl); });
     var sessionId = localStorage.getItem('sessionid');
     if (sessionId) {
-      return serverGateway
-        .get('/account/session', null, { sessionid: sessionId })
+      return serverGateway.get('/account/session', null, { sessionid: sessionId })
         .then(function(response) {
           context.user = response.user;
           context.session = response.session;

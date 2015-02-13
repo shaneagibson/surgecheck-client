@@ -48,8 +48,7 @@ define('view/sign-in', function(require) {
 
     submit: function() {
       var self = this;
-      return serverGateway
-        .post('/account/login', {
+      return serverGateway.post('/account/login', {
           deviceId: localStorage.getItem('deviceid'),
           emailAddress: this.ui.emailAddressInput.val(),
           password: this.ui.passwordInput.val()

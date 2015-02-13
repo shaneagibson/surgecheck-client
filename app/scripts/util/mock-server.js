@@ -35,14 +35,21 @@ define('util/mock-server', function(require) {
     mocks.push(new Mock(type, pathRegEx, isSuccess, response));
   };
 
-  registerMock('POST', '/account/register', true, JSON.parse(require('text!../mocks/register.response.json')));
-  registerMock('POST', '/account/verify', true, JSON.parse(require('text!../mocks/verification-code.response.json')));
-  registerMock('POST', '/account/login', true, JSON.parse(require('text!../mocks/sign-in.response.json')));
-  registerMock('POST', '/account/logout', true, JSON.parse(require('text!../mocks/sign-out.response.json')));
-  registerMock('GET', '/account/session', true, JSON.parse(require('text!../mocks/session.response.json')));
-  registerMock('GET', '/payment/user/.*/payment-method', true, JSON.parse(require('text!../mocks/payment-methods.response.json')));
-  registerMock('DELETE', '/payment/user/.*/payment-method', true, JSON.parse(require('text!../mocks/delete-payment-methods.response.json')));
-  registerMock('GET', '/payment/token', true, JSON.parse(require('text!../mocks/payment-token.response.json')));
+  registerMock('GET',    '/payment/token',                              true,   { "token": "16f7770b-4ef2-4404-8836-5365c299e7ae" });
+  registerMock('POST',   '/payment/user/.*/payment-method',             true,   {});
+  registerMock('DELETE', '/payment/user/.*/payment-method/.*',          true,   {});
+  registerMock('GET',    '/payment/user/.*/payment-method',             true,   JSON.parse(require('text!../mocks/get-payment-methods.response.json')));
+
+  registerMock('POST',   '/account/password/reset',                     true,   {});
+  registerMock('POST',   '/account/password/forgotten',                 true,   {});
+  registerMock('POST',   '/account/login',                              true,   JSON.parse(require('text!../mocks/sign-in.response.json')));
+  registerMock('POST',   '/account/logout',                             true,   {});
+  registerMock('POST',   '/account/register',                           true,   JSON.parse(require('text!../mocks/register.response.json')));
+  registerMock('POST',   '/account/verify',                             true,   {});
+  registerMock('GET',    '/account/session',                            true,   JSON.parse(require('text!../mocks/session.response.json')));
+  registerMock('POST',   '/account/verification-code/resend?userId=.*', true,   {});
+
+  registerMock('POST',   '/promotion/user/.*/redeem/.*',                true,   {});
 
   return exports;
 

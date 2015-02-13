@@ -77,7 +77,7 @@ define('view/add-card', function(require) {
           this.getElementValue('.postcode'),
           this.getElementValue('.type'))
         .then(function(nonce) {
-          return serverGateway.put('/payment/user/'+context.user.id+'/card', { nonce: nonce })
+          return serverGateway.post('/payment/user/'+context.user.id+'/payment-method', { nonce: nonce })
             .then(function() {
               toast.showShortBottom('Card Successfully Added');
               vent.trigger('navigate', 'payments');

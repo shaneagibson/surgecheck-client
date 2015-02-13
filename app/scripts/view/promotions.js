@@ -44,8 +44,7 @@ define('view/promotions', function(require) {
     },
 
     submit: function() {
-      return serverGateway
-        .post('/user/'+context.user.id+'/redeem/'+view.ui.promotionCodeInput.val())
+      return serverGateway.post('/promotion/user/'+context.user.id+'/redeem/'+view.ui.promotionCodeInput.val())
         .then(function() {
           vent.trigger('navigate', 'home');
           toast.showLongBottom('Successfully applied Promotion Code');
