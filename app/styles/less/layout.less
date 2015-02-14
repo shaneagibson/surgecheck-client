@@ -6,7 +6,7 @@ body {
   -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
   -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
   -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-  font-family: Vera;
+  font-family: Jura;
   font-size: 12px;
   margin: 0px;
   padding: 0px;
@@ -15,6 +15,9 @@ body {
   vertical-align: middle;
   overflow-x: hidden;
   color: @darkgray;
+}
+input, textarea, keygen, select, button {
+  font-family: Jura;
 }
 .background {
   vertical-align: middle;
@@ -148,6 +151,8 @@ input:focus{
   color: @white;
   position: relative;
   top: -20px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
 }
 .profile-photo{
   float: right;
@@ -162,7 +167,7 @@ input:focus{
   .icon-user{
     font-size: 18vw;
     position: relative;
-    top: 8px;
+    top: 10px;
     color: @ultralightgray;
   }
 }
@@ -186,6 +191,7 @@ input:focus{
   text-transform: uppercase;
   font-weight: bold;
   padding-bottom: 5px;
+  letter-spacing: 3px;
 }
 .select-text{
   margin: 0px 15px;
@@ -230,6 +236,7 @@ input:focus{
 }
 .card-summary{
   margin-left: 40px;
+  letter-spacing: 1px;
   .icon-star-empty{
     padding-left: 5px;
   }
@@ -291,7 +298,7 @@ input:focus{
   margin: 0px auto;
 }
 .bold{
-  font-family: Vera-Bold;
+  font-family: Jura-Bold;
 }
 .version{
   bottom: 10px;
@@ -302,4 +309,7 @@ input:focus{
 .disabled{
   opacity: .7;
   color: @ultralightgray;
+}
+.dwwr {
+  font-family: Jura;
 }

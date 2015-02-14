@@ -92,6 +92,7 @@
   text-align: center;
   font-size: 15px;
   float: left;
+  text-transform: uppercase;
 }
 .dark-button {
   color: #ffffff;
@@ -127,7 +128,7 @@
   margin: 25px;
   font-size: 22px;
   color: #ffffff;
-  padding: 15px;
+  padding: 10px 15px 15px 15px;
 }
 .text-and-icon-button .text {
   font-size: 12px;
@@ -145,20 +146,16 @@
 
 
 @font-face {
-  font-family: Vera;
-  src: url(../fonts/bitstream-vera/Vera.ttf);
+  font-family: Jura-Light;
+  src: url(../fonts/jura/Jura-Light.otf);
 }
 @font-face {
-  font-family: Vera-Bold;
-  src: url(../fonts/bitstream-vera/Vera-Bold.ttf);
+  font-family: Jura;
+  src: url(../fonts/jura/Jura-Regular.otf);
 }
 @font-face {
-  font-family: Vera-Italic;
-  src: url(../fonts/bitstream-vera/Vera-Italic.ttf);
-}
-@font-face {
-  font-family: Vera-Bold-Italic;
-  src: url(../fonts/bitstream-vera/Vera-Bold-Italic.ttf);
+  font-family: Jura-Bold;
+  src: url(../fonts/jura/Jura-DemiBold.otf);
 }
 @font-face {
   font-family: CourierPrimeBold;
@@ -176,7 +173,7 @@ body {
   /* prevent webkit from resizing text to fit */
   -webkit-user-select: none;
   /* prevent copy paste, to allow, change 'none' to 'text' */
-  font-family: Vera;
+  font-family: Jura;
   font-size: 12px;
   margin: 0px;
   padding: 0px;
@@ -185,6 +182,13 @@ body {
   vertical-align: middle;
   overflow-x: hidden;
   color: #333333;
+}
+input,
+textarea,
+keygen,
+select,
+button {
+  font-family: Jura;
 }
 .background {
   vertical-align: middle;
@@ -318,6 +322,8 @@ input:focus {
   color: #ffffff;
   position: relative;
   top: -20px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
 }
 .profile-photo {
   float: right;
@@ -333,7 +339,7 @@ input:focus {
 .profile-photo .icon-user {
   font-size: 18vw;
   position: relative;
-  top: 8px;
+  top: 10px;
   color: #d8d8d8;
 }
 .half {
@@ -356,6 +362,7 @@ input:focus {
   text-transform: uppercase;
   font-weight: bold;
   padding-bottom: 5px;
+  letter-spacing: 3px;
 }
 .select-text {
   margin: 0px 15px;
@@ -400,6 +407,7 @@ input:focus {
 }
 .card-summary {
   margin-left: 40px;
+  letter-spacing: 1px;
 }
 .card-summary .icon-star-empty {
   padding-left: 5px;
@@ -460,7 +468,7 @@ input:focus {
   margin: 0px auto;
 }
 .bold {
-  font-family: Vera-Bold;
+  font-family: Jura-Bold;
 }
 .version {
   bottom: 10px;
@@ -471,6 +479,9 @@ input:focus {
 .disabled {
   opacity: .7;
   color: #d8d8d8;
+}
+.dwwr {
+  font-family: Jura;
 }
 
 .loader {
@@ -714,13 +725,13 @@ body.modal #modal {
 }
 .confirm .title,
 .rateme .title {
-  font-family: Vera-Bold;
+  font-family: Jura-Bold;
   font-size: 16px;
   text-align: center;
 }
 .confirm .text,
 .rateme .text {
-  font-family: Vera;
+  font-family: Jura;
   text-align: center;
   font-size: 14px;
   padding-bottom: 20px;

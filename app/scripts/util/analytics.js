@@ -20,7 +20,6 @@ define('util/analytics', function(require) {
     window.analytics.trackView(name);
   };
 
-
   return exports;
 
 });

@@ -18,6 +18,7 @@ define('view/register', function(require) {
 
     events: {
       'click .register' : 'registerUser',
+      'click .sign-in' : 'signIn',
       'blur input.firstname' : 'validateField',
       'blur input.surname' : 'validateField',
       'blur input.emailaddress' : 'validateField',
@@ -41,6 +42,10 @@ define('view/register', function(require) {
       if (this.validateForm()) {
         this.submit();
       }
+    }),
+
+    signIn: click.single(function() {
+      vent.trigger('navigate', 'sign-in');
     }),
 
     validateForm: function() {
