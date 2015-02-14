@@ -150,7 +150,7 @@ input:focus{
   font-size: 20px;
   color: @white;
   position: relative;
-  top: -20px;
+  top: -18px;
   text-transform: uppercase;
   letter-spacing: 4px;
 }
@@ -312,4 +312,10 @@ input:focus{
 }
 .dwwr {
   font-family: Jura;
+}
+input.cardnumber,input.password{
+  letter-spacing: 4px;
+  &::-webkit-input-placeholder{
+    letter-spacing: 0px;
+  }
 }

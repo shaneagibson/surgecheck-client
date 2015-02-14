@@ -6,7 +6,7 @@ define('util/toast', function(require) {
     window.plugins.toast.showShortBottom(message);
   };
 
-  exports.showLongBottom = function() {
+  exports.showLongBottom = function(message) {
     window.plugins.toast.showLongBottom(message);
   };
 

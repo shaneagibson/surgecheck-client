@@ -93,6 +93,7 @@
   font-size: 15px;
   float: left;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 .dark-button {
   color: #ffffff;
@@ -321,7 +322,7 @@ input:focus {
   font-size: 20px;
   color: #ffffff;
   position: relative;
-  top: -20px;
+  top: -18px;
   text-transform: uppercase;
   letter-spacing: 4px;
 }
@@ -482,6 +483,14 @@ input:focus {
 }
 .dwwr {
   font-family: Jura;
+}
+input.cardnumber,
+input.password {
+  letter-spacing: 4px;
+}
+input.cardnumber::-webkit-input-placeholder,
+input.password::-webkit-input-placeholder {
+  letter-spacing: 0px;
 }
 
 .loader {

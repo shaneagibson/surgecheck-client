@@ -19,7 +19,9 @@ define('util/validator', function(require) {
 
     validateField: function(inputField) {
       var self = this;
-      var rules = inputField.data('validationrules').split(' ');
+      var rulesString = inputField.data('validationrules');
+      if (!rulesString) return true;
+      var rules = rulesString.split(' ');
       var errors = rules.map(function(rule) {
         if (validators[rule]) {
           var value = inputField.val();
