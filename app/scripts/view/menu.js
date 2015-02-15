@@ -4,6 +4,7 @@ define('view/menu', function(require) {
   var template = require('hbs!../html/menu');
   var click = require('../util/click');
   var vent = require('../util/vent');
+  var swipe = require('../util/swipe');
 
   var view = Marionette.LayoutView.extend({
 
@@ -15,6 +16,10 @@ define('view/menu', function(require) {
       'click .active' : 'hideMenu',
       'click .menu-close' : 'hideMenu',
       'click .menu-item:not(.active)' : 'showMenuItem'
+    },
+
+    onDomRefresh: function() {
+      swipe.register(this.el, swipe.LEFT, this.hideMenu);
     },
 
     setActiveItem: function(activeItem) {
