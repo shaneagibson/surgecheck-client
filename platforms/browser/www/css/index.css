@@ -222,10 +222,12 @@ button {
 }
 .icon {
   font-size: 50px;
+  text-shadow: 1px 1px 3px black;
 }
 .title {
   font-size: 40px;
   padding: 10px;
+  text-shadow: 1px 1px 3px black;
 }
 .js-touch-color {
   background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%);
@@ -325,6 +327,7 @@ input:focus {
   top: -18px;
   text-transform: uppercase;
   letter-spacing: 4px;
+  text-shadow: 1px 1px 3px black;
 }
 .profile-photo {
   float: right;
@@ -491,6 +494,10 @@ input.password {
 input.cardnumber::-webkit-input-placeholder,
 input.password::-webkit-input-placeholder {
   letter-spacing: 0px;
+}
+.map-canvas {
+  height: 100vh;
+  bottom: 0px;
 }
 
 .loader {

@@ -98,6 +98,7 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/backbone.wreqr \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/braintree-web \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/fastclick \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/google-jsapi \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/hammerjs \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/handlebars \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/jquery \
@@ -205,6 +206,7 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/fastclick/LICENSE \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/fastclick/README.md \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/fastclick/lib/fastclick.js \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/google-jsapi/jsapi.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/hammerjs/bower.json \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/hammerjs/CHANGELOG.md \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/components/hammerjs/component.json \
@@ -437,6 +439,7 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/mocks/sign-in.response.json \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/analytics.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/click.js \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/map.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/mock-server.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/payment-gateway.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/push-notification.js \

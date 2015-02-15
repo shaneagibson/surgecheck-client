@@ -14,7 +14,8 @@ require.config(
       "event-bus": "./components/vent/app/scripts/services/event-bus/event-bus",
       "mobiscroll": "./components/mobiscroll/mobiscroll.custom-2.14.4.min",
       "braintree": "./components/braintree-web/dist/braintree",
-      "hammer": "./components/hammerjs/hammer"
+      "hammer": "./components/hammerjs/hammer",
+      "google-jsapi": "./components/google-jsapi/jsapi"
     },
     shim: {
       jquery:{
