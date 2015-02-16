@@ -29,7 +29,7 @@ define('view/profile', function(require) {
     },
 
     signOut: click.single(function(){
-      serverGateway.post('/account/logout', {
+      serverGateway.account.post('/account/logout', {
           sessionId: context.session.id
         })
         .then(function() {

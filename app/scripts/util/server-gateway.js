@@ -3,29 +3,41 @@ define('util/server-gateway', function(require) {
   var config = require('../config');
   var mockServer = require('./mock-server');
 
+  function Server(server) {
+
+    this.scheme = server.scheme;
+    this.host = server.host;
+    this.port = server.port;
+
+    this.post = function(path, payload, queryParams, contentType) {
+      return issueRequest('POST', asUrl(this.scheme, this.host, this.port, path, queryParams), contentType, payload);
+    };
+
+    this.put = function(path, payload, queryParams, contentType) {
+      return issueRequest('PUT', asUrl(this.scheme, this.host, this.port, path, queryParams, payload), contentType);
+    };
+
+    this.get = function(path, queryParams, contentType) {
+      return issueRequest('GET', asUrl(this.scheme, this.host, this.port, path, queryParams), contentType);
+    };
+
+    this.delete = function(path, queryParams, contentType) {
+      return issueRequest('DELETE', asUrl(this.scheme, this.host, this.port, path, queryParams), contentType);
+    };
+
+  }
+
   var exports = {
 
-    post: function(path, payload, queryParams, contentType) {
-      return issueRequest('POST', asUrl(path, queryParams), contentType, payload);
-    },
-
-    put: function(path, payload, queryParams, contentType) {
-      return issueRequest('PUT', asUrl(path, queryParams, payload), contentType);
-    },
-
-    get: function(path, queryParams, contentType) {
-      return issueRequest('GET', asUrl(path, queryParams), contentType);
-    },
-
-    delete: function(path, queryParams, contentType) {
-      return issueRequest('DELETE', asUrl(path, queryParams), contentType);
-    }
+    promotion: new Server(config.server.promotion),
+    payment: new Server(config.server.payment),
+    account: new Server(config.server.account)
 
   };
 
-  var asUrl = function(path, queryParams) {
+  var asUrl = function(scheme, host, port, path, queryParams) {
     var queryString = queryParams ? '?' + decodeURIComponent($.param(queryParams)) : '';
-    var baseUrl = config.server.scheme + '://' + config.server.host + ':' + config.server.port;
+    var baseUrl = scheme + '://' + host + ':' + port;
     return baseUrl + path + queryString;
   };
 
@@ -46,8 +58,7 @@ define('util/server-gateway', function(require) {
           },
           type: type,
           data: JSON.stringify(payload || {}),
-          dataType: 'json',
-          contentType: contentType | "application/json; charset=utf-8"
+          contentType: contentType || "application/json; charset=utf-8"
         }
       );
     });

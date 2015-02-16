@@ -22,7 +22,7 @@ define('view/verify-mobile', function(require) {
     },
 
     ui: {
-      verificationCodeInput: 'input.code'
+      verificationCodeInput: 'input.verificationcode'
     },
 
     onDomRefresh: function() {
@@ -41,7 +41,7 @@ define('view/verify-mobile', function(require) {
 
     submit: function() {
       var self = this;
-      return serverGateway.post('/account/verify', {
+      return serverGateway.account.post('/account/verify', {
           userId: context.user.id,
           code: this.ui.verificationCodeInput.val()
         })
@@ -63,7 +63,7 @@ define('view/verify-mobile', function(require) {
     },
 
     resendSms: function() {
-      return serverGateway.post('/account/verification-code/resend?userId='+context.user.id)
+      return serverGateway.account.post('/account/verification-code/resend?userId='+context.user.id)
         .then(function() {
           toast.showLongBottom('The code has been resent via SMS.');
         })

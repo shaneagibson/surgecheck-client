@@ -20,8 +20,12 @@ define('view/add-card', function(require) {
     events: {
       'click .icon-menu' : 'showMenu',
       'click .save-card' : 'saveCard',
-      'click .cancel' : 'cancel'
-      // TODO - validator on blur
+      'click .cancel' : 'cancel',
+      'blur input.cardnumber' : 'validateField',
+      'blur input.mmyy' : 'validateField',
+      'blur input.cvv' : 'validateField',
+      'blur input.postcode' : 'validateField'
+      // TODO - handle blur of mobiscroll
     },
 
     onDomRefresh: function(){
@@ -68,6 +72,10 @@ define('view/add-card', function(require) {
       return validator.validateFields($('.form').find('.field'));
     },
 
+    validateField: function(e) {
+      validator.validateFields($(e.currentTarget));
+    },
+
     submit: function(){
       paymentGateway.tokenizeCard(
           this.getElementValue('.cardnumber'),
@@ -77,7 +85,7 @@ define('view/add-card', function(require) {
           this.getElementValue('.postcode'),
           this.getElementValue('.type'))
         .then(function(nonce) {
-          return serverGateway.post('/payment/user/'+context.user.id+'/payment-method', { nonce: nonce })
+          return serverGateway.payment.post('/payment/user/'+context.user.id+'/payment-method', { nonce: nonce })
             .then(function() {
               toast.showShortBottom('Card Successfully Added');
               vent.trigger('navigate', 'payments');

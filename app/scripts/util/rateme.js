@@ -8,7 +8,7 @@ define('util/rateme', function(require) {
   var exports = {
 
     showRateMeDialog: function(){
-      var appViewCount = window.localStorage.getItem(APP_VIEW_COUNT_KEY) | 0;
+      var appViewCount = window.localStorage.getItem(APP_VIEW_COUNT_KEY) || 0;
       if (appViewCount === 5) {
         showRateMeDialog();
       }
@@ -23,7 +23,7 @@ define('util/rateme', function(require) {
     },
 
     incrementAppViewCount: function() {
-      var appViewCount = window.localStorage.getItem(APP_VIEW_COUNT_KEY) | 0;
+      var appViewCount = window.localStorage.getItem(APP_VIEW_COUNT_KEY) || 0;
       appViewCount = appViewCount + 1;
       window.localStorage.setItem(APP_VIEW_COUNT_KEY, appViewCount);
     }

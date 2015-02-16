@@ -496,10 +496,6 @@ input.cardnumber::-webkit-input-placeholder,
 input.password::-webkit-input-placeholder {
   letter-spacing: 0px;
 }
-.map-canvas {
-  height: 100vh;
-  bottom: 0px;
-}
 
 .loader {
   position: absolute;

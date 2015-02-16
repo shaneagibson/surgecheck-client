@@ -17,7 +17,6 @@ define('app', function(require) {
   var toast = require('./util/toast');
   var analytics = require('./util/analytics');
   var context = require('./context');
-  var map = require('./util/map');
 
   var app = new Marionette.Application();
 
@@ -27,7 +26,6 @@ define('app', function(require) {
       .then(pushNotification.register)
       .then(paymentGateway.initialize)
       .then(initializeBackbone)
-      .then(initializeGoogleMaps)
       .then(initializeModalListeners)
       .then(initializeMenu)
       .then(showRateMe)
@@ -72,10 +70,6 @@ define('app', function(require) {
     });
   };
 
-  var initializeGoogleMaps = function() {
-    return map.initialize();
-  };
-
   var showRateMe = function(){
     rateme.showRateMeDialog();
   };
@@ -99,7 +93,7 @@ define('app', function(require) {
     if (app.customUrl) return new RSVP.Promise(function(resolve, reject) { resolve(app.customUrl); });
     var sessionId = localStorage.getItem('sessionid');
     if (sessionId) {
-      return serverGateway.get('/account/session', null, { sessionid: sessionId })
+      return serverGateway.account.get('/account/session', null, { sessionid: sessionId })
         .then(function(response) {
           context.user = response.user;
           context.session = response.session;

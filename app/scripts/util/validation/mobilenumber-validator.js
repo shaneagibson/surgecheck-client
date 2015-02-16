@@ -1,4 +1,4 @@
-define('util/validation/password-validator', function() {
+define('util/validation/mobilenumber-validator', function() {
 
   var exports = {
 

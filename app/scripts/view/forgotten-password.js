@@ -45,7 +45,7 @@ define('view/forgotten-password', function(require) {
     },
 
     submit: function() {
-      return serverGateway.post('/account/password/forgotten', {
+      return serverGateway.account.post('/account/password/forgotten', {
           emailAddress: this.ui.emailAddressInput.val()
         })
         .then(function() {

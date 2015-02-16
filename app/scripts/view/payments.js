@@ -20,12 +20,16 @@ define('view/payments', function(require) {
 
     onDomRefresh: function() {
       var view = this;
-      serverGateway.get('/payment/user/'+context.user.id+'/payment-method')
+      serverGateway.payment.get('/payment/user/'+context.user.id+'/payment-method')
         .then(function(paymentMethods) {
-          context.paymentMethods = paymentMethods;
-          paymentMethods.forEach(function(paymentMethod) {
-            view.renderPaymentMethod(paymentMethod);
-          });
+          if (paymentMethods.length > 0) {
+            context.paymentMethods = paymentMethods;
+            paymentMethods.forEach(function (paymentMethod) {
+              view.renderPaymentMethod(paymentMethod);
+            });
+          } else {
+            $('.payment-methods').append('<div class="select-text center">No Cards Found</div>');
+          }
         });
     },
 

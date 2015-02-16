@@ -58,7 +58,7 @@ define('view/register', function(require) {
 
     submit: function() {
       var self = this;
-      return serverGateway.post('/account/register', {
+      return serverGateway.account.post('/account/register', {
           deviceId: localStorage.getItem('deviceid'),
           firstName: this.ui.firstNameInput.val(),
           surname: this.ui.surnameInput.val(),

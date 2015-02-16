@@ -19,8 +19,12 @@ define('view/edit-card', function(require) {
       'click .icon-menu' : 'showMenu',
       'click .save-card' : 'saveCard',
       'click .cancel' : 'cancel',
-      'click .delete-card' : 'deleteCard'
-      // TODO - validator on blur
+      'click .delete-card' : 'deleteCard',
+      'blur input.cardnumber' : 'validateField',
+      'blur input.mmyy' : 'validateField',
+      'blur input.cvv' : 'validateField',
+      'blur input.postcode' : 'validateField'
+      // TODO - handle blur of mobiscroll
     },
 
     onDomRefresh: function(){
@@ -78,6 +82,10 @@ define('view/edit-card', function(require) {
       return validator.validateFields($('.form').find('.field'));
     },
 
+    validateField: function(e) {
+      validator.validateFields($(e.currentTarget));
+    },
+
     submit: function(){
       // TODO - validate & update card
       toast.showShortBottom('Card Successfully Updated');
@@ -94,7 +102,7 @@ define('view/edit-card', function(require) {
     },
 
     confirmDeleteCard: function(){
-      serverGateway.delete('/payment/user/'+context.user.id+'/payment-method/'+this.options.cardId)
+      serverGateway.payment.delete('/payment/user/'+context.user.id+'/payment-method/'+this.options.cardId)
         .then(function() {
           vent.trigger('navigate', 'payments');
           vent.trigger('modal:hide');

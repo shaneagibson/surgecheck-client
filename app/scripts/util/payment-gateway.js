@@ -7,7 +7,7 @@ define('util/payment-gateway', function(require) {
   var exports = {};
 
   exports.initialize = function() {
-    return serverGateway.get('/payment/token')
+    return serverGateway.payment.get('/payment/token')
       .then(function(response) {
         if (!config.mock) exports.client = new braintree.api.Client({ clientToken : response.token });
       });
