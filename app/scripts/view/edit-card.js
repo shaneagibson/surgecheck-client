@@ -24,7 +24,6 @@ define('view/edit-card', function(require) {
       'blur input.mmyy' : 'validateField',
       'blur input.cvv' : 'validateField',
       'blur input.postcode' : 'validateField'
-      // TODO - handle blur of mobiscroll
     },
 
     onDomRefresh: function(){

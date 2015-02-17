@@ -25,7 +25,6 @@ define('view/add-card', function(require) {
       'blur input.mmyy' : 'validateField',
       'blur input.cvv' : 'validateField',
       'blur input.postcode' : 'validateField'
-      // TODO - handle blur of mobiscroll
     },
 
     onDomRefresh: function(){
@@ -39,7 +38,11 @@ define('view/add-card', function(require) {
         display: 'modal',
         theme: 'epsilon',
         placeholder: 'Select Type',
-        minWidth: 200
+        minWidth: 200,
+        onClose: function(value, button) {
+          if (value && button === 'set') $('select.type').val(value.toLowerCase());
+          validator.validateFields($('.type'));
+        }
       });
     },
 
@@ -54,7 +57,11 @@ define('view/add-card', function(require) {
         dateFormat: 'mm / yyyy',
         theme: 'epsilon',
         minDate: today,
-        maxDate: maxDate
+        maxDate: maxDate,
+        onClose: function(value, button) {
+          if (value && button === 'set') $('input.mmyy').val(value);
+          validator.validateFields($('.mmyy'));
+        }
       });
     },
 
