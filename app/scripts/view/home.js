@@ -5,7 +5,6 @@ define('view/home', function(require) {
   var click = require('../util/click');
   var analytics = require('../util/analytics');
   var vent = require('../util/vent');
-  var map = require('../util/map');
 
   var view = Marionette.LayoutView.extend({
 
@@ -19,7 +18,6 @@ define('view/home', function(require) {
 
     onDomRefresh: function() {
       analytics.trackView('Home');
-      map.renderMap($('.map-canvas'), 51, 1);
     },
 
     showMenu: function(){

@@ -17,7 +17,6 @@ define('app', function(require) {
   var toast = require('./util/toast');
   var analytics = require('./util/analytics');
   var context = require('./context');
-  var map = require('./util/map');
 
   var app = new Marionette.Application();
 
@@ -27,7 +26,6 @@ define('app', function(require) {
       .then(pushNotification.register)
       .then(paymentGateway.initialize)
       .then(initializeBackbone)
-      .then(initializeGoogleMaps)
       .then(initializeModalListeners)
       .then(initializeMenu)
       .then(showRateMe)
@@ -70,10 +68,6 @@ define('app', function(require) {
       app.modal.empty();
       $('body').removeClass('modal');
     });
-  };
-
-  var initializeGoogleMaps = function() {
-    return map.initialize();
   };
 
   var showRateMe = function(){
