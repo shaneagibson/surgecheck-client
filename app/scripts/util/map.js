@@ -10,7 +10,7 @@ define('util/map', function(require) {
     });
   };
 
-  exports.renderMap = function(mapElement, latitude, longitude) {
+  exports.renderMap = function(mapElement, latitude, longitude, events) {
     var mapOptions = {
       zoom: 8,
       center: new google.maps.LatLng(latitude, longitude),
@@ -21,7 +21,15 @@ define('util/map', function(require) {
       streetViewControl: false,
       overviewMapControl: false
     };
-    return new google.maps.Map(mapElement[0], mapOptions);
+    var map = new google.maps.Map(mapElement[0], mapOptions);
+    if (events) {
+      for (var key in events) {
+        if (events.hasOwnProperty(key)) {
+          google.maps.event.addListener(map, key, events[key]);
+        }
+      }
+    }
+    return map;
   };
 
   return exports;
