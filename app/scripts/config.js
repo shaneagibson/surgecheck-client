@@ -25,6 +25,11 @@ define('config', function(require){
         host: '192.168.43.22',
         port: 8003
       },
+      places: {
+        scheme: 'http',
+        host: '192.168.43.22',
+        port: 8005
+      },
       promotion: {
         scheme: 'http',
         host: '192.168.43.22',

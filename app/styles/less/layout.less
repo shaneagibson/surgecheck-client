@@ -50,16 +50,19 @@ input, textarea, keygen, select, button {
 }
 .icon{
   font-size: 50px;
-  text-shadow: 1px 1px 3px @darkgray;
+  text-shadow: 0px 0px 3px @darkgray;
 }
 .title{
   font-size: 40px;
   padding: 10px;
-  text-shadow: 1px 1px 3px @darkgray;
+  text-shadow: 0px 0px 3px @darkgray;
 }
 .js-touch-color{
   background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
   background-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+}
+.js-touch-size{
+  transform: scale(0.95, 0.95);
 }
 .input-container.single{
   width: 80%;
@@ -155,7 +158,7 @@ input:focus{
   top: -18px;
   text-transform: uppercase;
   letter-spacing: 4px;
-  text-shadow: 1px 1px 3px @darkgray;
+  text-shadow: 0px 0px 3px @darkgray;
 }
 .profile-photo{
   float: right;
@@ -322,13 +325,6 @@ input.cardnumber,input.password{
     letter-spacing: 0px;
   }
 }
-.brand{
-  font-size: 24px;
-  color: white;
-  text-align: center;
-  padding: 12px;
-  text-shadow: 1px 1px 3px @darkgray;
-}
 .map-canvas{
   width: 100%;
   height: 100%;
@@ -343,24 +339,24 @@ input.cardnumber,input.password{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 36px;
+    font-size: 20px;
     pointer-events: none;
     color: @white;
     text-shadow: 0px 0px 5px @darkgray;
     &.drag{
-      color: @darkgray;
+      color: @primary;
       text-shadow: 0px 0px 5px @white;
     }
   }
 }
 .bottom{
-  height: 50vh;
+  height: 45vh;
   width: 100vw;
   bottom: 0;
   position: absolute;
 }
 .top{
-  height: 50vh;
+  height: 55vh;
   width: 100vw;
   top: 0;
   position: absolute;
@@ -409,4 +405,109 @@ input.cardnumber,input.password{
   z-index: 3;
   background-color: @white;
   position: absolute;
+}
+.icon-left-dir {
+  left: 0px;
+}
+.icon-right-dir {
+  right: 0px;
+}
+.icon-left-dir,.icon-right-dir{
+  top: 70%;
+  position: absolute;
+  font-size: 30px;
+  color: @darkgray;
+  padding: 10px 0px;
+  z-index: 10;
+  display: none;
+}
+#iscroll-wrapper{
+  width: 100vw;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.places{
+  top: 40px;
+  padding: 0;
+  margin: 0;
+  width: 400vw; // TODO - dynamically calculate this
+  position: absolute;
+  list-style-type: none;
+  z-index: 1;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+  text-size-adjust: none;
+  .place {
+    width: 100vw;
+    float: left;
+    color: @white;
+    text-align: center;
+    text-shadow: 0px 0px 10px @darkgray;
+    .name {
+      font-size: 25px;
+      padding-bottom: 5px;
+      font-family: Jura-Bold;
+    }
+    .description {
+      font-size: 14px;
+      padding-bottom: 10px;
+    }
+    .rating {
+      font-size: 25px;
+      padding-bottom: 20px;
+    }
+    .images {
+      text-align: center;
+      width: 100%;
+      padding-bottom: 10px;
+      .image {
+        background-size: 20vw 20vw;
+        width: 20vw;
+        height: 20vw;
+        border: 1px solid white;
+        display: inline-block;
+        margin: 0px 5px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px @darkgray;
+      }
+    }
+    .small-description {
+      font-size: 12px;
+      padding-bottom: 15px;
+    }
+    .button {
+      background-color: white;
+      font-size: 14px;
+      padding: 10px;
+      border-radius: 5px;
+      width: 105px;
+      color: @darkgray;
+      box-shadow: 0px 0px 10px @darkgray;
+      text-shadow: none;
+      font-family: Jura-Bold;
+      &.left {
+        margin-left: 10%;
+        float: left;
+      }
+      &.right {
+        margin-right: 10%;
+        float: right;
+      }
+    }
+  }
 }

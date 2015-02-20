@@ -54,7 +54,8 @@ module.exports.metadata =
     "nl.x-services.plugins.toast": "2.0.4",
     "com.jsmobile.plugins.sms": "0.0.1",
     "com.danielcwilson.plugins.googleanalytics": "0.6.1",
-    "com.pushapps.phonegap": "1.6.0"
+    "com.pushapps.phonegap": "1.6.0",
+    "org.apache.cordova.geolocation": "0.3.12"
 }
 // BOTTOM OF METADATA
 });

@@ -48,6 +48,9 @@
         },
         "com.pushapps.phonegap": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
+        },
+        "org.apache.cordova.geolocation": {
+            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         }
     },
     "dependent_plugins": {}

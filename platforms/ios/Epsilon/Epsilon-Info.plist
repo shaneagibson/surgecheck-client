@@ -186,5 +186,7 @@
       <string>UIInterfaceOrientationPortraitUpsideDown</string>
       <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string></string>
   </dict>
 </plist>

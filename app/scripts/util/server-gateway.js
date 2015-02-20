@@ -31,7 +31,8 @@ define('util/server-gateway', function(require) {
 
     promotion: new Server(config.server.promotion),
     payment: new Server(config.server.payment),
-    account: new Server(config.server.account)
+    account: new Server(config.server.account),
+    places: new Server(config.server.places)
 
   };
 

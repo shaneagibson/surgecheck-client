@@ -10,10 +10,10 @@ define('util/map', function(require) {
     });
   };
 
-  exports.renderMap = function(mapElement, latitude, longitude, events) {
+  exports.render = function(mapElement, centerPosition, zoom, events, markers) {
     var mapOptions = {
-      zoom: 8,
-      center: new google.maps.LatLng(latitude, longitude),
+      zoom: zoom,
+      center: new google.maps.LatLng(centerPosition.coords.latitude, centerPosition.coords.longitude),
       panControl: false,
       zoomControl: false,
       mapTypeControl: false,
@@ -28,6 +28,15 @@ define('util/map', function(require) {
           google.maps.event.addListener(map, key, events[key]);
         }
       }
+    }
+    if (markers) {
+      markers.forEach(function (marker) {
+        new google.maps.Marker({
+          icon: marker.icon,
+          position: new google.maps.LatLng(marker.position.coords.latitude, marker.position.coords.longitude),
+          map: map
+        });
+      });
     }
     return map;
   };

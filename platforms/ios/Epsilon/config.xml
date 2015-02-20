@@ -41,6 +41,9 @@
     <feature name="InAppBrowser">
         <param name="ios-package" value="CDVInAppBrowser" />
     </feature>
+    <feature name="Geolocation">
+        <param name="ios-package" value="CDVLocation" />
+    </feature>
     <name>Epsilon</name>
     <description>Epsilon Client App</description>
     <author email="sgibson@epsilontechnologies.co.uk" href="http://www.epsilontechnologies.co.uk" />

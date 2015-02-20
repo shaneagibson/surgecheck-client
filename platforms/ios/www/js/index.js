@@ -15,15 +15,19 @@ require.config(
       "mobiscroll": "./components/mobiscroll/mobiscroll.custom-2.14.4.min",
       "braintree": "./components/braintree-web/dist/braintree",
       "hammer": "./components/hammerjs/hammer",
-      "google-jsapi": "./components/google-jsapi/jsapi"
+      "google-jsapi": "./components/google-jsapi/jsapi",
+      "iscroll": "./components/iscroll/build/iscroll"
     },
     shim: {
       jquery:{
-        exports: "jquery"
+        exports: 'jquery'
       },
-      mobiscroll:{
+      mobiscroll: {
         deps: ['jquery'],
-        exports: "mobiscroll"
+        exports: 'mobiscroll'
+      },
+      iscroll: {
+        exports: 'IScroll'
       }
     }
   }
