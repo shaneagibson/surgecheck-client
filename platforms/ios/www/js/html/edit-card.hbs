@@ -1,0 +1,60 @@
+<div class="menu-icon-container">
+    <i class="touch-color icon-menu"></i>
+</div>
+<div class="content">
+    <i class="context-icon icon-credit-card"></i>
+    <div class="context-title bold">Edit Card</div>
+    <div class="form">
+        <div class="input-container single">
+            <input type="text" disabled="disabled" class="field cardnumber disabled" value=""/>
+            <div class="input-underline"></div>
+        </div>
+        <div class="input-container single">
+            <div class="input-container double left">
+                <input type="text" readonly data-validationrules="mandatory mmyy" class="field mmyy" value="" placeholder="MM / YYYY"/>
+                <span class="error-reason">
+                    <span class="error-text"></span>
+                    <i class="icon-cancel-circled"></i>
+                </span>
+                <div class="input-underline"></div>
+            </div>
+            <div class="input-container triple right">
+                <input type="number" step="1" maxlength="3" data-validationrules="mandatory cvv" class="field cvv" placeholder="CVV"/>
+                <span class="error-reason">
+                    <span class="error-text"></span>
+                    <i class="icon-cancel-circled"></i>
+                </span>
+                <div class="input-underline"></div>
+            </div>
+        </div>
+        <div class="input-container single">
+            <input type="text" maxlength="8" data-validationrules="mandatory postcode" class="field postcode" value="" placeholder="Postcode"/>
+            <span class="error-reason">
+                <span class="error-text"></span>
+                <i class="icon-cancel-circled"></i>
+            </span>
+            <div class="input-underline"></div>
+        </div>
+        <div class="input-container single">
+            <select class="type" id="type">
+                <option value="personal">Personal</option>
+                <option value="business">Business</option>
+            </select>
+            <span class="error-reason">
+                <span class="error-text"></span>
+                <i class="icon-cancel-circled"></i>
+            </span>
+            <div class="select-underline"></div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="text-and-icon-button delete-card touch-color">
+            <span class="text">Delete Card</span>
+            <i class="icon-trash"></i>
+        </div>
+    </div>
+</div>
+<div class="buttons double">
+    <div class="button bold touch-color dark-button cancel">Cancel</div>
+    <div class="button bold touch-color light-button save-card">Save Card</div>
+</div>

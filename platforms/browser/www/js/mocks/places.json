@@ -1,0 +1,74 @@
+[
+  {
+    "id": 0,
+    "name": "The Weir",
+    "description": "A Gastro Pub",
+    "distance": 300,
+    "images": [
+      "http://www.theweirbar.co.uk/images/square-images/food-and-drink/beer2.jpg",
+      "http://www.theweirbar.co.uk/images/square-images/food-and-drink/pork2.jpg",
+      "http://www.theweirbar.co.uk/images/square-images/food-and-drink/bread2.jpg"
+    ],
+    "coords": {
+      "latitude": 51.483573,
+      "longitude": -0.309204
+    },
+    "stars": {
+      "average": [ "star", "star", "star", "star-half" ]
+    }
+  },
+  {
+    "id": 1,
+    "name": "The Old Packhorse",
+    "description": "A Gastro Pub",
+    "distance": 300,
+    "images": [
+      "http://www.theweirbar.co.uk/images/square-images/food-and-drink/beer2.jpg",
+      "http://www.theweirbar.co.uk/images/square-images/food-and-drink/pork2.jpg",
+      "http://www.theweirbar.co.uk/images/square-images/food-and-drink/bread2.jpg"
+    ],
+    "coords": {
+      "latitude": 51.492693,
+      "longitude": -0.266755
+    },
+    "stars": {
+      "average": [ "star", "star", "star", "star-half" ]
+    }
+  },
+  {
+    "id": 2,
+    "name": "The Lamb",
+    "description": "A Gastro Pub",
+    "distance": 300,
+    "images": [
+      "http://www.theweirbar.co.uk/images/square-images/food-and-drink/beer2.jpg",
+      "http://www.theweirbar.co.uk/images/square-images/food-and-drink/pork2.jpg",
+      "http://www.theweirbar.co.uk/images/square-images/food-and-drink/bread2.jpg"
+    ],
+    "coords": {
+      "latitude": 51.492441,
+      "longitude": -0.262437
+    },
+    "stars": {
+      "average": [ "star", "star", "star", "star-half" ]
+    }
+  },
+  {
+    "id": 3,
+    "name": "George IV",
+    "description": "A Gastro Pub",
+    "distance": 300,
+    "images": [
+      "http://www.theweirbar.co.uk/images/square-images/food-and-drink/beer2.jpg",
+      "http://www.theweirbar.co.uk/images/square-images/food-and-drink/pork2.jpg",
+      "http://www.theweirbar.co.uk/images/square-images/food-and-drink/bread2.jpg"
+    ],
+    "coords": {
+      "latitude": 51.492481,
+      "longitude": -0.256845
+    },
+    "stars": {
+      "average": [ "star", "star", "star", "star-half" ]
+    }
+  }
+]
