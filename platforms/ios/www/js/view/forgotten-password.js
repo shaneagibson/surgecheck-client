@@ -26,35 +26,18 @@ define('view/forgotten-password', function(require) {
       emailAddressInput: 'input.emailaddress'
     },
 
-    onDomRefresh: function() {
+    initialize: function() {
       analytics.trackView('Forgotten Password');
     },
 
     requestPasswordReset: click.single(function() {
-      if (this.validateForm()) {
-        this.submit();
+      if (validateForm()) {
+        submit(this);
       }
     }),
 
-    validateForm: function() {
-      return validator.validateFields($('.form').find('.field'));
-    },
-
     validateField: function(e) {
       validator.validateFields($(e.currentTarget));
-    },
-
-    submit: function() {
-      return serverGateway.account.post('/account/password/forgotten', {
-          emailAddress: this.ui.emailAddressInput.val()
-        })
-        .then(function() {
-          toast.showLongBottom('An email has been sent to your registered email address.');
-        })
-        .catch(function(response) {
-          analytics.trackError(JSON.stringify(response));
-          toast.showLongBottom('Something unexpected happened. Please try again.');
-        });
     },
 
     signIn: function() {
@@ -62,6 +45,24 @@ define('view/forgotten-password', function(require) {
     }
 
   });
+
+
+  var validateForm = function() {
+    return validator.validateFields($('.form').find('.field'));
+  };
+
+  var submit = function(view) {
+    return serverGateway.account.post('/account/password/forgotten', {
+        emailAddress: view.ui.emailAddressInput.val()
+      })
+      .then(function() {
+        toast.showLongBottom('An email has been sent to your registered email address.');
+      })
+      .catch(function(response) {
+        analytics.trackError(JSON.stringify(response));
+        toast.showLongBottom('Something unexpected happened. Please try again.');
+      });
+  };
 
   return view;
 

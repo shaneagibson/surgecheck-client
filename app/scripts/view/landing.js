@@ -17,7 +17,7 @@ define('view/landing', function(require) {
       'click .sign-in' : 'goToSignIn'
     },
 
-    onDomRefresh: function() {
+    initialize: function() {
       analytics.trackView('Landing');
     },
 

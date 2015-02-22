@@ -20,7 +20,7 @@ define('view/profile', function(require) {
       'click .sign-out' : 'signOut'
     },
 
-    onDomRefresh: function() {
+    initialize: function() {
       analytics.trackView('Profile');
     },
 

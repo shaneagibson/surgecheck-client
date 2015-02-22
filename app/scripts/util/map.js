@@ -4,41 +4,52 @@ define('util/map', function(require) {
 
   var exports = {};
 
-  exports.initialize = function() {
-    return new RSVP.Promise(function(resolve, reject) {
-      google.load("maps", 3, { other_params : "key="+config.google.api_key, callback : resolve });
-    });
-  };
+  function Map(mapElement) {
 
-  exports.render = function(mapElement, centerPosition, zoom, events, markers) {
-    var mapOptions = {
-      zoom: zoom,
-      center: new google.maps.LatLng(centerPosition.coords.latitude, centerPosition.coords.longitude),
+    this.markers = {};
+
+    this.map = new google.maps.Map(mapElement[0], {
       panControl: false,
       zoomControl: false,
       mapTypeControl: false,
       scaleControl: false,
       streetViewControl: false,
       overviewMapControl: false
+    });
+
+    this.addEventListener = function(eventName, handler) {
+      google.maps.event.addListener(this.map, eventName, handler);
     };
-    var map = new google.maps.Map(mapElement[0], mapOptions);
-    if (events) {
-      for (var key in events) {
-        if (events.hasOwnProperty(key)) {
-          google.maps.event.addListener(map, key, events[key]);
+
+    this.addMarker = function(id, icon, coords) {
+      if (this.markers[id]) this.markers[id].setMap(null);
+      this.markers[id] = new google.maps.Marker({
+        icon: icon,
+        position: new google.maps.LatLng(coords.latitude, coords.longitude),
+        map: this.map
+      });
+    };
+
+    this.fitToMarkers = function() {
+      var bounds = new google.maps.LatLngBounds();
+      for (var key in this.markers) {
+        if (this.markers.hasOwnProperty(key)) {
+          bounds.extend(this.markers[key].position);
         }
       }
-    }
-    if (markers) {
-      markers.forEach(function (marker) {
-        new google.maps.Marker({
-          icon: marker.icon,
-          position: new google.maps.LatLng(marker.position.coords.latitude, marker.position.coords.longitude),
-          map: map
-        });
-      });
-    }
-    return map;
+      this.map.fitBounds(bounds);
+    };
+
+  }
+
+  exports.initialize = function() {
+    return new RSVP.Promise(function(resolve, reject) {
+      google.load("maps", 3, { other_params : "key="+config.google.api_key, callback : resolve });
+    });
+  };
+
+  exports.create = function(mapElement) {
+    return new Map(mapElement);
   };
 
   return exports;

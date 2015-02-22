@@ -15,7 +15,7 @@ define('view/support', function(require) {
       'click .icon-menu' : 'showMenu'
     },
 
-    onDomRefresh: function() {
+    initialize: function() {
       analytics.trackView('Support');
     },
 

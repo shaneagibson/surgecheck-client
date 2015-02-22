@@ -18,7 +18,7 @@ define('view/share', function(require) {
       'click .share-via-sms' : 'shareViaSms'
     },
 
-    onDomRefresh: function(){
+    initialize: function(){
       $('.code').html(this.getPromoCode());
       analytics.trackView('Share');
     },
@@ -28,15 +28,15 @@ define('view/share', function(require) {
     },
 
     shareViaEmail: function(){
-      var promoCode = this.getPromoCode();
-      var subject = this.titleMessage(promoCode);
-      var body = this.bodyMessage(promoCode);
+      var promoCode = getPromoCode();
+      var subject = titleMessage(promoCode);
+      var body = bodyMessage(promoCode);
       window.open('mailto:?to=&subject='+subject+'&body='+body, '_system');
     },
 
     shareViaSms: function(){
-      var promoCode = this.getPromoCode();
-      var body = this.bodyMessage(promoCode);
+      var promoCode = getPromoCode();
+      var body = bodyMessage(promoCode);
       var handler = {
         android: function() {
           window.open('sms:?body='+body, '_system');
@@ -47,21 +47,21 @@ define('view/share', function(require) {
         browser: function() { }
       };
       handler[device.platform.toLowerCase()]();
-    },
-
-    titleMessage: function(){
-      return '£10 off your first Epsilon purchase!';
-    },
-
-    bodyMessage: function(promoCode){
-      return 'Use my Epsilon promo code '+promoCode+' and get £10 off your first Epsilon purchase!. Redeem it at https://www.epsilon.com/invite/'+promoCode;
-    },
-
-    getPromoCode: function(){
-      return context.user.inviteCode;
     }
 
   });
+
+  var titleMessage = function(){
+    return '£10 off your first Epsilon purchase!';
+  };
+
+  var bodyMessage = function(promoCode){
+    return 'Use my Epsilon promo code '+promoCode+' and get £10 off your first Epsilon purchase!. Redeem it at https://www.epsilon.com/invite/'+promoCode;
+  };
+
+  var getPromoCode = function(){
+    return context.user.inviteCode;
+  };
 
   return view;
 

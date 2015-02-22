@@ -9,17 +9,21 @@ define('util/touch', function(require) {
     registerFeedback($('.touch-size'), 'js-touch-size');
   };
 
+  exports.removeTouchFeedback = function(element) {
+    element.off('touchstart touchend touchcancel touchleave');
+  };
+
   var registerFeedback = function(elements, touchClass) {
-    elements.on('touchstart', function(e){
+    elements.on('touchstart', function(){
       $(this).addClass(touchClass);
     });
-    elements.on('touchend', function(e){
+    elements.on('touchend', function(){
       $(this).removeClass(touchClass);
     });
-    elements.on('touchcancel', function(e){
+    elements.on('touchcancel', function(){
       $(this).removeClass(touchClass);
     });
-    elements.on('touchleave', function(e){
+    elements.on('touchleave', function(){
       $(this).removeClass(touchClass);
     });
   };

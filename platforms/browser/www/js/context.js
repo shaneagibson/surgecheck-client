@@ -10,6 +10,14 @@ define('context', function(require){
     }
   };
 
+  exports.getPlaceById = function(placeId) {
+    for (var i = 0; i < this.places.length; i++) {
+      if (this.places[i].id === placeId) {
+        return this.places[i];
+      }
+    }
+  };
+
   return exports;
 
 });

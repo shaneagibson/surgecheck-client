@@ -16,18 +16,22 @@ require.config(
       "braintree": "./components/braintree-web/dist/braintree",
       "hammer": "./components/hammerjs/hammer",
       "google-jsapi": "./components/google-jsapi/jsapi",
-      "iscroll": "./components/iscroll/build/iscroll"
+      "iscroll": "./components/iscroll/build/iscroll",
+      "jquery-touchswipe": "./components/jquery-touchswipe/jquery.touchSwipe.min"
     },
     shim: {
-      jquery:{
+      "jquery": {
         exports: 'jquery'
       },
-      mobiscroll: {
+      "mobiscroll": {
         deps: ['jquery'],
         exports: 'mobiscroll'
       },
-      iscroll: {
+      "iscroll": {
         exports: 'IScroll'
+      },
+      "jquery-touchswipe": {
+        deps: ['jquery']
       }
     }
   }

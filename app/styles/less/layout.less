@@ -19,6 +19,11 @@ body {
 input, textarea, keygen, select, button {
   font-family: Jura;
 }
+ul{
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
 .background {
   vertical-align: middle;
   background: @primary;
@@ -333,21 +338,6 @@ input.cardnumber,input.password{
     height: 100%;
     z-index: 3;
   }
-  .icon-target{
-    position: absolute;
-    z-index: 10;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20px;
-    pointer-events: none;
-    color: @white;
-    text-shadow: 0px 0px 5px @darkgray;
-    &.drag{
-      color: @primary;
-      text-shadow: 0px 0px 5px @white;
-    }
-  }
 }
 .bottom{
   height: 45vh;
@@ -368,6 +358,7 @@ input.cardnumber,input.password{
   position: absolute;
   bottom: 0px;
   right: 0px;
+  width: 100vw;
   .tab{
     position: relative;
     background-color: @ultralightgray;
@@ -405,6 +396,7 @@ input.cardnumber,input.password{
   z-index: 3;
   background-color: @white;
   position: absolute;
+  display: none;
 }
 .icon-left-dir {
   left: 0px;
@@ -429,12 +421,9 @@ input.cardnumber,input.password{
   overflow: hidden;
 }
 .places{
-  top: 40px;
-  padding: 0;
-  margin: 0;
+  top: 50px;
   width: 400vw; // TODO - dynamically calculate this
   position: absolute;
-  list-style-type: none;
   z-index: 1;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-transform: translateZ(0);
@@ -452,62 +441,70 @@ input.cardnumber,input.password{
   -ms-text-size-adjust: none;
   -o-text-size-adjust: none;
   text-size-adjust: none;
-  .place {
-    width: 100vw;
-    float: left;
-    color: @white;
-    text-align: center;
-    text-shadow: 0px 0px 10px @darkgray;
-    .name {
-      font-size: 25px;
-      padding-bottom: 5px;
-      font-family: Jura-Bold;
-    }
-    .description {
-      font-size: 14px;
-      padding-bottom: 10px;
-    }
-    .rating {
-      font-size: 25px;
-      padding-bottom: 20px;
-    }
-    .images {
-      text-align: center;
-      width: 100%;
-      padding-bottom: 10px;
-      .image {
-        background-size: 20vw 20vw;
-        width: 20vw;
-        height: 20vw;
-        border: 1px solid white;
-        display: inline-block;
-        margin: 0px 5px;
-        border-radius: 5px;
-        box-shadow: 0px 0px 10px @darkgray;
-      }
-    }
-    .small-description {
-      font-size: 12px;
-      padding-bottom: 15px;
-    }
-    .button {
-      background-color: white;
-      font-size: 14px;
-      padding: 10px;
-      border-radius: 5px;
-      width: 105px;
-      color: @darkgray;
-      box-shadow: 0px 0px 10px @darkgray;
-      text-shadow: none;
-      font-family: Jura-Bold;
-      &.left {
-        margin-left: 10%;
-        float: left;
-      }
-      &.right {
-        margin-right: 10%;
-        float: right;
-      }
+}
+.place {
+  width: 100vw;
+  float: left;
+  color: @white;
+  text-align: center;
+  text-shadow: 0px 0px 10px @darkgray;
+  .name {
+    font-size: 25px;
+    padding-bottom: 5px;
+    font-family: Jura-Bold;
+  }
+  .description {
+    font-size: 14px;
+    padding-bottom: 10px;
+  }
+  .rating {
+    font-size: 25px;
+    padding-bottom: 20px;
+    .highlighted{
+      color: @gold;
     }
   }
+  .images {
+    text-align: center;
+    width: 100%;
+    padding-bottom: 10px;
+    .image {
+      background-size: 20vw 20vw;
+      width: 20vw;
+      height: 20vw;
+      border: 1px solid white;
+      display: inline-block;
+      margin: 0px 5px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px @darkgray;
+    }
+  }
+  .small-description {
+    font-size: 12px;
+    padding-bottom: 5px;
+  }
+  .button {
+    background-color: white;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 105px;
+    color: @darkgray;
+    box-shadow: 0px 0px 10px @darkgray;
+    text-shadow: none;
+    font-family: Jura-Bold;
+    &.left {
+      margin-left: 10%;
+      float: left;
+    }
+    &.right {
+      margin-right: 10%;
+      float: right;
+    }
+  }
+}
+.place-details{
+  position: absolute;
+  height: 100vh;
+  top: 50px;
 }

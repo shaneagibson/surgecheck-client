@@ -21,7 +21,7 @@ define('view/about', function(require) {
       'click .rate-us' : 'showRateUs'
     },
 
-    onDomRefresh: function() {
+    initialize: function() {
       analytics.trackView('About');
       $('.version .number').html(config.version);
       $('.rate-us .store').html(config.app_store[device.platform.toLowerCase()].name);

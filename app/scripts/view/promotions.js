@@ -21,11 +21,7 @@ define('view/promotions', function(require) {
       'click .apply-promotion' : 'applyPromotion'
     },
 
-    ui: {
-      promotionCodeInput: '.promo-code'
-    },
-
-    onDomRefresh: function() {
+    initialize: function() {
       analytics.trackView('Promotions');
     },
 
@@ -34,32 +30,32 @@ define('view/promotions', function(require) {
     },
 
     applyPromotion: click.single(function(){
-      if (this.validateForm()) {
-        this.submit();
+      if (validateForm()) {
+        submit(this);
       }
-    }),
-
-    validateForm: function() {
-      return validator.validateFields($('.form').find('.field'));
-    },
-
-    submit: function() {
-      return serverGateway.promotion.post('/promotion/user/'+context.user.id+'/redeem/'+view.ui.promotionCodeInput.val())
-        .then(function() {
-          vent.trigger('navigate', 'home');
-          toast.showLongBottom('Successfully applied Promotion Code');
-        })
-        .catch(function(response) {
-          switch (response.status) {
-            case 400 : return toast.showLongBottom('Invalid Promotion Code.');
-            case 409 : return toast.showLongBottom('This Promotion Code has already been redeemed.');
-          }
-          analytics.trackError(JSON.stringify(response));
-          toast.showLongBottom('Something unexpected happened. Please try again.');
-        });
-    }
+    })
 
   });
+
+  var validateForm = function() {
+    return validator.validateFields($('.form').find('.field'));
+  };
+
+  var submit = function(view) {
+    return serverGateway.promotion.post('/promotion/user/'+context.user.id+'/redeem/'+view.ui.promotionCodeInput.val())
+      .then(function() {
+        vent.trigger('navigate', 'home');
+        toast.showLongBottom('Successfully applied Promotion Code');
+      })
+      .catch(function(response) {
+        switch (response.status) {
+          case 400 : return toast.showLongBottom('Invalid Promotion Code.');
+          case 409 : return toast.showLongBottom('This Promotion Code has already been redeemed.');
+        }
+        analytics.trackError(JSON.stringify(response));
+        toast.showLongBottom('Something unexpected happened. Please try again.');
+      });
+  };
 
   return view;
 

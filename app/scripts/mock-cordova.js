@@ -5,6 +5,7 @@ define('mock-cordova', function(require){
     mock: function() {
       mockPushNotificationPlugin();
       mockGeolocationPlugin();
+      mockContactsPlugin();
     }
 
   };
@@ -32,6 +33,21 @@ define('mock-cordova', function(require){
       position.coords.speed = 0;
       position.timestamp = Date.now();
       success(position);
+    };
+  };
+
+  var mockContactsPlugin = function() {
+    navigator.contacts = {};
+    navigator.contacts.find = function(fields, success, failure) {
+      var contacts = [
+        {
+          name: "Shane Gibson",
+          phoneNumbers: [ "07920057337" ],
+          nickname: "Shane",
+          displayName: "Shane Gibson"
+        }
+      ];
+      success(contacts);
     };
   };
 

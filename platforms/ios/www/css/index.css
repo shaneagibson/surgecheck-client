@@ -211,6 +211,11 @@ select,
 button {
   font-family: Jura;
 }
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
 .background {
   vertical-align: middle;
   background: #1e90ff;
@@ -527,21 +532,6 @@ input.password::-webkit-input-placeholder {
   height: 100%;
   z-index: 3;
 }
-.map-canvas .icon-target {
-  position: absolute;
-  z-index: 10;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 20px;
-  pointer-events: none;
-  color: #ffffff;
-  text-shadow: 0px 0px 5px #333333;
-}
-.map-canvas .icon-target.drag {
-  color: #1e90ff;
-  text-shadow: 0px 0px 5px #ffffff;
-}
 .bottom {
   height: 45vh;
   width: 100vw;
@@ -561,6 +551,7 @@ input.password::-webkit-input-placeholder {
   position: absolute;
   bottom: 0px;
   right: 0px;
+  width: 100vw;
 }
 .tabs .tab {
   position: relative;
@@ -598,6 +589,7 @@ input.password::-webkit-input-placeholder {
   z-index: 3;
   background-color: #ffffff;
   position: absolute;
+  display: none;
 }
 .icon-left-dir {
   left: 0px;
@@ -607,7 +599,7 @@ input.password::-webkit-input-placeholder {
 }
 .icon-left-dir,
 .icon-right-dir {
-  top: 50%;
+  top: 70%;
   position: absolute;
   font-size: 30px;
   color: #333333;
@@ -623,12 +615,9 @@ input.password::-webkit-input-placeholder {
   overflow: hidden;
 }
 .places {
-  top: 40px;
-  padding: 0;
-  margin: 0;
+  top: 50px;
   width: 400vw;
   position: absolute;
-  list-style-type: none;
   z-index: 1;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-transform: translateZ(0);
@@ -647,32 +636,35 @@ input.password::-webkit-input-placeholder {
   -o-text-size-adjust: none;
   text-size-adjust: none;
 }
-.places .place {
+.place {
   width: 100vw;
   float: left;
   color: #ffffff;
   text-align: center;
   text-shadow: 0px 0px 10px #333333;
 }
-.places .place .name {
+.place .name {
   font-size: 25px;
   padding-bottom: 5px;
   font-family: Jura-Bold;
 }
-.places .place .description {
+.place .description {
   font-size: 14px;
   padding-bottom: 10px;
 }
-.places .place .rating {
+.place .rating {
   font-size: 25px;
   padding-bottom: 20px;
 }
-.places .place .images {
+.place .rating .highlighted {
+  color: #ffd700;
+}
+.place .images {
   text-align: center;
   width: 100%;
   padding-bottom: 10px;
 }
-.places .place .images .image {
+.place .images .image {
   background-size: 20vw 20vw;
   width: 20vw;
   height: 20vw;
@@ -682,11 +674,11 @@ input.password::-webkit-input-placeholder {
   border-radius: 5px;
   box-shadow: 0px 0px 10px #333333;
 }
-.places .place .small-description {
+.place .small-description {
   font-size: 12px;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
 }
-.places .place .button {
+.place .button {
   background-color: white;
   font-size: 14px;
   padding: 10px;
@@ -697,13 +689,18 @@ input.password::-webkit-input-placeholder {
   text-shadow: none;
   font-family: Jura-Bold;
 }
-.places .place .button.left {
+.place .button.left {
   margin-left: 10%;
   float: left;
 }
-.places .place .button.right {
+.place .button.right {
   margin-right: 10%;
   float: right;
+}
+.place-details {
+  position: absolute;
+  height: 100vh;
+  top: 50px;
 }
 
 .loader {

@@ -13,8 +13,13 @@
       "latitude": 51.483573,
       "longitude": -0.309204
     },
-    "stars": {
-      "average": [ "star", "star", "star", "star-half" ]
+    "rating": {
+      "average": 4.5
+    },
+    "address": {
+      "line1": "24 Market Place",
+      "line2": "Brentford",
+      "line3": "TW8 8EQ"
     }
   },
   {
@@ -31,8 +36,13 @@
       "latitude": 51.492693,
       "longitude": -0.266755
     },
-    "stars": {
-      "average": [ "star", "star", "star", "star-half" ]
+    "rating": {
+      "average": 4
+    },
+    "address": {
+      "line1": "434 Chiswick High Road",
+      "line2": "Chiswick",
+      "line3": "W4 5TF"
     }
   },
   {
@@ -49,8 +59,13 @@
       "latitude": 51.492441,
       "longitude": -0.262437
     },
-    "stars": {
-      "average": [ "star", "star", "star", "star-half" ]
+    "rating": {
+      "average": 3
+    },
+    "address": {
+      "line1": "9 Barley Mow Passage",
+      "line2": "Chiswick",
+      "line3": "W4 4PH"
     }
   },
   {
@@ -67,8 +82,13 @@
       "latitude": 51.492481,
       "longitude": -0.256845
     },
-    "stars": {
-      "average": [ "star", "star", "star", "star-half" ]
+    "rating": {
+      "average": 4
+    },
+    "address": {
+      "line1": "185 Chiswick High Road",
+      "line2": "Chiswick",
+      "line3": "W4 2DR"
     }
   }
 ]

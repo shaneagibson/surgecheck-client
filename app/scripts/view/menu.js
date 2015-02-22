@@ -18,13 +18,8 @@ define('view/menu', function(require) {
       'click .menu-item:not(.active)' : 'showMenuItem'
     },
 
-    onDomRefresh: function() {
+    initialize: function() {
       swipe.register(this.el, swipe.LEFT, this.hideMenu);
-    },
-
-    setActiveItem: function(activeItem) {
-      $('li.active').removeClass('active');
-      $('li#'+activeItem).addClass('active');
     },
 
     showMenuItem: function(e) {
@@ -36,6 +31,11 @@ define('view/menu', function(require) {
 
     hideMenu: function() {
       $('body').removeClass('menu-open');
+    },
+
+    setActiveItem: function(activeItem) {
+      $('li.active').removeClass('active');
+      $('li#'+activeItem).addClass('active');
     }
 
   });

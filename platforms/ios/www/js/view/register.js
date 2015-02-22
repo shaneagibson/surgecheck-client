@@ -34,13 +34,13 @@ define('view/register', function(require) {
       passwordInput: 'input.password'
     },
 
-    onDomRefresh: function() {
+    initialize: function() {
       analytics.trackView('Register');
     },
 
     registerUser: click.single(function() {
-      if (this.validateForm()) {
-        this.submit();
+      if (validateForm()) {
+        submit(this);
       }
     }),
 
@@ -48,41 +48,40 @@ define('view/register', function(require) {
       vent.trigger('navigate', 'sign-in');
     }),
 
-    validateForm: function() {
-      return validator.validateFields($('.form').find('.field'));
-    },
-
     validateField: function(e) {
       validator.validateFields($(e.currentTarget));
-    },
-
-    submit: function() {
-      var self = this;
-      return serverGateway.account.post('/account/register', {
-          deviceId: localStorage.getItem('deviceid'),
-          firstName: this.ui.firstNameInput.val(),
-          surname: this.ui.surnameInput.val(),
-          emailAddress: this.ui.emailAddressInput.val(),
-          mobileNumber: this.ui.mobileNumberInput.val(),
-          password: this.ui.passwordInput.val()
-        })
-        .then(function(response) {
-          context.user = response.user;
-          context.session = response.session;
-          analytics.setUserId(response.user.id);
-          localStorage.setItem('sessionid', response.session.sessionId);
-          vent.trigger('navigate', 'verify-mobile');
-        })
-        .catch(function(response) {
-          switch (response.status) {
-            case 409 : return validator.addError(self.ui.emailAddressInput, 'already_registered');
-          }
-          analytics.trackError(JSON.stringify(response));
-          toast.showLongBottom('Something unexpected happened. Please try again.');
-        });
     }
 
   });
+
+  var validateForm = function() {
+    return validator.validateFields($('.form').find('.field'));
+  };
+
+  var submit = function(view) {
+    return serverGateway.account.post('/account/register', {
+        deviceId: localStorage.getItem('deviceid'),
+        firstName: view.ui.firstNameInput.val(),
+        surname: view.ui.surnameInput.val(),
+        emailAddress: view.ui.emailAddressInput.val(),
+        mobileNumber: view.ui.mobileNumberInput.val(),
+        password: view.ui.passwordInput.val()
+      })
+      .then(function(response) {
+        context.user = response.user;
+        context.session = response.session;
+        analytics.setUserId(response.user.id);
+        localStorage.setItem('sessionid', response.session.sessionId);
+        vent.trigger('navigate', 'verify-mobile');
+      })
+      .catch(function(response) {
+        switch (response.status) {
+          case 409 : return validator.addError(view.ui.emailAddressInput, 'already_registered');
+        }
+        analytics.trackError(JSON.stringify(response));
+        toast.showLongBottom('Something unexpected happened. Please try again.');
+      });
+  };
 
   return view;
 

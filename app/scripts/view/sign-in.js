@@ -28,53 +28,18 @@ define('view/sign-in', function(require) {
       passwordInput: 'input.password'
     },
 
-    onDomRefresh: function() {
+    initialize: function() {
       analytics.trackView('Sign In');
     },
 
     signIn: click.single(function() {
-      if (this.validateForm()) {
-        this.submit();
+      if (validateForm()) {
+        submit(this);
       }
     }),
 
-    validateForm: function() {
-      return validator.validateFields($('.form').find('.field'));
-    },
-
     validateField: function(e) {
       validator.validateFields($(e.currentTarget));
-    },
-
-    submit: function() {
-      var self = this;
-      return serverGateway.account.post('/account/login', {
-          deviceId: localStorage.getItem('deviceid'),
-          emailAddress: this.ui.emailAddressInput.val(),
-          password: this.ui.passwordInput.val()
-        })
-        .then(function(response) {
-          context.user = response.user;
-          context.session = response.session;
-          analytics.setUserId(response.user.id);
-          localStorage.setItem('sessionid', response.session.sessionId);
-          if (response.user.verified) {
-            vent.trigger('navigate', 'home');
-          } else {
-            vent.trigger('navigate', 'verify-mobile');
-          }
-        })
-        .catch(function(response) {
-          switch (response.status) {
-            case 401 : return validator.addError(self.ui.emailAddressInput, 'invalid_credentials');
-            case 423 : {
-              vent.trigger('navigate', 'forgotten-password');
-              return toast.showLongBottom('Your account is locked. To unlock, please reset your password.');
-            }
-          }
-          analytics.trackError(JSON.stringify(response));
-          toast.showLongBottom('Something unexpected happened. Please try again.');
-        });
     },
 
     forgottenPassword: function() {
@@ -82,6 +47,40 @@ define('view/sign-in', function(require) {
     }
 
   });
+
+  var validateForm = function() {
+    return validator.validateFields($('.form').find('.field'));
+  };
+
+  var submit = function(view) {
+    return serverGateway.account.post('/account/login', {
+        deviceId: localStorage.getItem('deviceid'),
+        emailAddress: view.ui.emailAddressInput.val(),
+        password: view.ui.passwordInput.val()
+      })
+      .then(function(response) {
+        context.user = response.user;
+        context.session = response.session;
+        analytics.setUserId(response.user.id);
+        localStorage.setItem('sessionid', response.session.sessionId);
+        if (response.user.verified) {
+          vent.trigger('navigate', 'home');
+        } else {
+          vent.trigger('navigate', 'verify-mobile');
+        }
+      })
+      .catch(function(response) {
+        switch (response.status) {
+          case 401 : return validator.addError(view.ui.emailAddressInput, 'invalid_credentials');
+          case 423 : {
+            vent.trigger('navigate', 'forgotten-password');
+            return toast.showLongBottom('Your account is locked. To unlock, please reset your password.');
+          }
+        }
+        analytics.trackError(JSON.stringify(response));
+        toast.showLongBottom('Something unexpected happened. Please try again.');
+      });
+  };
 
   return view;
 

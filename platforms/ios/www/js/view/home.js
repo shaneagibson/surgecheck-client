@@ -3,6 +3,7 @@ define('view/home', function(require) {
   var Marionette = require('marionette');
   var template = require('hbs!../html/home');
   var click = require('../util/click');
+  var context = require('../context');
   var analytics = require('../util/analytics');
   var vent = require('../util/vent');
   var map = require('../util/map');
@@ -23,61 +24,22 @@ define('view/home', function(require) {
       'click .icon-menu' : 'showMenu',
       'click .tab.options' : 'showOptions',
       'click .tab.map' : 'showMap',
-      'click .image' : 'toggleImage',
       'click .icon-left-dir' : 'swipeLeft',
-      'click .icon-right-dir' : 'swipeRight'
+      'click .icon-right-dir' : 'swipeRight',
+      'click .place' : 'showPlace'
     },
 
-    onDomRefresh: function() {
-      var self = this;
-      _.bindAll(this, 'renderPlaces', 'renderMap', 'startMapDrag', 'endMapDrag');
+    initialize: function() {
       analytics.trackView('Home');
       geolocation.getCurrentPosition()
-        .then(function(currentPosition){
-          return self.fetchPlaces(currentPosition)
-            .then(function(places) {
-              self.renderMap(places, currentPosition);
-              self.renderPlaces(places);
-            });
+        .then(function(currentPosition) {
+          updatePlaces(currentPosition);
         });
     },
 
     onClose: function(){
-      this.placesIScroll.destroy();
-      this.placesIScroll = null;
-    },
-
-    fetchPlaces: function(currentPosition) {
-      return serverGateway.places.get('/?lat='+currentPosition.coords.latitude+'&lon='+currentPosition.coords.longitude);
-    },
-
-    renderMap: function(places, currentPosition){
-      var self = this;
-      var markers = [{ icon: './images/marker.png', position: currentPosition }];
-      places.forEach(function(place) {
-        markers.push({ icon: { url: './images/place-icon.png', scaledSize: new google.maps.Size(25, 34) }, position: place });
-      });
-      self.map = map.render($('.map-canvas .map'), currentPosition, 17, { 'dragstart': self.startMapDrag, 'dragend': self.endMapDrag }, markers);
-    },
-
-    renderPlaces: function(places) {
-      var self = this;
-      places.forEach(function(place) {
-        $('.places').append(placeTemplate(place));
-      });
-      touch.initializeTouchFeedback();
-      setTimeout(function() {
-        self.placesIScroll = new IScroll('#iscroll-wrapper', {
-          scrollX: true,
-          scrollY: false,
-          momentum: false,
-          snap: true,
-          snapSpeed: 400,
-          keyBindings: true
-        });
-        self.placesIScroll.on('scrollEnd', function() { self.updateArrowsForSelectedPlace(this.currentPage.pageX); });
-        self.updateArrowsForSelectedPlace(0);
-      }, 200);
+      view.placesIScroll.destroy();
+      view.placesIScroll = null;
     },
 
     showMenu: function(){
@@ -85,48 +47,91 @@ define('view/home', function(require) {
     },
 
     showMap: function(){
-      this.toggleTab($('.map-canvas'), $('.options-canvas'), $('.tab.map'));
+      toggleTab($('.map-canvas'), $('.options-canvas'), $('.tab.map'));
     },
 
     showOptions: function(){
-      this.toggleTab($('.options-canvas'), $('.map-canvas'), $('.tab.options'));
-    },
-
-    toggleTab: function(showCanvas, hideCanvas, selectTab) {
-      showCanvas.show();
-      hideCanvas.hide();
-      $('.tab.selected').removeClass('selected').addClass('touch-color');
-      selectTab.addClass('selected').removeClass('touch-color');
-      touch.initializeTouchFeedback();
-    },
-
-    startMapDrag: function() {
-      $('.map-canvas .icon-target').addClass('drag');
-    },
-
-    endMapDrag: function() {
-      $('.map-canvas .icon-target').removeClass('drag');
-      console.log(JSON.stringify(this.map.getCenter()));
-    },
-
-    toggleImage: function(e) {
-      // TODO
+      toggleTab($('.options-canvas'), $('.map-canvas'), $('.tab.options'));
     },
 
     swipeLeft: function() {
-      this.placesIScroll.prev(400);
+      view.placesIScroll.prev(400);
     },
 
     swipeRight: function() {
-      this.placesIScroll.next(400);
+      view.placesIScroll.next(400);
     },
 
-    updateArrowsForSelectedPlace: function(placeIndex) {
-      $('.icon-left-dir').toggle(placeIndex !== 0);
-      $('.icon-right-dir').toggle(placeIndex !== $('.place').length - 1);
+    showPlace: function(e) {
+      var placeId = $(e.currentTarget).data('id');
+      vent.trigger('navigate', 'place/'+placeId);
     }
 
   });
+
+  var updatePlaces = function(currentPosition){
+    return fetchPlaces(currentPosition)
+      .then(function(places) {
+        context.places = places;
+        renderPlaces(places, currentPosition);
+        renderMap(places, currentPosition);
+      });
+  };
+
+  var fetchPlaces = function(currentPosition) {
+    return serverGateway.places.get('/?lat='+currentPosition.coords.latitude+'&lon='+currentPosition.coords.longitude);
+  };
+
+  var renderMap = function(places, currentPosition){
+    view.map = map.create($('.map-canvas .map'));
+    view.map.addMarker('current_position', './images/marker.png', currentPosition.coords);
+    view.map.addMarker('place', { url: './images/place-icon.png', scaledSize: new google.maps.Size(25, 34) }, places[0].coords);
+    view.map.addEventListener('dragend', endMapDrag);
+    view.map.fitToMarkers();
+  };
+
+  var renderPlaces = function(places) {
+    places.forEach(function(place) {
+      $('.places').append(placeTemplate(place));
+    });
+    touch.initializeTouchFeedback();
+    setTimeout(function() {
+      view.placesIScroll = new IScroll('#iscroll-wrapper', {
+        scrollX: true,
+        scrollY: false,
+        momentum: false,
+        snap: true,
+        snapSpeed: 400,
+        keyBindings: true,
+        eventPassthrough: false
+      });
+      view.placesIScroll.on('scrollEnd', function() {
+        var placeIndex = this.currentPage.pageX;
+        updateArrowsForSelectedPlace(placeIndex);
+        view.map.addMarker('place', { url: './images/place-icon.png', scaledSize: new google.maps.Size(25, 34) }, places[placeIndex].coords);
+        view.map.fitToMarkers();
+      });
+      updateArrowsForSelectedPlace(0);
+    }, 200);
+  };
+
+  var updateArrowsForSelectedPlace = function(placeIndex) {
+    $('.icon-left-dir').toggle(placeIndex !== 0);
+    $('.icon-right-dir').toggle(placeIndex !== $('.place').length - 1);
+  };
+
+  var toggleTab = function(showCanvas, hideCanvas, selectTab) {
+    showCanvas.show();
+    hideCanvas.hide();
+    $('.tab.selected').removeClass('selected').addClass('touch-color');
+    selectTab.addClass('selected').removeClass('touch-color');
+    touch.removeTouchFeedback(selectTab);
+    touch.initializeTouchFeedback();
+  };
+
+  var endMapDrag = function() {
+    console.log(JSON.stringify(this.getCenter()));
+  };
 
   return view;
 
