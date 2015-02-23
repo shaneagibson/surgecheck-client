@@ -9,6 +9,15 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/com/pushapps/phonegap/PushAppsPlugin.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/nl/xservices/plugins/Toast$1.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/nl/xservices/plugins/Toast.class \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/contacts/ContactAccessor$WhereOptions.class \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/contacts/ContactAccessor.class \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/contacts/ContactAccessorSdk5.class \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/contacts/ContactInfoDTO.class \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/contacts/ContactManager$1.class \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/contacts/ContactManager$2.class \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/contacts/ContactManager$3.class \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/contacts/ContactManager$4.class \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/contacts/ContactManager.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/device/Device.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$1.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$2.class \

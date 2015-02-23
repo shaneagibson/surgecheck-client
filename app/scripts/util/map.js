@@ -4,7 +4,7 @@ define('util/map', function(require) {
 
   var exports = {};
 
-  function Map(mapElement) {
+  function Map(mapElement, onLoaded) {
 
     this.markers = {};
 
@@ -16,6 +16,10 @@ define('util/map', function(require) {
       streetViewControl: false,
       overviewMapControl: false
     });
+
+    if (onLoaded) {
+      google.maps.event.addListenerOnce(this.map, 'idle', onLoaded);
+    }
 
     this.addEventListener = function(eventName, handler) {
       google.maps.event.addListener(this.map, eventName, handler);
@@ -48,8 +52,8 @@ define('util/map', function(require) {
     });
   };
 
-  exports.create = function(mapElement) {
-    return new Map(mapElement);
+  exports.create = function(mapElement, onLoaded) {
+    return new Map(mapElement, onLoaded);
   };
 
   return exports;

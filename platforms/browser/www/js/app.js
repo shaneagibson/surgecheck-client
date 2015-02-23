@@ -19,6 +19,7 @@ define('app', function(require) {
   var context = require('./context');
   var map = require('./util/map');
   var swipe = require("jquery-touchswipe");
+  var handlebarsHelpers = require("./util/hbs-helpers");
 
   var app = new Marionette.Application();
 

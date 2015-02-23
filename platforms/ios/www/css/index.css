@@ -524,6 +524,8 @@ input.password::-webkit-input-placeholder {
   letter-spacing: 0px;
 }
 .map-canvas {
+  position: absolute;
+  top: 0px;
   width: 100%;
   height: 100%;
 }
@@ -584,12 +586,21 @@ input.password::-webkit-input-placeholder {
   box-shadow: 0px 0px 10px #333333;
 }
 .options-canvas {
+  position: absolute;
+  top: 0px;
   width: 100%;
   height: 100%;
   z-index: 3;
   background-color: #ffffff;
-  position: absolute;
   display: none;
+}
+.map-mask-canvas {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background-color: #d8d8d8;
 }
 .icon-left-dir {
   left: 0px;
@@ -653,11 +664,25 @@ input.password::-webkit-input-placeholder {
   padding-bottom: 10px;
 }
 .place .rating {
-  font-size: 25px;
-  padding-bottom: 20px;
+  position: relative;
+  height: 10vh;
 }
-.place .rating .highlighted {
+.place .rating .stars {
+  font-size: 25px;
+  position: absolute;
+  width: 100vw;
+  z-index: 5;
+}
+.place .rating .stars .star-background {
+  position: absolute;
+  z-index: -1;
+  text-shadow: none;
+}
+.place .rating .stars .highlighted {
   color: #ffd700;
+}
+.place .rating .stars .icon-star-half:before {
+  text-indent: -0.5em;
 }
 .place .images {
   text-align: center;

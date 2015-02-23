@@ -25,38 +25,15 @@ define('view/verify-mobile', function(require) {
       verificationCodeInput: 'input.verificationcode'
     },
 
-    onDomRefresh: function() {
+    initialize: function() {
       analytics.trackView('Verify Mobile');
     },
 
     verify: click.single(function() {
-      if (this.validateForm()) {
-        this.submit();
+      if (validateForm()) {
+        submit(this);
       }
     }),
-
-    validateForm: function() {
-      return validator.validateFields($('.form').find('.field'));
-    },
-
-    submit: function() {
-      var self = this;
-      return serverGateway.account.post('/account/verify', {
-          userId: context.user.id,
-          code: this.ui.verificationCodeInput.val()
-        })
-        .then(function() {
-          vent.trigger('navigate', 'home');
-          context.user.verified = true;
-        })
-        .catch(function(response) {
-          switch (response.status) {
-            case 401 : return validator.addError(self.ui.verificationCodeInput, 'invalid_verification_code');
-          }
-          analytics.trackError(JSON.stringify(response));
-          toast.showLongBottom('Something unexpected happened. Please try again.');
-        });
-    },
 
     onBack: function() {
       return false;
@@ -74,6 +51,28 @@ define('view/verify-mobile', function(require) {
     }
 
   });
+
+  var validateForm = function() {
+    return validator.validateFields($('.form').find('.field'));
+  };
+
+  var submit = function(view) {
+    return serverGateway.account.post('/account/verify', {
+      userId: context.user.id,
+      code: view.ui.verificationCodeInput.val()
+    })
+      .then(function() {
+        vent.trigger('navigate', 'home');
+        context.user.verified = true;
+      })
+      .catch(function(response) {
+        switch (response.status) {
+          case 401 : return validator.addError(view.ui.verificationCodeInput, 'invalid_verification_code');
+        }
+        analytics.trackError(JSON.stringify(response));
+        toast.showLongBottom('Something unexpected happened. Please try again.');
+      });
+  };
 
   return view;
 

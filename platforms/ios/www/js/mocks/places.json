@@ -14,7 +14,8 @@
       "longitude": -0.309204
     },
     "rating": {
-      "average": 4.5
+      "average": 4.5,
+      "user": 4
     },
     "address": {
       "line1": "24 Market Place",
@@ -37,7 +38,7 @@
       "longitude": -0.266755
     },
     "rating": {
-      "average": 4
+      "average": 4.5
     },
     "address": {
       "line1": "434 Chiswick High Road",
@@ -83,7 +84,7 @@
       "longitude": -0.256845
     },
     "rating": {
-      "average": 4
+      "average": 2.5
     },
     "address": {
       "line1": "185 Chiswick High Road",

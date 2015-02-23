@@ -5,17 +5,26 @@ define('util/touch', function(require) {
   var exports = {};
 
   exports.initializeTouchFeedback = function() {
-    $('.touch-color').on('touchstart', function(e){
-      $(this).addClass('js-touch-color');
+    registerFeedback($('.touch-color'), 'js-touch-color');
+    registerFeedback($('.touch-size'), 'js-touch-size');
+  };
+
+  exports.removeTouchFeedback = function(element) {
+    element.off('touchstart touchend touchcancel touchleave');
+  };
+
+  var registerFeedback = function(elements, touchClass) {
+    elements.on('touchstart', function(){
+      $(this).addClass(touchClass);
     });
-    $('.touch-color').on('touchend', function(e){
-      $(this).removeClass('js-touch-color');
+    elements.on('touchend', function(){
+      $(this).removeClass(touchClass);
     });
-    $('.touch-color').on('touchcancel', function(e){
-      $(this).removeClass('js-touch-color');
+    elements.on('touchcancel', function(){
+      $(this).removeClass(touchClass);
     });
-    $('.touch-color').on('touchleave', function(e){
-      $(this).removeClass('js-touch-color');
+    elements.on('touchleave', function(){
+      $(this).removeClass(touchClass);
     });
   };
 

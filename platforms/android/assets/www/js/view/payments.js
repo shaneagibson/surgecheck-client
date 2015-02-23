@@ -18,31 +18,18 @@ define('view/payments', function(require) {
       'click .add-card' : 'addCard'
     },
 
-    onDomRefresh: function() {
-      var view = this;
+    initialize: function() {
       serverGateway.payment.get('/payment/user/'+context.user.id+'/payment-method')
         .then(function(paymentMethods) {
           if (paymentMethods.length > 0) {
             context.paymentMethods = paymentMethods;
             paymentMethods.forEach(function (paymentMethod) {
-              view.renderPaymentMethod(paymentMethod);
+              renderPaymentMethod(paymentMethod);
             });
           } else {
-            vent.trigger('navigate', 'add-card');
+            $('.payment-methods').append('<div class="select-text center">No Cards Found</div>');
           }
         });
-    },
-
-    renderPaymentMethod: function(paymentMethod) {
-      var resolveCardTypeCss = function(paymentMethod) {
-        return paymentMethod.cardType.toLowerCase().replace(/ /g, '_');
-      };
-      var paymentMethodHtml =
-          '<div data-cardid="'+paymentMethod.id+'" class="select-text edit-card touch-color">' +
-            '<div class="card-image '+resolveCardTypeCss(paymentMethod)+'"></div>' +
-            '<div class="card-summary">'+paymentMethod.type.toUpperCase()+' •••• '+paymentMethod.last4Digits+'<i class="icon-pencil"></i></div>' +
-          '</div>';
-      $('.payment-methods').append(paymentMethodHtml);
     },
 
     showMenu: function(){
@@ -59,6 +46,18 @@ define('view/payments', function(require) {
     }
 
   });
+
+  var renderPaymentMethod = function(paymentMethod) {
+    var resolveCardTypeCss = function(paymentMethod) {
+      return paymentMethod.cardType.toLowerCase().replace(/ /g, '_');
+    };
+    var paymentMethodHtml =
+      '<div data-cardid="'+paymentMethod.id+'" class="select-text edit-card touch-color">' +
+      '<div class="card-image '+resolveCardTypeCss(paymentMethod)+'"></div>' +
+      '<div class="card-summary">'+paymentMethod.type.toUpperCase()+' •••• '+paymentMethod.last4Digits+'<i class="icon-pencil"></i></div>' +
+      '</div>';
+    $('.payment-methods').append(paymentMethodHtml);
+  };
 
   return view;
 

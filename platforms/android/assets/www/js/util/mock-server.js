@@ -51,6 +51,8 @@ define('util/mock-server', function(require) {
 
   registerMock('POST',   '/promotion/user/.*/redeem/.*',                true,   {});
 
+  registerMock('GET',    '/?lat=.*&lon=.*',                             true,   JSON.parse(require('text!../mocks/places.json')));
+
   return exports;
 
 });

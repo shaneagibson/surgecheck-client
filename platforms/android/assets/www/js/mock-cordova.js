@@ -4,6 +4,8 @@ define('mock-cordova', function(require){
 
     mock: function() {
       mockPushNotificationPlugin();
+      mockGeolocationPlugin();
+      mockContactsPlugin();
     }
 
   };
@@ -14,6 +16,38 @@ define('mock-cordova', function(require){
     };
     PushNotification.getDeviceId = function (success, failure) {
       success('ABC123');
+    };
+  };
+
+  var mockGeolocationPlugin = function() {
+    navigator.geolocation = {};
+    navigator.geolocation.getCurrentPosition = function(success, failure, options) {
+      var position = {};
+      position.coords = {};
+      position.coords.latitude = 51.483159;
+      position.coords.longitude = -0.309862;
+      position.coords.altitude = 0;
+      position.coords.accuracy = 1;
+      position.coords.altitudeAccuracy = 1;
+      position.coords.heading = 0;
+      position.coords.speed = 0;
+      position.timestamp = Date.now();
+      success(position);
+    };
+  };
+
+  var mockContactsPlugin = function() {
+    navigator.contacts = {};
+    navigator.contacts.find = function(fields, success, failure) {
+      var contacts = [
+        {
+          name: "Shane Gibson",
+          phoneNumbers: [ "07920057337" ],
+          nickname: "Shane",
+          displayName: "Shane Gibson"
+        }
+      ];
+      success(contacts);
     };
   };
 

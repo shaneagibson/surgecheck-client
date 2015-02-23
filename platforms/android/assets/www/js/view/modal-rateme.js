@@ -18,7 +18,7 @@ define('view/modal-rateme', function(require) {
       'click .rate' : 'onRate'
     },
 
-    onDomRefresh: function() {
+    initialize: function() {
       analytics.trackView('Rate Me');
     },
 

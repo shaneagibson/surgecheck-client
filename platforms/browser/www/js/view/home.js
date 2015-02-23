@@ -10,7 +10,6 @@ define('view/home', function(require) {
   var touch = require('../util/touch');
   var geolocation = require('../util/geolocation');
   var IScroll = require('iscroll');
-  var _ = require('underscore');
   var placeTemplate = require('hbs!../html/partial/place-summary');
   var serverGateway = require('../util/server-gateway');
 
@@ -62,14 +61,14 @@ define('view/home', function(require) {
       view.placesIScroll.next(400);
     },
 
-    showPlace: function(e) {
-      var placeId = $(e.currentTarget).data('id');
-      vent.trigger('navigate', 'place/'+placeId);
+    showPlace: function() {
+      var place = context.places[view.placesIScroll.currentPage.pageX];
+      vent.trigger('navigate', 'place/'+place.id);
     }
 
   });
 
-  var updatePlaces = function(currentPosition){
+  var updatePlaces = function(currentPosition) {
     return fetchPlaces(currentPosition)
       .then(function(places) {
         context.places = places;
@@ -83,7 +82,7 @@ define('view/home', function(require) {
   };
 
   var renderMap = function(places, currentPosition){
-    view.map = map.create($('.map-canvas .map'));
+    view.map = map.create($('.map-canvas .map'), onMapLoaded);
     view.map.addMarker('current_position', './images/marker.png', currentPosition.coords);
     view.map.addMarker('place', { url: './images/place-icon.png', scaledSize: new google.maps.Size(25, 34) }, places[0].coords);
     view.map.addEventListener('dragend', endMapDrag);
@@ -91,9 +90,7 @@ define('view/home', function(require) {
   };
 
   var renderPlaces = function(places) {
-    places.forEach(function(place) {
-      $('.places').append(placeTemplate(place));
-    });
+    places.forEach(function(place) { $('.places').append(placeTemplate(place)); });
     touch.initializeTouchFeedback();
     setTimeout(function() {
       view.placesIScroll = new IScroll('#iscroll-wrapper', {
@@ -131,6 +128,10 @@ define('view/home', function(require) {
 
   var endMapDrag = function() {
     console.log(JSON.stringify(this.getCenter()));
+  };
+
+  var onMapLoaded = function() {
+    $('.map-mask-canvas').hide();
   };
 
   return view;

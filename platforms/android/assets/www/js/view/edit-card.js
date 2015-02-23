@@ -19,49 +19,19 @@ define('view/edit-card', function(require) {
       'click .icon-menu' : 'showMenu',
       'click .save-card' : 'saveCard',
       'click .cancel' : 'cancel',
-      'click .delete-card' : 'deleteCard'
-      // TODO - validator on blur
+      'click .delete-card' : 'deleteCard',
+      'blur input.cardnumber' : 'validateField',
+      'blur input.mmyy' : 'validateField',
+      'blur input.cvv' : 'validateField',
+      'blur input.postcode' : 'validateField'
     },
 
-    onDomRefresh: function(){
+    initialize: function(){
       var paymentMethod = context.getPaymentMethodById(this.options.cardId);
-      this.prepopulate(paymentMethod);
-      this.initializeTypePicker(paymentMethod.type);
-      this.initializeMMYYPicker(new Date('20'+paymentMethod.expiryYear, parseInt(paymentMethod.expiryMonth) - 1));
+      prepopulate(paymentMethod);
+      initializeTypePicker(paymentMethod.type);
+      initializeMMYYPicker(new Date('20'+paymentMethod.expiryYear, parseInt(paymentMethod.expiryMonth) - 1));
       analytics.trackView('Edit Card');
-    },
-
-    prepopulate: function(paymentMethod) {
-      $('.cardnumber').val('•••• •••• •••• '+paymentMethod.last4Digits);
-      $('.mmyy').val(paymentMethod.expiryMonth + ' / 20' + paymentMethod.expiryYear);
-      $('.postcode').val(paymentMethod.postcode);
-      $('.type').val(paymentMethod.type);
-    },
-
-    initializeTypePicker: function(defaultValue){
-      $(".type").mobiscroll().select({
-        display: 'modal',
-        theme: 'epsilon',
-        placeholder: 'Select Type',
-        minWidth: 200,
-        defaultValue: defaultValue
-      });
-    },
-
-    initializeMMYYPicker: function(defaultValue){
-      var today = new Date();
-      var maxDate = new Date();
-      maxDate.setFullYear(today.getFullYear() + 10);
-      $(".mmyy").mobiscroll().date({
-        display: 'modal',
-        dateOrder: 'mmyyyy',
-        mode: 'scroller',
-        dateFormat: 'mm / yyyy',
-        theme: 'epsilon',
-        minDate: today,
-        maxDate: maxDate,
-        defaultValue: defaultValue
-      });
     },
 
     showMenu: function(){
@@ -69,19 +39,13 @@ define('view/edit-card', function(require) {
     },
 
     saveCard: function(){
-      if (this.validateForm()) {
-        this.submit();
+      if (validateForm()) {
+        submit(this);
       }
     },
 
-    validateForm: function(){
-      return validator.validateFields($('.form').find('.field'));
-    },
-
-    submit: function(){
-      // TODO - validate & update card
-      toast.showShortBottom('Card Successfully Updated');
-      vent.trigger('navigate', 'payments');
+    validateField: function(e) {
+      validator.validateFields($(e.currentTarget));
     },
 
     cancel: function(){
@@ -107,6 +71,49 @@ define('view/edit-card', function(require) {
     }
 
   });
+
+  var prepopulate = function(paymentMethod) {
+    $('.cardnumber').val('•••• •••• •••• '+paymentMethod.last4Digits);
+    $('.mmyy').val(paymentMethod.expiryMonth + ' / 20' + paymentMethod.expiryYear);
+    $('.postcode').val(paymentMethod.postcode);
+    $('.type').val(paymentMethod.type);
+  };
+
+  var validateForm = function(){
+    return validator.validateFields($('.form').find('.field'));
+  };
+
+  var submit = function(view){
+    // TODO - validate & update card
+    toast.showShortBottom('Card Successfully Updated');
+    vent.trigger('navigate', 'payments');
+  };
+
+  var initializeTypePicker = function(defaultValue){
+    $(".type").mobiscroll().select({
+      display: 'modal',
+      theme: 'epsilon',
+      placeholder: 'Select Type',
+      minWidth: 200,
+      defaultValue: defaultValue
+    });
+  };
+
+  var initializeMMYYPicker = function(defaultValue){
+    var today = new Date();
+    var maxDate = new Date();
+    maxDate.setFullYear(today.getFullYear() + 10);
+    $(".mmyy").mobiscroll().date({
+      display: 'modal',
+      dateOrder: 'mmyyyy',
+      mode: 'scroller',
+      dateFormat: 'mm / yyyy',
+      theme: 'epsilon',
+      minDate: today,
+      maxDate: maxDate,
+      defaultValue: defaultValue
+    });
+  };
 
   return view;
 
