@@ -5,6 +5,7 @@ define('view/payments', function(require) {
   var vent = require('../util/vent');
   var context = require('../context');
   var serverGateway = require('../util/server-gateway');
+  var analytics = require('../util/analytics');
 
   var view = Marionette.LayoutView.extend({
 
@@ -18,7 +19,11 @@ define('view/payments', function(require) {
       'click .add-card' : 'addCard'
     },
 
-    initialize: function() {
+    initialize: function(){
+      analytics.trackView('Payments');
+    },
+
+    onDomRefresh: function() {
       serverGateway.payment.get('/payment/user/'+context.user.id+'/payment-method')
         .then(function(paymentMethods) {
           if (paymentMethods.length > 0) {

@@ -610,7 +610,7 @@ input.password::-webkit-input-placeholder {
 }
 .icon-left-dir,
 .icon-right-dir {
-  top: 70%;
+  bottom: 10%;
   position: absolute;
   font-size: 30px;
   color: #333333;
@@ -627,7 +627,6 @@ input.password::-webkit-input-placeholder {
 }
 .places {
   top: 50px;
-  width: 400vw;
   position: absolute;
   z-index: 1;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -673,16 +672,23 @@ input.password::-webkit-input-placeholder {
   width: 100vw;
   z-index: 5;
 }
-.place .rating .stars .star-background {
+.place .rating .stars .user-star {
   position: absolute;
   z-index: -1;
   text-shadow: none;
+  color: transparent;
 }
-.place .rating .stars .highlighted {
+.place .rating .stars .user-star.highlighted {
+  z-index: 3;
   color: #ffd700;
 }
 .place .rating .stars .icon-star-half:before {
   text-indent: -0.5em;
+}
+.place .rating .stars .icon-star-empty.half {
+  position: absolute;
+  z-index: -1;
+  width: 0;
 }
 .place .images {
   text-align: center;
@@ -724,8 +730,36 @@ input.password::-webkit-input-placeholder {
 }
 .place-details {
   position: absolute;
-  height: 100vh;
   top: 50px;
+}
+.current-place {
+  position: absolute;
+  height: 100%;
+}
+#imagelightbox {
+  cursor: pointer;
+  position: fixed;
+  z-index: 10000;
+  -ms-touch-action: none;
+  touch-action: none;
+  -webkit-box-shadow: 0 0 3.125em rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 3.125em rgba(0, 0, 0, 0.75);
+  border: 1px solid #a4a4a4;
+  border-radius: 5px;
+}
+#imagelightbox-overlay {
+  background-color: #333333;
+  display: none;
+  opacity: 0.75;
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+a {
+  text-decoration: none;
 }
 
 .loader {

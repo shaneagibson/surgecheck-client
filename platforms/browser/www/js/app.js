@@ -18,6 +18,7 @@ define('app', function(require) {
   var analytics = require('./util/analytics');
   var context = require('./context');
   var map = require('./util/map');
+
   var swipe = require("jquery-touchswipe");
   var handlebarsHelpers = require("./util/hbs-helpers");
 

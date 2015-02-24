@@ -26,6 +26,7 @@ define('util/mock-server', function(require) {
   exports.findMock = function(type, url) {
     for (var i = 0; i < mocks.length; i++) {
       if (mocks[i].isMatch(type, url)) {
+        console.log('using mock found for '+type+' '+url);
         return mocks[i];
       }
     }
@@ -52,6 +53,7 @@ define('util/mock-server', function(require) {
   registerMock('POST',   '/promotion/user/.*/redeem/.*',                true,   {});
 
   registerMock('GET',    '/?lat=.*&lon=.*',                             true,   JSON.parse(require('text!../mocks/places.json')));
+  registerMock('POST',   '/user/.*/place/.*/rating',                    true,   {});
 
   return exports;
 

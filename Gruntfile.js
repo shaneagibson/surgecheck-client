@@ -37,7 +37,8 @@ module.exports = function(grunt) {
         files: {
           'www/css/index.css' : [
             'app/styles/**/*.css',
-            'www/css/index.css'
+            'www/css/index.css',
+            'app/scripts/components/swipebox/src/css/swipebox.min.css'
           ]
         }
       }

@@ -17,6 +17,7 @@ require.config(
       "hammer": "./components/hammerjs/hammer",
       "google-jsapi": "./components/google-jsapi/jsapi",
       "iscroll": "./components/iscroll/build/iscroll",
+      "imagelightbox": "./components/imagelightbox/imagelightbox",
       "jquery-touchswipe": "./components/jquery-touchswipe/jquery.touchSwipe.min"
     },
     shim: {
@@ -31,6 +32,9 @@ require.config(
         exports: 'IScroll'
       },
       "jquery-touchswipe": {
+        deps: ['jquery']
+      },
+      "imagelightbox": {
         deps: ['jquery']
       }
     }

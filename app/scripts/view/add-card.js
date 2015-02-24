@@ -27,7 +27,11 @@ define('view/add-card', function(require) {
       'blur input.postcode' : 'validateField'
     },
 
-    initialize: function(){
+    initialize: function() {
+      analytics.trackView('Add Card');
+    },
+
+    onDomRefresh: function(){
       initializeTypePicker();
       initializeMMYYPicker();
       analytics.trackView('Add Card');

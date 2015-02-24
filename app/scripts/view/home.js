@@ -10,6 +10,7 @@ define('view/home', function(require) {
   var touch = require('../util/touch');
   var geolocation = require('../util/geolocation');
   var IScroll = require('iscroll');
+  var _ = require('underscore');
   var placeTemplate = require('hbs!../html/partial/place-summary');
   var serverGateway = require('../util/server-gateway');
 
@@ -24,21 +25,24 @@ define('view/home', function(require) {
       'click .tab.options' : 'showOptions',
       'click .tab.map' : 'showMap',
       'click .icon-left-dir' : 'swipeLeft',
-      'click .icon-right-dir' : 'swipeRight',
-      'click .place' : 'showPlace'
+      'click .icon-right-dir' : 'swipeRight'
     },
 
     initialize: function() {
       analytics.trackView('Home');
+    },
+
+    onDomRefresh: function() {
       geolocation.getCurrentPosition()
         .then(function(currentPosition) {
           updatePlaces(currentPosition);
         });
     },
 
-    onClose: function(){
+    close: function(){
       view.placesIScroll.destroy();
       view.placesIScroll = null;
+      vent.off('places:update');
     },
 
     showMenu: function(){
@@ -59,39 +63,28 @@ define('view/home', function(require) {
 
     swipeRight: function() {
       view.placesIScroll.next(400);
-    },
-
-    showPlace: function() {
-      var place = context.places[view.placesIScroll.currentPage.pageX];
-      vent.trigger('navigate', 'place/'+place.id);
     }
 
   });
-
-  var updatePlaces = function(currentPosition) {
-    return fetchPlaces(currentPosition)
-      .then(function(places) {
-        context.places = places;
-        renderPlaces(places, currentPosition);
-        renderMap(places, currentPosition);
-      });
-  };
 
   var fetchPlaces = function(currentPosition) {
     return serverGateway.places.get('/?lat='+currentPosition.coords.latitude+'&lon='+currentPosition.coords.longitude);
   };
 
-  var renderMap = function(places, currentPosition){
-    view.map = map.create($('.map-canvas .map'), onMapLoaded);
-    view.map.addMarker('current_position', './images/marker.png', currentPosition.coords);
-    view.map.addMarker('place', { url: './images/place-icon.png', scaledSize: new google.maps.Size(25, 34) }, places[0].coords);
-    view.map.addEventListener('dragend', endMapDrag);
-    view.map.fitToMarkers();
+  var updatePlaces = function(currentPosition) {
+    return fetchPlaces(currentPosition)
+      .then(function(places) {
+        context.places = places;
+        renderPlaces(places);
+        renderMap(places, currentPosition);
+      });
   };
 
   var renderPlaces = function(places) {
     places.forEach(function(place) { $('.places').append(placeTemplate(place)); });
+    $('.places').width((places.length * 100) + 'vw');
     touch.initializeTouchFeedback();
+    $('.place').on('touchend', function(){ showPlace(); });
     setTimeout(function() {
       view.placesIScroll = new IScroll('#iscroll-wrapper', {
         scrollX: true,
@@ -112,6 +105,19 @@ define('view/home', function(require) {
     }, 200);
   };
 
+  var renderMap = function(places, currentPosition){
+    view.map = map.create($('.map-canvas .map'), onMapLoaded);
+    view.map.addMarker('current_position', './images/marker.png', currentPosition.coords);
+    view.map.addMarker('place', { url: './images/place-icon.png', scaledSize: new google.maps.Size(25, 34) }, places[0].coords);
+    view.map.addEventListener('dragend', endMapDrag);
+    view.map.fitToMarkers();
+  };
+
+  var showPlace = function() {
+    var place = context.places[view.placesIScroll.currentPage.pageX];
+    vent.trigger('navigate', 'place/'+place.id);
+  };
+
   var updateArrowsForSelectedPlace = function(placeIndex) {
     $('.icon-left-dir').toggle(placeIndex !== 0);
     $('.icon-right-dir').toggle(placeIndex !== $('.place').length - 1);
@@ -124,6 +130,7 @@ define('view/home', function(require) {
     selectTab.addClass('selected').removeClass('touch-color');
     touch.removeTouchFeedback(selectTab);
     touch.initializeTouchFeedback();
+    view.map.fitToMarkers();
   };
 
   var endMapDrag = function() {

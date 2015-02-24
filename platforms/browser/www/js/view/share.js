@@ -19,7 +19,7 @@ define('view/share', function(require) {
     },
 
     initialize: function(){
-      $('.code').html(this.getPromoCode());
+      $('.code').html(getPromoCode());
       analytics.trackView('Share');
     },
 

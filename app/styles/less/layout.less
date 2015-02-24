@@ -416,7 +416,7 @@ input.cardnumber,input.password{
   right: 0px;
 }
 .icon-left-dir,.icon-right-dir{
-  top: 70%;
+  bottom: 10%;
   position: absolute;
   font-size: 30px;
   color: @darkgray;
@@ -433,7 +433,6 @@ input.cardnumber,input.password{
 }
 .places{
   top: 50px;
-  width: 400vw; // TODO - dynamically calculate this
   position: absolute;
   z-index: 1;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -476,16 +475,23 @@ input.cardnumber,input.password{
       position: absolute;
       width: 100vw;
       z-index: 5;
-      .star-background{
+      .user-star{
         position: absolute;
         z-index: -1;
         text-shadow: none;
-      }
-      .highlighted{
-        color: @gold;
+        color: transparent;
+        &.highlighted{
+          z-index: 3;
+          color: @gold;
+        }
       }
       .icon-star-half:before{
         text-indent: -0.50em;
+      }
+      .icon-star-empty.half{
+        position: absolute;
+        z-index: -1;
+        width: 0;
       }
     }
   }
@@ -530,6 +536,34 @@ input.cardnumber,input.password{
 }
 .place-details{
   position: absolute;
-  height: 100vh;
   top: 50px;
+}
+.current-place{
+  position: absolute;
+  height: 100%;
+}
+#imagelightbox{
+  cursor: pointer;
+  position: fixed;
+  z-index: 10000;
+  -ms-touch-action: none;
+  touch-action: none;
+  -webkit-box-shadow: 0 0 3.125em rgba( 0, 0, 0, .75 );
+  box-shadow: 0 0 3.125em rgba( 0, 0, 0, .75 );
+  border: 1px solid @lightgray;
+  border-radius: 5px;
+}
+#imagelightbox-overlay {
+  background-color: @darkgray;
+  display: none;
+  opacity: 0.75;
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+a{
+  text-decoration: none;
 }

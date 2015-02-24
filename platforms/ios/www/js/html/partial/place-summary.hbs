@@ -4,11 +4,7 @@
         <div class="description">{{description}}</div>
         <div class="rating">
             <div class="stars">
-            {{#if rating.user}}
-              {{user-stars rating.user}}
-            {{else}}
-              {{average-stars rating.average}}
-            {{/if}}
+                {{rating-stars rating}}
             </div>
         </div>
         <div class="images">

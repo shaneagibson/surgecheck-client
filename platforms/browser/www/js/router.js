@@ -52,6 +52,9 @@ define('router', function(require) {
       var appRouter = new AppRouter();
 
       var showView = function(view, options) {
+        if (app.main.currentView && app.main.currentView.close) {
+          app.main.currentView.close();
+        }
         app.main.show(view, options);
         touch.initializeTouchFeedback();
       };
