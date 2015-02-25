@@ -1,0 +1,19 @@
+<li class="place" data-id="{{id}}">
+    <div class="details touch-size">
+        <div class="name">{{name}}</div>
+        <div class="description">{{description}}</div>
+        <div class="rating">
+            <i class="icon-star star one"></i>
+            <i class="icon-star star two"></i>
+            <i class="icon-star star three"></i>
+            <i class="icon-star star four"></i>
+            <i class="icon-star star five"></i>
+        </div>
+        <div class="images">
+            {{#each images}}
+            <div class="image touch-color" style="background-image: url({{.}})"></div>
+            {{/each}}
+        </div>
+        <div class="small-description">{{distance}}m away</div>
+    </div>
+</li>

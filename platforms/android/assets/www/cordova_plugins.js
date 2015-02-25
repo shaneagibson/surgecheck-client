@@ -108,6 +108,34 @@ module.exports = [
         "merges": [
             ""
         ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/CameraConstants.js",
+        "id": "org.apache.cordova.camera.Camera",
+        "clobbers": [
+            "Camera"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js",
+        "id": "org.apache.cordova.camera.CameraPopoverOptions",
+        "clobbers": [
+            "CameraPopoverOptions"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/Camera.js",
+        "id": "org.apache.cordova.camera.camera",
+        "clobbers": [
+            "navigator.camera"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/CameraPopoverHandle.js",
+        "id": "org.apache.cordova.camera.CameraPopoverHandle",
+        "clobbers": [
+            "CameraPopoverHandle"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -121,7 +149,8 @@ module.exports.metadata =
     "org.apache.cordova.inappbrowser": "0.5.4",
     "com.pushapps.phonegap": "1.6.0",
     "org.apache.cordova.geolocation": "0.3.12",
-    "org.apache.cordova.contacts": "0.2.16"
+    "org.apache.cordova.contacts": "0.2.16",
+    "org.apache.cordova.camera": "0.3.5"
 }
 // BOTTOM OF METADATA
 });

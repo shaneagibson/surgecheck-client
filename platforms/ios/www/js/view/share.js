@@ -19,8 +19,11 @@ define('view/share', function(require) {
     },
 
     initialize: function(){
-      $('.code').html(getPromoCode());
       analytics.trackView('Share');
+    },
+
+    onDomRefresh: function(){
+      $('.code').html(getPromoCode());
     },
 
     showMenu: function(){

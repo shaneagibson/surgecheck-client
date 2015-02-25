@@ -15,7 +15,7 @@ define('view/modal-confirm', function(require) {
       'click .no' : 'onNo'
     },
 
-    initialize: function(){
+    onDomRefresh: function(){
       if (this.options.title) {
         $('.confirm .title').html(this.options.title);
       }

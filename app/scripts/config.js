@@ -25,7 +25,7 @@ define('config', function(require){
         host: '192.168.43.22',
         port: 8003
       },
-      places: {
+      place: {
         scheme: 'http',
         host: '192.168.43.22',
         port: 8005

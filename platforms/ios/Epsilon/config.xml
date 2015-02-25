@@ -47,6 +47,10 @@
     <feature name="Contacts">
         <param name="ios-package" value="CDVContacts" />
     </feature>
+    <feature name="Camera">
+        <param name="ios-package" value="CDVCamera" />
+    </feature>
+    <preference name="CameraUsesGeolocation" value="false" />
     <name>Epsilon</name>
     <description>Epsilon Client App</description>
     <author email="sgibson@epsilontechnologies.co.uk" href="http://www.epsilontechnologies.co.uk" />

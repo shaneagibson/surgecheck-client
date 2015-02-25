@@ -48,12 +48,13 @@ define('util/mock-server', function(require) {
   registerMock('POST',   '/account/register',                           true,   JSON.parse(require('text!../mocks/register.response.json')));
   registerMock('POST',   '/account/verify',                             true,   {});
   registerMock('GET',    '/account/session',                            true,   JSON.parse(require('text!../mocks/session.response.json')));
-  registerMock('POST',   '/account/verification-code/resend?userId=.*', true,   {});
+  registerMock('POST',   '/account/user/.*/verification-code/resend',   true,   {});
+  registerMock('POST',   '/account/user/.*/photo',                      true,   {});
+  registerMock('GET',   '/account/user/.*/photo',                       true,   require('text!../mocks/photo.txt'));
 
   registerMock('POST',   '/promotion/user/.*/redeem/.*',                true,   {});
 
-  registerMock('GET',    '/?lat=.*&lon=.*',                             true,   JSON.parse(require('text!../mocks/places.json')));
-  registerMock('POST',   '/user/.*/place/.*/rating',                    true,   {});
+  registerMock('GET',    '/place/?',                                    true,   JSON.parse(require('text!../mocks/places.json')));
 
   return exports;
 

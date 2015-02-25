@@ -17,11 +17,18 @@ define('view/profile', function(require) {
 
     events: {
       'click .icon-menu' : 'showMenu',
-      'click .sign-out' : 'signOut'
+      'click .sign-out' : 'signOut',
+      'click .profile-photo' : 'changePhoto'
     },
 
     initialize: function() {
       analytics.trackView('Profile');
+      vent.on('photo', capturePhoto);
+      serverGateway.account.get('/account/user/'+context.user.id+'/photo').then(renderProfilePhoto);
+    },
+
+    close: function() {
+      vent.off('photo', capturePhoto);
     },
 
     showMenu: function(){
@@ -43,9 +50,29 @@ define('view/profile', function(require) {
           analytics.trackError(JSON.stringify(response));
           toast.showLongBottom('Something unexpected happened. Please try again.');
         });
+    }),
+
+    changePhoto: click.single(function() {
+      vent.trigger('modal:photo');
     })
 
   });
+
+  var renderProfilePhoto = function(imageData) {
+    $('.profile-photo').css('background-image', 'url("data:image/jpeg;base64,' + imageData+'")');
+    $('.profile-photo .icon-user').hide();
+  };
+
+  var capturePhoto = function(imageData) {
+    serverGateway.account.post('/account/user/'+context.user.id+'/photo', imageData, {}, 'image/jpeg')
+      .then(function() {
+        renderProfilePhoto(imageData);
+      })
+      .catch(function(response) {
+        analytics.trackError(JSON.stringify(response));
+        toast.showLongBottom('Something unexpected happened. Please try again.');
+      });
+  };
 
   return view;
 

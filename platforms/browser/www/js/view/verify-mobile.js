@@ -40,7 +40,7 @@ define('view/verify-mobile', function(require) {
     },
 
     resendSms: function() {
-      return serverGateway.account.post('/account/verification-code/resend?userId='+context.user.id)
+      return serverGateway.account.post('/account/user/'+context.user.id+'/verification-code/resend')
         .then(function() {
           toast.showLongBottom('The code has been resent via SMS.');
         })

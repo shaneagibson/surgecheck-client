@@ -68,7 +68,7 @@ define('view/home', function(require) {
   });
 
   var fetchPlaces = function(currentPosition) {
-    return serverGateway.places.get('/?lat='+currentPosition.coords.latitude+'&lon='+currentPosition.coords.longitude);
+    return serverGateway.place.get('/place/?latitude='+currentPosition.coords.latitude+'&longitude='+currentPosition.coords.longitude);
   };
 
   var updatePlaces = function(currentPosition) {
