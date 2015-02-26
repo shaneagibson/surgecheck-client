@@ -191,7 +191,7 @@ input:focus{
 }
 .display-text{
   margin: 6px 15px;
-  color: white;
+  color: @white;
   font-size: 14px;
   text-align: left;
   padding: 12px 10px 8px;
@@ -242,7 +242,7 @@ input:focus{
     background-image: url(../images/visa.gif);
     background-size: 30px 10px;
     background-repeat: no-repeat;
-    background-color: white;
+    background-color: @white;
     background-position-y: 5px;
   }
 }
@@ -264,7 +264,7 @@ input:focus{
   margin: 10px auto;
 }
 .code{
-  color: white;
+  color: @white;
   font-family: CourierPrimeBold;
   font-size: 30px;
   background-color: @darkgray;
@@ -425,7 +425,14 @@ input.cardnumber,input.password{
   z-index: 10;
   display: none;
 }
-#iscroll-wrapper{
+#places-iscroll-wrapper{
+  width: 100vw;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+#friends-iscroll-wrapper{
   width: 100vw;
   height: 100%;
   margin: 0 auto;
@@ -504,7 +511,7 @@ input.cardnumber,input.password{
       background-size: 20vw 20vw;
       width: 20vw;
       height: 20vw;
-      border: 1px solid white;
+      border: 1px solid @darkgray;
       display: inline-block;
       margin: 0px 5px;
       border-radius: 5px;
@@ -516,7 +523,7 @@ input.cardnumber,input.password{
     padding-bottom: 5px;
   }
   .button {
-    background-color: white;
+    background-color: @white;
     font-size: 14px;
     padding: 10px;
     border-radius: 5px;
@@ -556,4 +563,30 @@ input.cardnumber,input.password{
 }
 a{
   text-decoration: none;
+}
+li.letter{
+  text-align: left;
+  font-size: 12px; border-bottom: 1px solid @darkgray;
+  font-family: Jura-Bold;
+  color: @white;
+  padding: 5px 10px;
+  background-color: @darkgray;
+  border-bottom: 1px solid @gray;
+}
+li.friend{
+  text-align: left;
+  font-size: 19px;
+  border-bottom: 1px solid @darkgray;
+  padding: 10px 20px;
+  font-family: Jura-Bold;
+  background-color: @white;
+  i{
+    float: right;
+  }
+}
+.iScrollIndicator{
+  border: 1px solid @darkgray;
+}
+.hidden{
+  display: none;
 }

@@ -25,7 +25,8 @@ define('view/home', function(require) {
       'click .tab.options' : 'showOptions',
       'click .tab.map' : 'showMap',
       'click .icon-left-dir' : 'swipeLeft',
-      'click .icon-right-dir' : 'swipeRight'
+      'click .icon-right-dir' : 'swipeRight',
+      'click .place' : 'showPlace'
     },
 
     initialize: function() {
@@ -84,9 +85,9 @@ define('view/home', function(require) {
     places.forEach(function(place) { $('.places').append(placeTemplate(place)); });
     $('.places').width((places.length * 100) + 'vw');
     touch.initializeTouchFeedback();
-    $('.place').on('touchend', function(){ showPlace(); });
+    $('.place').click(showPlace);
     setTimeout(function() {
-      view.placesIScroll = new IScroll('#iscroll-wrapper', {
+      view.placesIScroll = new IScroll('#places-iscroll-wrapper', {
         scrollX: true,
         scrollY: false,
         momentum: false,

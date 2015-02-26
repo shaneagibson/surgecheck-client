@@ -6,19 +6,22 @@
     <div class="name">{{name}}</div>
     <div class="description">{{description}}</div>
     <div class="rating">
-      <i class="icon-star star one"></i>
-      <i class="icon-star star two"></i>
-      <i class="icon-star star three"></i>
-      <i class="icon-star star four"></i>
-      <i class="icon-star star five"></i>
+      <div class="stars">
+        {{rating-stars rating}}
+      </div>
     </div>
     <div class="images">
       {{#each images}}
-          <div class="image touch-size" style="background-image: url({{.}})"></div>
+        <a href="{{.}}" class="imagelightbox">
+          <img src="{{.}}" class="image touch-size">
+        </a>
       {{/each}}
     </div>
     <div class="small-description">{{address.line1}}</div>
     <div class="small-description">{{address.line2}}</div>
     <div class="small-description">{{address.line3}}</div>
   </div>
+</div>
+<div class="buttons single">
+    <div class="button bold touch-color dark-button done">Done</div>
 </div>

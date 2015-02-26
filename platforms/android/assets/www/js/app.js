@@ -14,11 +14,14 @@ define('app', function(require) {
   var Menu = require('./view/menu');
   var ModalConfirm = require('./view/modal-confirm');
   var ModalRateMe = require('./view/modal-rateme');
+  var ModalPhoto = require('./view/modal-photo');
   var toast = require('./util/toast');
   var analytics = require('./util/analytics');
   var context = require('./context');
   var map = require('./util/map');
+
   var swipe = require("jquery-touchswipe");
+  var handlebarsHelpers = require("./util/hbs-helpers");
 
   var app = new Marionette.Application();
 
@@ -57,16 +60,24 @@ define('app', function(require) {
   };
 
   var initializeModalListeners = function() {
-    vent.on('modal:confirm', function(options) {
-      $('body').addClass('modal');
-      app.modal.show(new ModalConfirm(options));
-      touch.initializeTouchFeedback();
-    });
-    vent.on('modal:rateme', function() {
-      $('body').addClass('modal');
-      app.modal.show(new ModalRateMe());
-      touch.initializeTouchFeedback();
-    });
+    var listeners = {
+      'modal:confirm' : ModalConfirm,
+      'modal:rateme' : ModalRateMe,
+      'modal:photo' : ModalPhoto
+    };
+    var createModalListener = function(modalView) {
+      return function (options) {
+        $('body').addClass('modal');
+        app.modal.show(new modalView(options));
+        touch.initializeTouchFeedback();
+        $('#mask').on('click', function() { vent.trigger('modal:hide'); });
+      };
+    };
+    for (var key in listeners) {
+      if (listeners.hasOwnProperty(key)) {
+        vent.on(key, createModalListener(listeners[key]));
+      }
+    }
     vent.on('modal:hide', function() {
       app.modal.empty();
       $('body').removeClass('modal');

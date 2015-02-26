@@ -34,7 +34,13 @@ define('config', function(require){
         scheme: 'http',
         host: '192.168.43.22',
         port: 8004
+      },
+      social: {
+        scheme: 'http',
+        host: '192.168.43.22',
+        port: 8006
       }
+
     },
     app_store: {
       android: {

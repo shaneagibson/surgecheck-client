@@ -18,7 +18,7 @@ define('view/menu', function(require) {
       'click .menu-item:not(.active)' : 'showMenuItem'
     },
 
-    initialize: function() {
+    onDomRefresh: function() {
       swipe.register(this.el, swipe.LEFT, this.hideMenu);
     },
 

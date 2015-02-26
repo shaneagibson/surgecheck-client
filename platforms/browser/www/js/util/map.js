@@ -44,6 +44,10 @@ define('util/map', function(require) {
       this.map.fitBounds(bounds);
     };
 
+    this.setCenter = function(coords) {
+      this.map.setCenter(new google.maps.LatLng(coords.latitude, coords.longitude));
+    };
+
   }
 
   exports.initialize = function() {

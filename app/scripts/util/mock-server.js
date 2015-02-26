@@ -56,6 +56,8 @@ define('util/mock-server', function(require) {
 
   registerMock('GET',    '/place/?',                                    true,   JSON.parse(require('text!../mocks/places.json')));
 
+  registerMock('POST',   '/social/user/.*/contacts',                    true,   JSON.parse(require('text!../mocks/social-contacts.json')));
+
   return exports;
 
 });

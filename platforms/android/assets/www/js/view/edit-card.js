@@ -26,12 +26,15 @@ define('view/edit-card', function(require) {
       'blur input.postcode' : 'validateField'
     },
 
-    initialize: function(){
+    initialize: function() {
+      analytics.trackView('Edit Card');
+    },
+
+    onDomRefresh: function(){
       var paymentMethod = context.getPaymentMethodById(this.options.cardId);
       prepopulate(paymentMethod);
       initializeTypePicker(paymentMethod.type);
       initializeMMYYPicker(new Date('20'+paymentMethod.expiryYear, parseInt(paymentMethod.expiryMonth) - 1));
-      analytics.trackView('Edit Card');
     },
 
     showMenu: function(){

@@ -7,6 +7,8 @@ define('view/place', function(require) {
   var analytics = require('../util/analytics');
   var vent = require('../util/vent');
   var stars = require('../util/stars');
+  var serverGateway = require('../util/server-gateway');
+  var imageLightbox = require("../util/image-lightbox");
 
   var view = Marionette.LayoutView.extend({
 
@@ -15,27 +17,42 @@ define('view/place', function(require) {
     template: template,
 
     events: {
-      'click .icon-menu' : 'showMenu'
+      'click .icon-menu' : 'showMenu',
+      'click .done' : 'showHome'
     },
 
     initialize: function() {
-      this.place = context.getPlaceById(parseInt(this.options.placeId));
+      view.place = context.getPlaceById(parseInt(this.options.placeId));
     },
 
     onDomRefresh: function() {
-      analytics.trackView('Place +'+this.place.name);
-      stars.initialize($('.rating'));
+      analytics.trackView('Place +'+view.place.name);
+      view.imagelightbox = imageLightbox.create();
+      view.stars = stars.create($('.rating'));
+      view.stars.addChangeListener(updateUserRating);
+    },
+
+    close: function() {
+      view.imagelightbox.destroy();
     },
 
     serializeData: function() {
-      return this.place;
+      return view.place;
     },
 
     showMenu: function(){
       vent.trigger('menu:show', 'home');
+    },
+
+    showHome: function() {
+      vent.trigger('navigate', 'home');
     }
 
   });
+
+  var updateUserRating = function(rating) {
+    return serverGateway.place.post('/place/'+view.place.id+'/user/'+context.user.id+'/rating', { value : rating });
+  };
 
   return view ;
 

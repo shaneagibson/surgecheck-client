@@ -18,7 +18,7 @@ define('view/place', function(require) {
 
     events: {
       'click .icon-menu' : 'showMenu',
-      'click .back' : 'goBack'
+      'click .done' : 'showHome'
     },
 
     initialize: function() {
@@ -44,7 +44,7 @@ define('view/place', function(require) {
       vent.trigger('menu:show', 'home');
     },
 
-    goBack: function() {
+    showHome: function() {
       vent.trigger('navigate', 'home');
     }
 

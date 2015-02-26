@@ -9,6 +9,9 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/com/pushapps/phonegap/PushAppsPlugin.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/nl/xservices/plugins/Toast$1.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/nl/xservices/plugins/Toast.class \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/camera/CameraLauncher.class \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/camera/ExifHelper.class \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/camera/FileHelper.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/contacts/ContactAccessor$WhereOptions.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/contacts/ContactAccessor.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/contacts/ContactAccessorSdk5.class \

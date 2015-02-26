@@ -28,12 +28,11 @@ define('util/server-gateway', function(require) {
   }
 
   var exports = {
-
     promotion: new Server(config.server.promotion),
     payment: new Server(config.server.payment),
     account: new Server(config.server.account),
-    places: new Server(config.server.places)
-
+    place: new Server(config.server.place),
+    social: new Server(config.server.social)
   };
 
   var asUrl = function(scheme, host, port, path, queryParams) {

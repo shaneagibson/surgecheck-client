@@ -26,6 +26,7 @@ define('util/mock-server', function(require) {
   exports.findMock = function(type, url) {
     for (var i = 0; i < mocks.length; i++) {
       if (mocks[i].isMatch(type, url)) {
+        console.log('using mock found for '+type+' '+url);
         return mocks[i];
       }
     }
@@ -47,11 +48,15 @@ define('util/mock-server', function(require) {
   registerMock('POST',   '/account/register',                           true,   JSON.parse(require('text!../mocks/register.response.json')));
   registerMock('POST',   '/account/verify',                             true,   {});
   registerMock('GET',    '/account/session',                            true,   JSON.parse(require('text!../mocks/session.response.json')));
-  registerMock('POST',   '/account/verification-code/resend?userId=.*', true,   {});
+  registerMock('POST',   '/account/user/.*/verification-code/resend',   true,   {});
+  registerMock('POST',   '/account/user/.*/photo',                      true,   {});
+  registerMock('GET',   '/account/user/.*/photo',                       true,   require('text!../mocks/photo.txt'));
 
   registerMock('POST',   '/promotion/user/.*/redeem/.*',                true,   {});
 
-  registerMock('GET',    '/?lat=.*&lon=.*',                             true,   JSON.parse(require('text!../mocks/places.json')));
+  registerMock('GET',    '/place/?',                                    true,   JSON.parse(require('text!../mocks/places.json')));
+
+  registerMock('POST',   '/social/user/.*/contacts',                    true,   JSON.parse(require('text!../mocks/social-contacts.json')));
 
   return exports;
 

@@ -31,15 +31,19 @@ define('view/home', function(require) {
 
     initialize: function() {
       analytics.trackView('Home');
+    },
+
+    onDomRefresh: function() {
       geolocation.getCurrentPosition()
         .then(function(currentPosition) {
           updatePlaces(currentPosition);
         });
     },
 
-    onClose: function(){
+    close: function(){
       view.placesIScroll.destroy();
       view.placesIScroll = null;
+      vent.off('places:update');
     },
 
     showMenu: function(){
@@ -60,43 +64,30 @@ define('view/home', function(require) {
 
     swipeRight: function() {
       view.placesIScroll.next(400);
-    },
-
-    showPlace: function(e) {
-      var placeId = $(e.currentTarget).data('id');
-      vent.trigger('navigate', 'place/'+placeId);
     }
 
   });
 
-  var updatePlaces = function(currentPosition){
+  var fetchPlaces = function(currentPosition) {
+    return serverGateway.place.get('/place/?latitude='+currentPosition.coords.latitude+'&longitude='+currentPosition.coords.longitude);
+  };
+
+  var updatePlaces = function(currentPosition) {
     return fetchPlaces(currentPosition)
       .then(function(places) {
         context.places = places;
+        renderPlaces(places);
         renderMap(places, currentPosition);
-        renderPlaces(places, currentPosition);
       });
   };
 
-  var fetchPlaces = function(currentPosition) {
-    return serverGateway.places.get('/?lat='+currentPosition.coords.latitude+'&lon='+currentPosition.coords.longitude);
-  };
-
-  var renderMap = function(places, currentPosition){
-    var markers = [{ icon: './images/marker.png', position: currentPosition }];
-    places.forEach(function(place) {
-      markers.push({ icon: { url: './images/place-icon.png', scaledSize: new google.maps.Size(25, 34) }, position: place });
-    });
-    view.map = map.render($('.map-canvas .map'), { 'dragend': endMapDrag }, markers);
-  };
-
-  var renderPlaces = function(places, currentPosition) {
-    places.forEach(function(place) {
-      $('.places').append(placeTemplate(place));
-    });
+  var renderPlaces = function(places) {
+    places.forEach(function(place) { $('.places').append(placeTemplate(place)); });
+    $('.places').width((places.length * 100) + 'vw');
     touch.initializeTouchFeedback();
+    $('.place').click(showPlace);
     setTimeout(function() {
-      view.placesIScroll = new IScroll('#iscroll-wrapper', {
+      view.placesIScroll = new IScroll('#places-iscroll-wrapper', {
         scrollX: true,
         scrollY: false,
         momentum: false,
@@ -106,11 +97,26 @@ define('view/home', function(require) {
         eventPassthrough: false
       });
       view.placesIScroll.on('scrollEnd', function() {
-        updateArrowsForSelectedPlace(this.currentPage.pageX);
-        map.fit(view.map, [ { position: currentPosition }, { position: context.places[this.currentPage.pageX] } ]);
+        var placeIndex = this.currentPage.pageX;
+        updateArrowsForSelectedPlace(placeIndex);
+        view.map.addMarker('place', { url: './images/place-icon.png', scaledSize: new google.maps.Size(25, 34) }, places[placeIndex].coords);
+        view.map.fitToMarkers();
       });
       updateArrowsForSelectedPlace(0);
     }, 200);
+  };
+
+  var renderMap = function(places, currentPosition){
+    view.map = map.create($('.map-canvas .map'), onMapLoaded);
+    view.map.addMarker('current_position', './images/marker.png', currentPosition.coords);
+    view.map.addMarker('place', { url: './images/place-icon.png', scaledSize: new google.maps.Size(25, 34) }, places[0].coords);
+    view.map.addEventListener('dragend', endMapDrag);
+    view.map.fitToMarkers();
+  };
+
+  var showPlace = function() {
+    var place = context.places[view.placesIScroll.currentPage.pageX];
+    vent.trigger('navigate', 'place/'+place.id);
   };
 
   var updateArrowsForSelectedPlace = function(placeIndex) {
@@ -125,10 +131,15 @@ define('view/home', function(require) {
     selectTab.addClass('selected').removeClass('touch-color');
     touch.removeTouchFeedback(selectTab);
     touch.initializeTouchFeedback();
+    view.map.fitToMarkers();
   };
 
   var endMapDrag = function() {
-    console.log(JSON.stringify(view.map.getCenter()));
+    console.log(JSON.stringify(this.getCenter()));
+  };
+
+  var onMapLoaded = function() {
+    $('.map-mask-canvas').hide();
   };
 
   return view;

@@ -38,13 +38,30 @@ define('mock-cordova', function(require){
 
   var mockContactsPlugin = function() {
     navigator.contacts = {};
+    navigator.contacts.fieldType = {};
+    navigator.contacts.fieldType.displayName = 0;
+    navigator.contacts.fieldType.name = 0;
+    navigator.contacts.fieldType.nickname = 0;
+    navigator.contacts.fieldType.phoneNumbers = 0;
     navigator.contacts.find = function(fields, success, failure) {
       var contacts = [
         {
           name: "Shane Gibson",
-          phoneNumbers: [ "07920057337" ],
+          phoneNumbers: [ "07920053773" ],
           nickname: "Shane",
           displayName: "Shane Gibson"
+        },
+        {
+          name: "Aaron East",
+          phoneNumbers: [ "07912341234" ],
+          nickname: "Aaron",
+          displayName: "Aaron East"
+        },
+        {
+          name: "Sara Gibson",
+          phoneNumbers: [ "07912341235" ],
+          nickname: "Sara Gibson",
+          displayName: "Sara Gibson"
         }
       ];
       success(contacts);

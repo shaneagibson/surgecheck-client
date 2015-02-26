@@ -23,6 +23,9 @@ define('view/about', function(require) {
 
     initialize: function() {
       analytics.trackView('About');
+    },
+
+    onDomRefresh: function(){
       $('.version .number').html(config.version);
       $('.rate-us .store').html(config.app_store[device.platform.toLowerCase()].name);
     },
