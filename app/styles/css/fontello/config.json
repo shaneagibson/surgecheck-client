@@ -133,8 +133,14 @@
       "src": "fontawesome"
     },
     {
+      "uid": "a73c5deb486c8d66249811642e5d719a",
+      "css": "arrows-cw",
+      "code": 59440,
+      "src": "fontawesome"
+    },
+    {
       "uid": "e75c54c282c0bf22186c5c7ec4b03eac",
-      "css": "target-1",
+      "css": "crosshair",
       "code": 59431,
       "src": "fontawesome"
     },
@@ -148,6 +154,18 @@
       "uid": "4b900d04e8ab8c82f080c1cfbac5772c",
       "css": "check-empty",
       "code": 59437,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "422e07e5afb80258a9c4ed1706498f8a",
+      "css": "circle-empty",
+      "code": 59441,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "81bb68665e8e595505272a746db07c7a",
+      "css": "dot-circled",
+      "code": 59442,
       "src": "fontawesome"
     },
     {
@@ -274,6 +292,12 @@
       "uid": "0299bec28699eedda42f46c77239393e",
       "css": "pencil",
       "code": 59403,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "291e2e127efe7a6bc580af6d3ead3771",
+      "css": "location",
+      "code": 59439,
       "src": "mfglabs"
     },
     {

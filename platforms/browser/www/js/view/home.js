@@ -13,6 +13,7 @@ define('view/home', function(require) {
   var _ = require('underscore');
   var placeTemplate = require('hbs!../html/partial/place-summary');
   var serverGateway = require('../util/server-gateway');
+  var location = require('../util/location');
 
   var view = Marionette.LayoutView.extend({
 
@@ -26,7 +27,9 @@ define('view/home', function(require) {
       'click .tab.map' : 'showMap',
       'click .icon-left-dir' : 'swipeLeft',
       'click .icon-right-dir' : 'swipeRight',
-      'click .place' : 'showPlace'
+      'click .place' : 'showPlace',
+      'click .focus' : 'focusOnCurrentLocation',
+      'click .update' : 'updatePlacesForCurrentLocation'
     },
 
     initialize: function() {
@@ -34,10 +37,7 @@ define('view/home', function(require) {
     },
 
     onDomRefresh: function() {
-      geolocation.getCurrentPosition()
-        .then(function(currentPosition) {
-          updatePlaces(currentPosition);
-        });
+      this.focusOnCurrentLocation();
     },
 
     close: function(){
@@ -64,24 +64,38 @@ define('view/home', function(require) {
 
     swipeRight: function() {
       view.placesIScroll.next(400);
+    },
+
+    focusOnCurrentLocation: function() {
+      geolocation.getCurrentPosition()
+        .then(function(currentPosition) {
+          view.current = currentPosition.coords;
+          view.center = currentPosition.coords;
+          updatePlaces();
+        });
+    },
+
+    updatePlacesForCurrentLocation: function() {
+      updatePlaces();
     }
 
   });
 
-  var fetchPlaces = function(currentPosition) {
-    return serverGateway.place.get('/place/?latitude='+currentPosition.coords.latitude+'&longitude='+currentPosition.coords.longitude);
+  var fetchPlaces = function() {
+    return serverGateway.place.get('/place/?latitude='+view.center.latitude+'&longitude='+view.center.longitude);
   };
 
-  var updatePlaces = function(currentPosition) {
-    return fetchPlaces(currentPosition)
+  var updatePlaces = function() {
+    return fetchPlaces()
       .then(function(places) {
         context.places = places;
         renderPlaces(places);
-        renderMap(places, currentPosition);
+        renderMap(places);
       });
   };
 
   var renderPlaces = function(places) {
+    $('.places').empty();
     places.forEach(function(place) { $('.places').append(placeTemplate(place)); });
     $('.places').width((places.length * 100) + 'vw');
     touch.initializeTouchFeedback();
@@ -100,18 +114,19 @@ define('view/home', function(require) {
         var placeIndex = this.currentPage.pageX;
         updateArrowsForSelectedPlace(placeIndex);
         view.map.addMarker('place', { url: './images/place-icon.png', scaledSize: new google.maps.Size(25, 34) }, places[placeIndex].coords);
-        view.map.fitToMarkers();
+        fitToBounds(view.map, view.center, places[placeIndex].coords);
       });
       updateArrowsForSelectedPlace(0);
     }, 200);
   };
 
-  var renderMap = function(places, currentPosition){
+  var renderMap = function(places){
     view.map = map.create($('.map-canvas .map'), onMapLoaded);
-    view.map.addMarker('current_position', './images/marker.png', currentPosition.coords);
+    view.map.addMarker('current_position', { url: './images/marker.png', scaledSize: new google.maps.Size(10, 10) }, view.current);
     view.map.addMarker('place', { url: './images/place-icon.png', scaledSize: new google.maps.Size(25, 34) }, places[0].coords);
+    view.map.addEventListener('dragstart', startMapDrag);
     view.map.addEventListener('dragend', endMapDrag);
-    view.map.fitToMarkers();
+    fitToBounds(view.map, view.center, places[0].coords);
   };
 
   var showPlace = function() {
@@ -131,15 +146,25 @@ define('view/home', function(require) {
     selectTab.addClass('selected').removeClass('touch-color');
     touch.removeTouchFeedback(selectTab);
     touch.initializeTouchFeedback();
-    view.map.fitToMarkers();
+  };
+
+  var startMapDrag = function() {
+    $('.map-canvas .crosshairs').addClass('drag');
   };
 
   var endMapDrag = function() {
-    console.log(JSON.stringify(this.getCenter()));
+    $('.map-canvas .crosshairs').removeClass('drag');
+    var center = this.getCenter();
+    view.center = { latitude: center.lat(), longitude: center.lng() };
   };
 
   var onMapLoaded = function() {
     $('.map-mask-canvas').hide();
+  };
+
+  var fitToBounds = function(map, center, place) {
+    var inverse = location.getInverseCoordinate(center, place);
+    map.fitToBounds([place, inverse]);
   };
 
   return view;

@@ -6,6 +6,7 @@ define('view/friends', function(require) {
   var vent = require('../util/vent');
   var analytics = require('../util/analytics');
   var toast = require('../util/toast');
+  var touch = require('../util/touch');
   var poller = require('../util/poller');
   var context = require('../context');
   var config = require('../config');
@@ -34,13 +35,9 @@ define('view/friends', function(require) {
           view.friendsIScroll = new IScroll('#friends-iscroll-wrapper', {
             scrollX: false,
             scrollY: true,
-            momentum: false,
-            snap: true,
-            snapSpeed: 400,
-            keyBindings: true,
-            eventPassthrough: false,
             scrollbars: true
           });
+          touch.initializeTouchFeedback();
         })
         .catch(function(error) {
           analytics.trackError(JSON.stringify(error));

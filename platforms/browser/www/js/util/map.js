@@ -34,13 +34,11 @@ define('util/map', function(require) {
       });
     };
 
-    this.fitToMarkers = function() {
+    this.fitToBounds = function(locations) {
       var bounds = new google.maps.LatLngBounds();
-      for (var key in this.markers) {
-        if (this.markers.hasOwnProperty(key)) {
-          bounds.extend(this.markers[key].position);
-        }
-      }
+      locations.forEach(function(location) {
+        bounds.extend(new google.maps.LatLng(location.latitude, location.longitude));
+      });
       this.map.fitBounds(bounds);
     };
 

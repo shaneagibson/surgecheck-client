@@ -634,6 +634,7 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/map.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/mock-server.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/payment-gateway.js \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/poller.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/push-notification.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/rateme.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/server-gateway.js \

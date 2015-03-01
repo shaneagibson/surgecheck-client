@@ -19,6 +19,7 @@ define('app', function(require) {
   var analytics = require('./util/analytics');
   var context = require('./context');
   var map = require('./util/map');
+  var contacts = require('./util/contacts');
 
   var swipe = require("jquery-touchswipe");
   var handlebarsHelpers = require("./util/hbs-helpers");
@@ -30,6 +31,7 @@ define('app', function(require) {
       .then(analytics.initialize)
       .then(pushNotification.register)
       .then(paymentGateway.initialize)
+      .then(asyncFetchContacts)
       .then(initializeBackbone)
       .then(initializeGoogleMaps)
       .then(initializeModalListeners)
@@ -57,6 +59,13 @@ define('app', function(require) {
     vent.on('menu:hide', function() {
       $('body').removeClass('menu-open');
     });
+  };
+
+  var asyncFetchContacts = function() {
+    contacts.getAll()
+      .then(function(contacts) {
+        context.contacts = contacts;
+      });
   };
 
   var initializeModalListeners = function() {

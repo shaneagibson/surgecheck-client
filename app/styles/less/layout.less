@@ -341,6 +341,37 @@ input.cardnumber,input.password{
     height: 100%;
     z-index: 3;
   }
+  .crosshairs{
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25px;
+    pointer-events: none;
+    color: @white;
+    text-shadow: 0px 0px 5px @darkgray;
+    &.drag{
+      color: @darkgray;
+      text-shadow: 0px 0px 5px @white;
+    }
+  }
+  .map-buttons {
+    position: fixed;
+    font-size: 20px;
+    color: @primary;
+    bottom: 0px;
+    z-index: 5;
+    right: 0px;
+    .map-button {
+      margin: 10px;
+      background-color: @white;
+      padding: 6px 4px 5px 4px;
+      border-radius: 5px;
+      border: 1px solid @lightgray;
+      box-shadow: 0 0 3px @lightgray;
+    }
+  }
 }
 .bottom{
   height: 45vh;
@@ -575,10 +606,9 @@ li.letter{
 }
 li.friend{
   text-align: left;
-  font-size: 19px;
+  font-size: 14px;
   border-bottom: 1px solid @darkgray;
   padding: 10px 20px;
-  font-family: Jura-Bold;
   background-color: @white;
   i{
     float: right;
