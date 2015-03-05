@@ -349,10 +349,10 @@ input.cardnumber,input.password{
     transform: translate(-50%, -50%);
     font-size: 25px;
     pointer-events: none;
-    color: @white;
-    text-shadow: 0px 0px 5px @darkgray;
+    color: @darkgray;
+    text-shadow: 0px 0px 5px @white;
     &.drag{
-      color: @darkgray;
+      color: @primary;
       text-shadow: 0px 0px 5px @white;
     }
   }
@@ -508,7 +508,7 @@ input.cardnumber,input.password{
   }
   .rating {
     position: relative;
-    height: 10vh;
+    height: 5vh;
     .stars{
       font-size: 25px;
       position: absolute;
@@ -532,21 +532,6 @@ input.cardnumber,input.password{
         z-index: -1;
         width: 0;
       }
-    }
-  }
-  .images {
-    text-align: center;
-    width: 100%;
-    padding-bottom: 10px;
-    .image {
-      background-size: 20vw 20vw;
-      width: 20vw;
-      height: 20vw;
-      border: 1px solid @darkgray;
-      display: inline-block;
-      margin: 0px 5px;
-      border-radius: 5px;
-      box-shadow: 0px 0px 10px @darkgray;
     }
   }
   .small-description {
@@ -619,4 +604,36 @@ li.friend{
 }
 .hidden{
   display: none;
+}
+.images {
+  text-align: center;
+  width: 100%;
+  padding-bottom: 10px;
+  padding-top: 30px;
+  .image {
+    background-size: 20vw 20vw;
+    width: 20vw;
+    height: 20vw;
+    border: 1px solid @darkgray;
+    display: inline-block;
+    margin: 0px 5px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px @darkgray;
+    background-color: @white;
+    i{
+      font-size: 10vw;
+      position: relative;
+      top: 18px;
+      color: @ultralightgray;
+    }
+  }
+}
+.large-container{
+  height: 35vh;
+  width: 70vw;
+  margin: 0px auto;
+  position: relative;
+  top: 20px;
+  border: 1px solid @darkgray;
+  box-shadow: 0 0 10px @darkgray;
 }

@@ -17,6 +17,7 @@ define('router', function(require) {
   var ForgottenPasswordView = require('./view/forgotten-password');
   var PlaceView = require('./view/place');
   var FriendsView = require('./view/friends');
+  var AddVenueView = require('./view/add-venue');
 
   var touch = require('./util/touch');
 
@@ -44,6 +45,7 @@ define('router', function(require) {
           "edit-card/:cardid": "editCard",
           "place/:placeid": "place",
           "friends": "friends",
+          "add-venue": "addVenue",
 
           // deep-links
           "user/:userid/forgottenpassword/token/:token": "resetPassword"
@@ -78,6 +80,7 @@ define('router', function(require) {
       appRouter.on('route:resetPassword', function(userId, token) { showView(new ResetPasswordView(), { userId: userId, token: token }); });
       appRouter.on('route:place', function(placeId) { showView(new PlaceView({ placeId: placeId })); });
       appRouter.on('route:friends', function() { showView(new FriendsView()); });
+      appRouter.on('route:addVenue', function() { showView(new AddVenueView()); });
 
     }
 

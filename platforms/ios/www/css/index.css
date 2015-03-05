@@ -653,11 +653,11 @@ input.password::-webkit-input-placeholder {
   transform: translate(-50%, -50%);
   font-size: 25px;
   pointer-events: none;
-  color: #ffffff;
-  text-shadow: 0px 0px 5px #333333;
+  color: #333333;
+  text-shadow: 0px 0px 5px #ffffff;
 }
 .map-canvas .crosshairs.drag {
-  color: #333333;
+  color: #1e90ff;
   text-shadow: 0px 0px 5px #ffffff;
 }
 .map-canvas .map-buttons {
@@ -813,7 +813,7 @@ input.password::-webkit-input-placeholder {
 }
 .place .rating {
   position: relative;
-  height: 10vh;
+  height: 5vh;
 }
 .place .rating .stars {
   font-size: 25px;
@@ -838,21 +838,6 @@ input.password::-webkit-input-placeholder {
   position: absolute;
   z-index: -1;
   width: 0;
-}
-.place .images {
-  text-align: center;
-  width: 100%;
-  padding-bottom: 10px;
-}
-.place .images .image {
-  background-size: 20vw 20vw;
-  width: 20vw;
-  height: 20vw;
-  border: 1px solid #333333;
-  display: inline-block;
-  margin: 0px 5px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px #333333;
 }
 .place .small-description {
   font-size: 12px;
@@ -924,6 +909,38 @@ li.friend i {
 }
 .hidden {
   display: none;
+}
+.images {
+  text-align: center;
+  width: 100%;
+  padding-bottom: 10px;
+  padding-top: 30px;
+}
+.images .image {
+  background-size: 20vw 20vw;
+  width: 20vw;
+  height: 20vw;
+  border: 1px solid #333333;
+  display: inline-block;
+  margin: 0px 5px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px #333333;
+  background-color: #ffffff;
+}
+.images .image i {
+  font-size: 10vw;
+  position: relative;
+  top: 18px;
+  color: #d8d8d8;
+}
+.large-container {
+  height: 35vh;
+  width: 70vw;
+  margin: 0px auto;
+  position: relative;
+  top: 20px;
+  border: 1px solid #333333;
+  box-shadow: 0 0 10px #333333;
 }
 
 .loader {
