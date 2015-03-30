@@ -36,27 +36,52 @@ define('util/mock-server', function(require) {
     mocks.push(new Mock(type, pathRegEx, isSuccess, response));
   };
 
-  registerMock('GET',    '/payment/token',                              true,   { "token": "16f7770b-4ef2-4404-8836-5365c299e7ae" });
-  registerMock('POST',   '/payment/user/.*/payment-method',             true,   {});
-  registerMock('DELETE', '/payment/user/.*/payment-method/.*',          true,   {});
-  registerMock('GET',    '/payment/user/.*/payment-method',             true,   JSON.parse(require('text!../mocks/get-payment-methods.response.json')));
-
-  registerMock('POST',   '/account/password/reset',                     true,   {});
-  registerMock('POST',   '/account/password/forgotten',                 true,   {});
-  registerMock('POST',   '/account/login',                              true,   JSON.parse(require('text!../mocks/sign-in.response.json')));
-  registerMock('POST',   '/account/logout',                             true,   {});
-  registerMock('POST',   '/account/register',                           true,   JSON.parse(require('text!../mocks/register.response.json')));
-  registerMock('POST',   '/account/verify',                             true,   {});
-  registerMock('GET',    '/account/session',                            true,   JSON.parse(require('text!../mocks/session.response.json')));
-  registerMock('POST',   '/account/user/.*/verification-code/resend',   true,   {});
-  registerMock('POST',   '/account/user/.*/photo',                      true,   {});
-  registerMock('GET',   '/account/user/.*/photo',                       true,   require('text!../mocks/photo.txt'));
-
-  registerMock('POST',   '/promotion/user/.*/redeem/.*',                true,   {});
-
-  registerMock('GET',    '/place/?',                                    true,   JSON.parse(require('text!../mocks/places.json')));
-
-  registerMock('POST',   '/social/user/.*/contacts',                    true,   JSON.parse(require('text!../mocks/social-contacts.json')));
+  registerMock(
+    'GET',
+    '/surgecheck/status',
+    true,
+    {
+      "current" : 1.1,
+      "historic" : [
+        {
+          "timestamp": Date.now() - (1000 * 60 * 60 * 2.5),
+          "high": 1.4,
+          "avg": 1.2,
+          "low": 1.1
+        },
+        {
+          "timestamp": Date.now() - (1000 * 60 * 60 * 1.5),
+          "high": 1.4,
+          "avg": 1.3,
+          "low": 1.2
+        },
+        {
+          "timestamp": Date.now() - (1000 * 60 * 60 * 0.5),
+          "high": 1.4,
+          "avg": 1.3,
+          "low": 1.1
+        },
+        {
+          "timestamp": Date.now() + (1000 * 60 * 60 * 0.5),
+          "high": 1.3,
+          "avg": 1.2,
+          "low": 1.1
+        },
+        {
+          "timestamp": Date.now() + (1000 * 60 * 60 * 1.5),
+          "high": 1.2,
+          "avg": 1.1,
+          "low": 1.0
+        },
+        {
+          "timestamp": Date.now() + (1000 * 60 * 60 * 2.5),
+          "high": 1.5,
+          "avg": 1.1,
+          "low": 1.0
+        }
+      ]
+    }
+  );
 
   return exports;
 

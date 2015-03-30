@@ -34,18 +34,12 @@ define('util/map', function(require) {
       });
     };
 
-    this.fitToMarkers = function() {
-      var bounds = new google.maps.LatLngBounds();
-      for (var key in this.markers) {
-        if (this.markers.hasOwnProperty(key)) {
-          bounds.extend(this.markers[key].position);
-        }
-      }
-      this.map.fitBounds(bounds);
-    };
-
     this.setCenter = function(coords) {
       this.map.setCenter(new google.maps.LatLng(coords.latitude, coords.longitude));
+    };
+
+    this.setZoom = function(zoom) {
+      this.map.setZoom(zoom);
     };
 
   }

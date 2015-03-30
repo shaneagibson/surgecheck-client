@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-        id="uk.co.epsilontechnologies.ClientApp"
+        id="uk.co.epsilontechnologies.surgecheck.ClientApp"
         version="0.0.12"
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
 
-    <name>Epsilon</name>
+    <name>Surge Guard</name>
 
-    <description>Epsilon Client App</description>
+    <description>Surge Checker for Uber</description>
 
     <author email="sgibson@epsilontechnologies.co.uk" href="http://www.epsilontechnologies.co.uk"></author>
 
@@ -16,5 +16,7 @@
     <access origin="*" />
 
     <preference name="DisallowOverscroll" value="true" />
+
+    <icon src="www/res/client-icon.png" />
 
 </widget>

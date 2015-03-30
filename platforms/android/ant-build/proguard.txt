@@ -1,12 +1,12 @@
-# view AndroidManifest.xml #generated:22
+# view AndroidManifest.xml #generated:23
 -keep class com.groboot.pushapps.GCMBaseIntentServiceImpl { <init>(...); }
 
-# view AndroidManifest.xml #generated:15
+# view AndroidManifest.xml #generated:16
 -keep class com.groboot.pushapps.GCMBroadcastReceiver { <init>(...); }
 
-# view AndroidManifest.xml #generated:23
+# view AndroidManifest.xml #generated:24
 -keep class com.groboot.pushapps.PushActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:5
--keep class uk.co.epsilontechnologies.ClientApp.CordovaApp { <init>(...); }
+# view AndroidManifest.xml #generated:6
+-keep class uk.co.epsilontechnologies.surgecheck.ClientApp.CordovaApp { <init>(...); }
 

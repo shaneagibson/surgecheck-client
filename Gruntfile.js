@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-  grunt.registerTask('build:dev', [ 'clean', 'jshint:check', 'karma:unit', 'less:compile', 'concat:css', 'copy:dev', 'shell:build_debug_ios' ]);
+  grunt.registerTask('build:dev', [ 'clean', 'jshint:check', 'karma:unit', 'less:compile', 'concat:css', 'copy:dev' ]);
   grunt.registerTask('build:prod', [ 'clean', 'jshint:check', 'karma:unit', 'less:compile', 'requirejs', 'concat:css', 'copy:prod', 'shell:build_release_ios', 'shell:verify_release_ios' ]);
 
   grunt.registerTask('run:browser', [ 'shell:deploy_browser' ]);
@@ -52,6 +52,13 @@ module.exports = function(grunt) {
             cwd: 'app/scripts/',
             src: ['**'],
             dest: 'www/js/',
+            filter: 'isFile'
+          },
+          {
+            expand: true,
+            cwd: 'app/res/',
+            src: ['**'],
+            dest: 'www/res/',
             filter: 'isFile'
           },
           {
@@ -137,7 +144,7 @@ module.exports = function(grunt) {
         command:
         'cordova build ios && ' +
         'cd platforms/ios && ' +
-        'xcodebuild -scheme Epsilon -configuration Debug -sdk iphoneos && ' +
+        'xcodebuild -scheme \'Surge Guard\' -configuration Debug -sdk iphoneos && ' +
         'cd ../..',
         options: {
           execOptions: {
@@ -149,7 +156,7 @@ module.exports = function(grunt) {
         command:
         'cordova build ios && ' +
         'cd platforms/ios && ' +
-        'xcodebuild -scheme Epsilon -configuration Release -sdk iphoneos && ' +
+        'xcodebuild -scheme \'Surge Guard\' -configuration Release -sdk iphoneos && ' +
         'cd ../..',
         options: {
           execOptions: {
@@ -158,7 +165,7 @@ module.exports = function(grunt) {
         }
       },
       deploy_debug_ios: {
-        command: '~/Development/Tools/fruitstrap/fruitstrap -b /Users/shane/Library/Developer/Xcode/DerivedData/Epsilon-ayjltquvoopecnadwedexemncwmj/Build/Products/Debug-iphoneos/Epsilon.app',
+        command: '~/Development/Tools/fruitstrap/fruitstrap -b "/Users/shane/Library/Developer/Xcode/DerivedData/Surge\\ Guard-ayjltquvoopecnadwedexemncwmj/Build/Products/Debug-iphoneos/Surge\\ Guard.app"',
         options: {
           execOptions: {
             maxBuffer: Infinity
@@ -166,7 +173,7 @@ module.exports = function(grunt) {
         }
       },
       verify_release_ios: {
-        command: 'xcrun -sdk iphoneos PackageApplication -v "/Users/shane/Library/Developer/Xcode/DerivedData/Epsilon-ayjltquvoopecnadwedexemncwmj/Build/Products/Release-iphoneos/Epsilon.app" -o "/Users/shane/Desktop/Epsilon.ipa" --sign "iPhone Distribution" --embed "/Users/shane/Downloads/Epsilon_Distribution.mobileprovision"',
+        command: 'xcrun -sdk iphoneos PackageApplication -v "/Users/shane/Library/Developer/Xcode/DerivedData/Surge\\ Guard-ayjltquvoopecnadwedexemncwmj/Build/Products/Release-iphoneos/Surge\\ Guard.app" -o "/Users/shane/Desktop/Surge\\ Guard.ipa" --sign "iPhone Distribution" --embed "/Users/shane/Downloads/Epsilon_Distribution.mobileprovision"',
         options: {
           execOptions: {
             maxBuffer: Infinity

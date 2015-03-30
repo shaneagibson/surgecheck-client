@@ -4,15 +4,15 @@ define('view/home', function(require) {
   var template = require('hbs!../html/home');
   var click = require('../util/click');
   var context = require('../context');
-  var analytics = require('../util/analytics');
   var vent = require('../util/vent');
   var map = require('../util/map');
   var touch = require('../util/touch');
+  var toast = require('../util/toast');
   var geolocation = require('../util/geolocation');
-  var IScroll = require('iscroll');
-  var _ = require('underscore');
-  var placeTemplate = require('hbs!../html/partial/place-summary');
+  var location = require('../util/location');
   var serverGateway = require('../util/server-gateway');
+  var graph = require('../util/graph');
+  var config = require('../config');
 
   var view = Marionette.LayoutView.extend({
 
@@ -21,121 +21,87 @@ define('view/home', function(require) {
     template: template,
 
     events: {
-      'click .icon-menu' : 'showMenu',
-      'click .tab.options' : 'showOptions',
-      'click .tab.map' : 'showMap',
-      'click .icon-left-dir' : 'swipeLeft',
-      'click .icon-right-dir' : 'swipeRight',
-      'click .place' : 'showPlace'
+      'click .book' : 'bookRide'
     },
 
     initialize: function() {
-      analytics.trackView('Home');
+      var self = this;
+      vent.on('screen:rotate', function() {
+        issuePriceCheck(self.coords, true);
+      });
+    },
+
+    onClose: function() {
+      vent.off('screen:rotate');
     },
 
     onDomRefresh: function() {
+      var self = this;
       geolocation.getCurrentPosition()
         .then(function(currentPosition) {
-          updatePlaces(currentPosition);
+          renderMap(currentPosition.coords);
+          issuePriceCheck(currentPosition.coords);
+          self.coords = currentPosition.coords;
         });
     },
 
-    close: function(){
-      view.placesIScroll.destroy();
-      view.placesIScroll = null;
-      vent.off('places:update');
-    },
-
-    showMenu: function(){
-      vent.trigger('menu:show', 'home');
-    },
-
-    showMap: function(){
-      toggleTab($('.map-canvas'), $('.options-canvas'), $('.tab.map'));
-    },
-
-    showOptions: function(){
-      toggleTab($('.options-canvas'), $('.map-canvas'), $('.tab.options'));
-    },
-
-    swipeLeft: function() {
-      view.placesIScroll.prev(400);
-    },
-
-    swipeRight: function() {
-      view.placesIScroll.next(400);
+    bookRide: function() {
+      window.open('uber://?action=setPickup&pickup=my_location&client_id='+config.uber.client_id, '_system');
     }
 
   });
 
-  var fetchPlaces = function(currentPosition) {
-    return serverGateway.place.get('/place/?latitude='+currentPosition.coords.latitude+'&longitude='+currentPosition.coords.longitude);
+  var issuePriceCheck = function(coords, force) {
+    if (force || !view.coords || hasLocationChanged(coords, view.coords)) {
+      return serverGateway.pricecheck.get('/surgecheck/status', coords)
+        .then(function (data) {
+          renderCurrentState(data.current);
+          renderGraph(data.historic);
+          view.coords = coords;
+        });
+    }
   };
 
-  var updatePlaces = function(currentPosition) {
-    return fetchPlaces(currentPosition)
-      .then(function(places) {
-        context.places = places;
-        renderPlaces(places);
-        renderMap(places, currentPosition);
-      });
+  var hasLocationChanged = function(newCoords, oldCoords) {
+    return oldCoords.latitude.toFixed(2) != newCoords.latitude.toFixed(2) || oldCoords.longitude.toFixed(2) != newCoords.longitude.toFixed(2);
   };
 
-  var renderPlaces = function(places) {
-    places.forEach(function(place) { $('.places').append(placeTemplate(place)); });
-    $('.places').width((places.length * 100) + 'vw');
-    touch.initializeTouchFeedback();
-    $('.place').click(showPlace);
-    setTimeout(function() {
-      view.placesIScroll = new IScroll('#places-iscroll-wrapper', {
-        scrollX: true,
-        scrollY: false,
-        momentum: false,
-        snap: true,
-        snapSpeed: 400,
-        keyBindings: true,
-        eventPassthrough: false
-      });
-      view.placesIScroll.on('scrollEnd', function() {
-        var placeIndex = this.currentPage.pageX;
-        updateArrowsForSelectedPlace(placeIndex);
-        view.map.addMarker('place', { url: './images/place-icon.png', scaledSize: new google.maps.Size(25, 34) }, places[placeIndex].coords);
-        view.map.fitToMarkers();
-      });
-      updateArrowsForSelectedPlace(0);
-    }, 200);
+  var renderCurrentState = function(surgeMultiplier) {
+    if (surgeMultiplier == 1) {
+      $('.surge-title').text('Uber is Currently NOT Surging!');
+    } else {
+      $('.surge-title').text('Uber is Currently Surging!');
+    }
+    $('.surge-multiplier').text(surgeMultiplier+' x');
   };
 
-  var renderMap = function(places, currentPosition){
+  var renderMap = function(coords){
     view.map = map.create($('.map-canvas .map'), onMapLoaded);
-    view.map.addMarker('current_position', './images/marker.png', currentPosition.coords);
-    view.map.addMarker('place', { url: './images/place-icon.png', scaledSize: new google.maps.Size(25, 34) }, places[0].coords);
+    view.map.addMarker('current_position', { url: './images/marker.png', scaledSize: new google.maps.Size(10, 10) }, coords);
+    view.map.addEventListener('dragstart', startMapDrag);
     view.map.addEventListener('dragend', endMapDrag);
-    view.map.fitToMarkers();
+    view.map.setCenter(coords);
+    view.map.setZoom(15);
   };
 
-  var showPlace = function() {
-    var place = context.places[view.placesIScroll.currentPage.pageX];
-    vent.trigger('navigate', 'place/'+place.id);
+  var renderGraph = function(historicData){
+    graph.destroy('.graph');
+    if (historicData && historicData.length > 0) {
+      $('.error').text('');
+      graph.render('.graph', historicData);
+    } else {
+      $('.error').text('Surge Trends are Currently Unavailable at your Location');
+    }
   };
 
-  var updateArrowsForSelectedPlace = function(placeIndex) {
-    $('.icon-left-dir').toggle(placeIndex !== 0);
-    $('.icon-right-dir').toggle(placeIndex !== $('.place').length - 1);
-  };
-
-  var toggleTab = function(showCanvas, hideCanvas, selectTab) {
-    showCanvas.show();
-    hideCanvas.hide();
-    $('.tab.selected').removeClass('selected').addClass('touch-color');
-    selectTab.addClass('selected').removeClass('touch-color');
-    touch.removeTouchFeedback(selectTab);
-    touch.initializeTouchFeedback();
-    view.map.fitToMarkers();
+  var startMapDrag = function() {
+    $('.map-canvas .crosshairs').addClass('drag');
   };
 
   var endMapDrag = function() {
-    console.log(JSON.stringify(this.getCenter()));
+    $('.map-canvas .crosshairs').removeClass('drag');
+    var center = this.getCenter();
+    issuePriceCheck({ latitude: center.lat(), longitude: center.lng() });
   };
 
   var onMapLoaded = function() {
