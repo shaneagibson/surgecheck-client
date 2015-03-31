@@ -17,7 +17,7 @@ define('util/graph', function(require) {
       chartHeight = svgHeight - margin.top  - margin.bottom;
 
     var x = d3.time.scale().range([0, chartWidth]).domain(d3.extent(data, function (d) { return d.timestamp; }));
-    var y = d3.scale.linear().range([chartHeight,0]).domain([0.8, d3.max(data, function (d) { return d.high; })]);
+    var y = d3.scale.linear().range([chartHeight,0]).domain([0.8, d3.max(data, function (d) { return d.high; }) + 0.2]);
 
     var xAxis = d3.svg.axis().scale(x).ticks(d3.time.hours, 1).orient('bottom').innerTickSize(-chartHeight).outerTickSize(0).tickPadding(10).tickFormat(d3.time.format("%H:%M"));
 

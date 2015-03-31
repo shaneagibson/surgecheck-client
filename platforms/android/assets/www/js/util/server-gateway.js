@@ -57,7 +57,7 @@ define('util/server-gateway', function(require) {
             reject(request);
           },
           type: type,
-          data: JSON.stringify(payload || {}),
+          data: payload ? JSON.stringify(payload) : undefined,
           contentType: contentType || "application/json; charset=utf-8"
         }
       );

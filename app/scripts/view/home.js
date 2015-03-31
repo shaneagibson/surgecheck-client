@@ -58,15 +58,12 @@ define('view/home', function(require) {
         renderCurrentState(data.current);
         renderGraph(data.historic);
         view.coords = coords;
-      });
+      })
+      .catch(renderGraph);
   };
 
   var renderCurrentState = function(surgeMultiplier) {
-    if (surgeMultiplier == 1) {
-      $('.surge-title').text('Uber is Currently NOT Surging!');
-    } else {
-      $('.surge-title').text('Uber is Currently Surging!');
-    }
+    $('.surge-title').text('Uber is Currently '+(surgeMultiplier == 1 ? 'NOT' : '')+' Surging!');
     $('.surge-multiplier').text(surgeMultiplier.toString()+'x');
   };
 

@@ -15,9 +15,11 @@ define('app', function(require) {
 
   app.addInitializer(function() {
     initializeForPlatform()
+      .then(initializeLoadingTimeoutHandler)
       .then(initializeOrientationListener)
       .then(initializeBackbone)
       .then(initializeGoogleMaps)
+      .then(cancelLoadingTimeoutHandler)
       .then(renderHome)
       .catch(handleError);
   });
@@ -26,6 +28,16 @@ define('app', function(require) {
     loading: '#loading',
     main: '#main'
   });
+
+  var initializeLoadingTimeoutHandler = function() {
+    app.loadingTimeout = setTimeout(function() {
+      toast.showLongBottom("Oops! It looks like something went wrong. Try again in a bit!");
+    }, 5000);
+  };
+
+  var cancelLoadingTimeoutHandler = function() {
+    clearTimeout(app.loadingTimeout);
+  };
 
   var initializeGoogleMaps = function() {
     return map.initialize();

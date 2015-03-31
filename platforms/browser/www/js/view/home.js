@@ -81,6 +81,7 @@ define('view/home', function(require) {
 
   });
 
+<<<<<<< HEAD
   var fetchPlaces = function() {
     return serverGateway.place.get('/place/?latitude='+view.center.latitude+'&longitude='+view.center.longitude);
   };
@@ -118,6 +119,21 @@ define('view/home', function(require) {
       });
       updateArrowsForSelectedPlace(0);
     }, 200);
+=======
+  var issuePriceCheck = function(coords) {
+    return serverGateway.pricecheck.get('/surgecheck/status', coords)
+      .then(function (data) {
+        renderCurrentState(data.current);
+        renderGraph(data.historic);
+        view.coords = coords;
+      })
+      .catch(renderGraph);
+  };
+
+  var renderCurrentState = function(surgeMultiplier) {
+    $('.surge-title').text('Uber is Currently '+(surgeMultiplier == 1 ? 'NOT' : '')+' Surging!');
+    $('.surge-multiplier').text(surgeMultiplier.toString()+'x');
+>>>>>>> Updated surge graph to ensure line is rendered within y bounds
   };
 
   var renderMap = function(places){

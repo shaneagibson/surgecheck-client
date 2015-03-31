@@ -27,7 +27,7 @@ define('view/home', function(require) {
     initialize: function() {
       var self = this;
       vent.on('screen:rotate', function() {
-        issuePriceCheck(self.coords, true);
+        issuePriceCheck({ latitude: self.coords.latitude.toFixed(2), longitude: self.coords.longitude.toFixed(2) });
       });
     },
 
@@ -46,24 +46,19 @@ define('view/home', function(require) {
     },
 
     bookRide: function() {
-      window.open('uber://?action=setPickup&pickup=my_location&client_id='+config.uber.client_id, '_system');
+      var center = this.map.getCenter();
+      window.open('uber://?action=setPickup&&pickup[latitude]='+center.lat()+'&&pickup[longitude]='+center.lng()+'client_id='+config.uber.client_id, '_system');
     }
 
   });
 
-  var issuePriceCheck = function(coords, force) {
-    if (force || !view.coords || hasLocationChanged(coords, view.coords)) {
-      return serverGateway.pricecheck.get('/surgecheck/status', coords)
-        .then(function (data) {
-          renderCurrentState(data.current);
-          renderGraph(data.historic);
-          view.coords = coords;
-        });
-    }
-  };
-
-  var hasLocationChanged = function(newCoords, oldCoords) {
-    return oldCoords.latitude.toFixed(2) != newCoords.latitude.toFixed(2) || oldCoords.longitude.toFixed(2) != newCoords.longitude.toFixed(2);
+  var issuePriceCheck = function(coords) {
+    return serverGateway.pricecheck.get('/surgecheck/status', coords)
+      .then(function (data) {
+        renderCurrentState(data.current);
+        renderGraph(data.historic);
+        view.coords = coords;
+      });
   };
 
   var renderCurrentState = function(surgeMultiplier) {
@@ -72,7 +67,7 @@ define('view/home', function(require) {
     } else {
       $('.surge-title').text('Uber is Currently Surging!');
     }
-    $('.surge-multiplier').text(surgeMultiplier+' x');
+    $('.surge-multiplier').text(surgeMultiplier.toString()+'x');
   };
 
   var renderMap = function(coords){
@@ -101,7 +96,7 @@ define('view/home', function(require) {
   var endMapDrag = function() {
     $('.map-canvas .crosshairs').removeClass('drag');
     var center = this.getCenter();
-    issuePriceCheck({ latitude: center.lat(), longitude: center.lng() });
+    issuePriceCheck({ latitude: center.lat().toFixed(2), longitude: center.lng().toFixed(2) });
   };
 
   var onMapLoaded = function() {

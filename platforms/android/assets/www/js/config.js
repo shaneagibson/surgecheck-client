@@ -37,8 +37,8 @@ define('config', function(require){
       },
       social: {
         scheme: 'http',
-        host: '192.168.43.22',
-        port: 8006
+        host: '52.16.190.90',
+        port: 8002
       }
 
     },
@@ -63,8 +63,12 @@ define('config', function(require){
     braintree: {
       cse_key: 'MIIBCgKCAQEAquZ3hNSxJAsuTnvu2Oov6gQhWizd+jY+dcMt4BkLZC/p5atg5OqCLHQaiAYPQsh3dI3Zw8WHgG1yvUrZd/syF0xF2U2DM5TBjmfENS1iG5mYVMzvWws61vVdxsLno4J/IEDwZ7PRuufi8O2baJFcngxIamGBKCIu4louvQPSX/NpA2huxjpviBlkWKPyC+LkSHiqq5hVu3q5MXz6jja0mHZT8s5tutoj/2E/Z6erNa7R4aMZdj64MaMXg+tdFeMpYabC48JH4zN6Q4taDZ5N8JUuSAqZdBaMu7chmjwrrvjpMjcInOn0tuw+9BlxUI3dvOfmSsU7Y9s107JwtTUHIQIDAQAB'
     },
+<<<<<<< HEAD
     mock: true,
     version: '0.0.12' // TODO - populate at build-time
+=======
+    mock: false
+>>>>>>> Updated surge graph to ensure line is rendered within y bounds
   };
 
   return exports;
