@@ -13,10 +13,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Sms\"><param name=\"android-package\" value=\"com.jsmobile.plugins.sms.Sms\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Toast\"><param name=\"android-package\" value=\"nl.xservices.plugins.Toast\" /></feature>",
                             "count": 1
                         },
@@ -27,22 +23,9 @@
                         {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
                             "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Contacts\"><param name=\"android-package\" value=\"org.apache.cordova.contacts.ContactManager\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
-                            "count": 1
                         }
                     ],
-                    "/widget": [
-                        {
-                            "xml": "<feature name=\"PushAppsPlugin\"><param name=\"android-package\" value=\"com.pushapps.phonegap.PushAppsPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        }
-                    ]
+                    "/widget": []
                 }
             },
             "AndroidManifest.xml": {
@@ -63,101 +46,22 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
                             "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.READ_CONTACTS\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 1
                         }
                     ],
-                    "/manifest": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.SEND_SMS\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<permission android:name=\"uk.co.epsilontechnologies.ClientApp.permission.C2D_MESSAGE\" android:protectionLevel=\"signature\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"com.google.android.c2dm.permission.RECEIVE\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"uk.co.epsilontechnologies.ClientApp.permission.C2D_MESSAGE\" />",
-                            "count": 1
-                        }
-                    ],
-                    "/manifest/application": [
-                        {
-                            "xml": "<receiver android:name=\"com.groboot.pushapps.GCMBroadcastReceiver\" android:permission=\"com.google.android.c2dm.permission.SEND\"><intent-filter><action android:name=\"com.google.android.c2dm.intent.RECEIVE\" /><action android:name=\"com.google.android.c2dm.intent.REGISTRATION\" /><category android:name=\"uk.co.epsilontechnologies.ClientApp\" /></intent-filter></receiver>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<service android:name=\"com.groboot.pushapps.GCMBaseIntentServiceImpl\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<activity android:configChanges=\"orientation|keyboardHidden\" android:name=\"com.groboot.pushapps.PushActivity\" />",
-                            "count": 1
-                        }
-                    ],
-                    "/manifest/application/activity": [
-                        {
-                            "xml": "<intent-filter><action android:name=\"uk.co.epsilontechnologies.ClientApp.MESSAGE\" /><category android:name=\"android.intent.category.DEFAULT\" /></intent-filter>",
-                            "count": 1
-                        }
-                    ]
+                    "/manifest": [],
+                    "/manifest/application": [],
+                    "/manifest/application/activity": []
                 }
             },
             "undefined": {
                 "parents": {
-                    "undefined": [
-                        {
-                            "xml": "<access origin=\"*.pushapps.mobi\" />",
-                            "count": 1
-                        }
-                    ]
+                    "undefined": []
                 }
             }
         }
     },
     "installed_plugins": {
         "com.danielcwilson.plugins.googleanalytics": {
-            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
-        },
-        "com.jsmobile.plugins.sms": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
         "nl.x-services.plugins.toast": {
@@ -172,16 +76,7 @@
         "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         },
-        "com.pushapps.phonegap": {
-            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
-        },
         "org.apache.cordova.geolocation": {
-            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
-        },
-        "org.apache.cordova.contacts": {
-            "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
-        },
-        "org.apache.cordova.camera": {
             "PACKAGE_NAME": "uk.co.epsilontechnologies.ClientApp"
         }
     },

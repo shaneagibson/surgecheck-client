@@ -4,9 +4,6 @@
     <feature name="UniversalAnalytics">
         <param name="android-package" value="com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin" />
     </feature>
-    <feature name="Sms">
-        <param name="android-package" value="com.jsmobile.plugins.sms.Sms" />
-    </feature>
     <feature name="Toast">
         <param name="android-package" value="nl.xservices.plugins.Toast" />
     </feature>
@@ -15,10 +12,6 @@
     </feature>
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
-    </feature>
-    <feature name="PushAppsPlugin">
-        <param name="android-package" value="com.pushapps.phonegap.PushAppsPlugin" />
-        <param name="onload" value="true" />
     </feature>
     <name>Surge Guard</name>
     <description>Surge Checker for Uber</description>

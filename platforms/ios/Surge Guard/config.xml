@@ -22,13 +22,6 @@
     <feature name="UniversalAnalytics">
         <param name="ios-package" value="UniversalAnalyticsPlugin" />
     </feature>
-    <feature name="Sms">
-        <param name="ios-package" value="Sms" />
-    </feature>
-    <feature name="PushAppsPlugin">
-        <param name="ios-package" value="CDVPushApps" />
-        <param name="onload" value="true" />
-    </feature>
     <feature name="Toast">
         <param name="ios-package" value="Toast" />
     </feature>

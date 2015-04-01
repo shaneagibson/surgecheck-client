@@ -55,16 +55,10 @@ define('view/home', function(require) {
   var issuePriceCheck = function(coords) {
     return serverGateway.pricecheck.get('/surgecheck/status', coords)
       .then(function (data) {
-        renderCurrentState(data.current);
-        renderGraph(data.historic);
+        renderPriceCheck(data);
         view.coords = coords;
       })
-      .catch(renderGraph);
-  };
-
-  var renderCurrentState = function(surgeMultiplier) {
-    $('.surge-title').text('Uber is Currently '+(surgeMultiplier == 1 ? 'NOT' : '')+' Surging!');
-    $('.surge-multiplier').text(surgeMultiplier.toString()+'x');
+      .catch(renderPriceCheck);
   };
 
   var renderMap = function(coords){
@@ -76,12 +70,16 @@ define('view/home', function(require) {
     view.map.setZoom(15);
   };
 
-  var renderGraph = function(historicData){
+  var renderPriceCheck = function(data){
     graph.destroy('.graph');
-    if (historicData && historicData.length > 0) {
+    if (data && data.historic && data.historic.length > 0) {
       $('.error').text('');
-      graph.render('.graph', historicData);
+      $('.surge-title').text('Uber is Currently '+(data.current == 1 ? 'NOT' : '')+' Surging!');
+      $('.surge-multiplier').text(data.current.toString()+'x');
+      graph.render('.graph', data.historic);
     } else {
+      $('.surge-title').text('');
+      $('.surge-multiplier').text('');
       $('.error').text('Surge Trends are Currently Unavailable at your Location');
     }
   };
