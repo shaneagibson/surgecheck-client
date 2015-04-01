@@ -17,7 +17,7 @@ define('util/graph', function(require) {
       chartHeight = svgHeight - margin.top  - margin.bottom;
 
     var x = d3.time.scale().range([0, chartWidth]).domain(d3.extent(data, function (d) { return d.timestamp; }));
-    var y = d3.scale.linear().range([chartHeight,0]).domain([0.8, d3.max(data, function (d) { return d.high; }) + 0.2]);
+    var y = d3.scale.linear().range([chartHeight,0]).domain([0.8, d3.max(data, function (d) { return d.high + 0.25; }) + 0.2]);
 
     var xAxis = d3.svg.axis().scale(x).ticks(d3.time.hours, 1).orient('bottom').innerTickSize(-chartHeight).outerTickSize(0).tickPadding(10).tickFormat(d3.time.format("%H:%M"));
 
@@ -57,7 +57,7 @@ define('util/graph', function(require) {
     var upperArea = d3.svg.area()
       .interpolate('basis')
       .x (function (d) { return x(new Date(d.timestamp)) || 1; })
-      .y0(function (d) { return y(d.high); })
+      .y0(function (d) { return y(d.high + 0.25); })
       .y1(function (d) { return y(d.avg); });
 
     var medianLine = d3.svg.line()
@@ -69,7 +69,7 @@ define('util/graph', function(require) {
       .interpolate('basis')
       .x (function (d) { return x(new Date(d.timestamp)) || 1; })
       .y0(function (d) { return y(d.avg); })
-      .y1(function (d) { return y(d.low); });
+      .y1(function (d) { return y(d.low - 0.25); });
 
     svg.datum(data);
 
