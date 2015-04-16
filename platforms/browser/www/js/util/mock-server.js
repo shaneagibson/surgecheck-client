@@ -46,37 +46,37 @@ define('util/mock-server', function(require) {
         {
           "timestamp": Date.now() - (1000 * 60 * 60 * 2.5),
           "high": 1.4,
-          "avg": 1.2,
+          "mid": 1.2,
           "low": 1.1
         },
         {
           "timestamp": Date.now() - (1000 * 60 * 60 * 1.5),
           "high": 1.4,
-          "avg": 1.3,
+          "mid": 1.3,
           "low": 1.2
         },
         {
           "timestamp": Date.now() - (1000 * 60 * 60 * 0.5),
           "high": 1.4,
-          "avg": 1.3,
+          "mid": 1.3,
           "low": 1.1
         },
         {
           "timestamp": Date.now() + (1000 * 60 * 60 * 0.5),
           "high": 1.3,
-          "avg": 1.2,
+          "mid": 1.2,
           "low": 1.1
         },
         {
           "timestamp": Date.now() + (1000 * 60 * 60 * 1.5),
           "high": 1.2,
-          "avg": 1.1,
+          "mid": 1.1,
           "low": 1.0
         },
         {
           "timestamp": Date.now() + (1000 * 60 * 60 * 2.5),
           "high": 1.5,
-          "avg": 1.1,
+          "mid": 1.1,
           "low": 1.0
         }
       ]

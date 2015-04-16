@@ -38,6 +38,10 @@ define('util/map', function(require) {
       this.map.setCenter(new google.maps.LatLng(coords.latitude, coords.longitude));
     };
 
+    this.getCenter = function() {
+      return this.map.getCenter();
+    };
+
     this.setZoom = function(zoom) {
       this.map.setZoom(zoom);
     };

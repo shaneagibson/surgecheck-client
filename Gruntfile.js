@@ -144,7 +144,7 @@ module.exports = function(grunt) {
         command:
         'cordova build ios && ' +
         'cd platforms/ios && ' +
-        'xcodebuild -scheme \'Surge Guard\' -configuration Debug -sdk iphoneos && ' +
+        'xcodebuild -scheme \'Surge Check\' -configuration Debug -sdk iphoneos && ' +
         'cd ../..',
         options: {
           execOptions: {
@@ -156,7 +156,7 @@ module.exports = function(grunt) {
         command:
         'cordova build ios && ' +
         'cd platforms/ios && ' +
-        'xcodebuild -scheme \'Surge Guard\' -configuration Release -sdk iphoneos && ' +
+        'xcodebuild -scheme \'Surge Check\' -configuration Release -sdk iphoneos && ' +
         'cd ../..',
         options: {
           execOptions: {
@@ -165,7 +165,7 @@ module.exports = function(grunt) {
         }
       },
       deploy_debug_ios: {
-        command: '~/Development/Tools/fruitstrap/fruitstrap -b "/Users/shane/Library/Developer/Xcode/DerivedData/Surge\\ Guard-ayjltquvoopecnadwedexemncwmj/Build/Products/Debug-iphoneos/Surge\\ Guard.app"',
+        command: '~/Development/Tools/fruitstrap/fruitstrap -b "/Users/shane/Library/Developer/Xcode/DerivedData/Surge\\ Check-ayjltquvoopecnadwedexemncwmj/Build/Products/Debug-iphoneos/Surge\\ Check.app"',
         options: {
           execOptions: {
             maxBuffer: Infinity
@@ -173,7 +173,7 @@ module.exports = function(grunt) {
         }
       },
       verify_release_ios: {
-        command: 'xcrun -sdk iphoneos PackageApplication -v "/Users/shane/Library/Developer/Xcode/DerivedData/Surge\\ Guard-ayjltquvoopecnadwedexemncwmj/Build/Products/Release-iphoneos/Surge\\ Guard.app" -o "/Users/shane/Desktop/Surge\\ Guard.ipa" --sign "iPhone Distribution" --embed "/Users/shane/Downloads/Epsilon_Distribution.mobileprovision"',
+        command: 'xcrun -sdk iphoneos PackageApplication -v "/Users/shane/Library/Developer/Xcode/DerivedData/Surge\\ Check-ayjltquvoopecnadwedexemncwmj/Build/Products/Release-iphoneos/Surge\\ Check.app" -o "/Users/shane/Desktop/Surge\\ Check.ipa" --sign "iPhone Distribution" --embed "/Users/shane/Downloads/Epsilon_Distribution.mobileprovision"',
         options: {
           execOptions: {
             maxBuffer: Infinity

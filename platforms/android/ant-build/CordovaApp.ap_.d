@@ -73,6 +73,7 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/fonts/jura/Jura-Medium.otf \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/fonts/jura/Jura-Regular.otf \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/fonts/jura/SIL Open Font License.txt \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/images/logo.png \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/images/marker.png \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/images/uber.png \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/app.js \
@@ -412,17 +413,11 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/util/vent.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/js/view/home.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/com.danielcwilson.plugins.googleanalytics \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/com.jsmobile.plugins.sms \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/com.pushapps.phonegap \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/nl.x-services.plugins.toast \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/org.apache.cordova.device \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/org.apache.cordova.inappbrowser \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/com.danielcwilson.plugins.googleanalytics/www \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/com.danielcwilson.plugins.googleanalytics/www/analytics.js \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/com.jsmobile.plugins.sms/www \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/com.jsmobile.plugins.sms/www/sms.js \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/com.pushapps.phonegap/www \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/com.pushapps.phonegap/www/pushapps.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/nl.x-services.plugins.toast/test \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/nl.x-services.plugins.toast/www \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/nl.x-services.plugins.toast/test/tests.js \

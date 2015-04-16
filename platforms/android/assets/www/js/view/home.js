@@ -37,7 +37,9 @@ define('view/home', function(require) {
 
     onDomRefresh: function() {
       var self = this;
+      console.log('on dom refresh');
       geolocation.getCurrentPosition()
+        .then(function(position) { console.log('got position'); return position; })
         .then(function(currentPosition) {
           renderMap(currentPosition.coords);
           issuePriceCheck(currentPosition.coords);
@@ -46,28 +48,21 @@ define('view/home', function(require) {
     },
 
     bookRide: function() {
-      var center = this.map.getCenter();
-      window.open('uber://?action=setPickup&&pickup[latitude]='+center.lat()+'&&pickup[longitude]='+center.lng()+'client_id='+config.uber.client_id, '_system');
+      var center = view.map.getCenter();
+      window.open('uber://?action=setPickup&pickup[latitude]='+center.lat()+'&pickup[longitude]='+center.lng()+'&client_id='+config.uber.client_id, '_system');
     }
 
   });
 
   var issuePriceCheck = function(coords) {
+    console.log('issuing price check');
     return serverGateway.pricecheck.get('/surgecheck/status', coords)
+      .then(function(data) { console.log('issued price check'); return data; })
       .then(function (data) {
-        renderCurrentState(data.current);
-        renderGraph(data.historic);
+        renderPriceCheck(data);
         view.coords = coords;
-      });
-  };
-
-  var renderCurrentState = function(surgeMultiplier) {
-    if (surgeMultiplier == 1) {
-      $('.surge-title').text('Uber is Currently NOT Surging!');
-    } else {
-      $('.surge-title').text('Uber is Currently Surging!');
-    }
-    $('.surge-multiplier').text(surgeMultiplier.toString()+'x');
+      })
+      .catch(renderPriceCheck);
   };
 
   var renderMap = function(coords){
@@ -77,14 +72,19 @@ define('view/home', function(require) {
     view.map.addEventListener('dragend', endMapDrag);
     view.map.setCenter(coords);
     view.map.setZoom(15);
+    console.log('rendered map');
   };
 
-  var renderGraph = function(historicData){
+  var renderPriceCheck = function(data){
     graph.destroy('.graph');
-    if (historicData && historicData.length > 0) {
+    if (data && data.historic && data.historic.length > 0) {
       $('.error').text('');
-      graph.render('.graph', historicData);
+      $('.surge-title').text('Uber is Currently '+(data.current == 1 ? 'NOT' : '')+' Surging!');
+      $('.surge-multiplier').text(data.current.toString()+'x');
+      graph.render('.graph', data.historic);
     } else {
+      $('.surge-title').text('');
+      $('.surge-multiplier').text('');
       $('.error').text('Surge Trends are Currently Unavailable at your Location');
     }
   };
@@ -100,6 +100,7 @@ define('view/home', function(require) {
   };
 
   var onMapLoaded = function() {
+    console.log('map loaded');
     $('.map-mask-canvas').hide();
   };
 

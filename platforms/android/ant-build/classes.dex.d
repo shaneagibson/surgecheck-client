@@ -1,12 +1,5 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes.dex : \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/com/danielcwilson/plugins/analytics/UniversalAnalyticsPlugin.class \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/com/jsmobile/plugins/sms/Sms$1.class \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/com/jsmobile/plugins/sms/Sms.class \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/com/pushapps/phonegap/PushAppsPlugin$1.class \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/com/pushapps/phonegap/PushAppsPlugin$2.class \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/com/pushapps/phonegap/PushAppsPlugin$3.class \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/com/pushapps/phonegap/PushAppsPlugin$4.class \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/com/pushapps/phonegap/PushAppsPlugin.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/nl/xservices/plugins/Toast$1.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/nl/xservices/plugins/Toast.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/device/Device.class \
@@ -26,8 +19,6 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppChromeClient.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/uk/co/epsilontechnologies/surgecheck/ClientApp/BuildConfig.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/uk/co/epsilontechnologies/surgecheck/ClientApp/CordovaApp.class \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/uk/co/epsilontechnologies/surgecheck/ClientApp/Manifest$permission.class \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/uk/co/epsilontechnologies/surgecheck/ClientApp/Manifest.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/uk/co/epsilontechnologies/surgecheck/ClientApp/R$attr.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/uk/co/epsilontechnologies/surgecheck/ClientApp/R$drawable.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/uk/co/epsilontechnologies/surgecheck/ClientApp/R$string.class \
@@ -35,4 +26,3 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/classes/uk/co/epsilontechnologies/surgecheck/ClientApp/R.class \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/dexedLibs/classes-0b0855736c59cd9b146e24ddcbd47288.jar \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/dexedLibs/libGoogleAnalyticsServices-bdb6b4c805275dd23d609e1c38c3e642.jar \
-/Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/dexedLibs/pushapps-d9ac4f5d9aaf1c5d48bbfe807e5f32a7.jar \

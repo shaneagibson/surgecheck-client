@@ -5,6 +5,7 @@ define('app', function(require) {
   var Marionette = require('marionette');
   var Backbone = require('backbone');
   var vent = require('./util/vent');
+  var geolocation = require('./util/geolocation');
   var touch = require('./util/touch');
   var mockCordova = require('./mock-cordova');
   var toast = require('./util/toast');
@@ -15,11 +16,10 @@ define('app', function(require) {
 
   app.addInitializer(function() {
     initializeForPlatform()
-      .then(initializeLoadingTimeoutHandler)
       .then(initializeOrientationListener)
       .then(initializeBackbone)
       .then(initializeGoogleMaps)
-      .then(cancelLoadingTimeoutHandler)
+      .then(initializeGeolocation)
       .then(renderHome)
       .catch(handleError);
   });
@@ -29,14 +29,8 @@ define('app', function(require) {
     main: '#main'
   });
 
-  var initializeLoadingTimeoutHandler = function() {
-    app.loadingTimeout = setTimeout(function() {
-      toast.showLongBottom("Oops! It looks like something went wrong. Try again in a bit!");
-    }, 5000);
-  };
-
-  var cancelLoadingTimeoutHandler = function() {
-    clearTimeout(app.loadingTimeout);
+  var initializeGeolocation = function() {
+    return geolocation.getCurrentPosition();
   };
 
   var initializeGoogleMaps = function() {
@@ -92,7 +86,7 @@ define('app', function(require) {
 
   var handleError = function(error) {
     console.log(error);
-    toast.showLongBottom('Something unexpected happened. Please try again.');
+    toast.showLongBottom('Something unexpected happened. Please ensure Location Services and WiFi are enabled and try again.');
   };
 
   return app;

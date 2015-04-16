@@ -13,7 +13,7 @@
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
     </feature>
-    <name>Surge Guard</name>
+    <name>Surge Check</name>
     <description>Surge Checker for Uber</description>
     <author email="sgibson@epsilontechnologies.co.uk" href="http://www.epsilontechnologies.co.uk" />
     <content src="index.html" />

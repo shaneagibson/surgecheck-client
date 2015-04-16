@@ -11,11 +11,11 @@ define('config', function(require){
     server: {
       pricecheck: {
         scheme: 'http',
-        host: '192.168.43.22',
-        port: 8006
+        host: '52.16.190.90',
+        port: 8002
       }
     },
-    mock: true
+    mock: false
   };
 
   return exports;

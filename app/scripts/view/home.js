@@ -37,7 +37,9 @@ define('view/home', function(require) {
 
     onDomRefresh: function() {
       var self = this;
+      console.log('on dom refresh');
       geolocation.getCurrentPosition()
+        .then(function(position) { console.log('got position'); return position; })
         .then(function(currentPosition) {
           renderMap(currentPosition.coords);
           issuePriceCheck(currentPosition.coords);
@@ -46,14 +48,16 @@ define('view/home', function(require) {
     },
 
     bookRide: function() {
-      var center = this.map.getCenter();
-      window.open('uber://?action=setPickup&&pickup[latitude]='+center.lat()+'&&pickup[longitude]='+center.lng()+'client_id='+config.uber.client_id, '_system');
+      var center = view.map.getCenter();
+      window.open('uber://?action=setPickup&pickup[latitude]='+center.lat()+'&pickup[longitude]='+center.lng()+'&client_id='+config.uber.client_id, '_system');
     }
 
   });
 
   var issuePriceCheck = function(coords) {
+    console.log('issuing price check');
     return serverGateway.pricecheck.get('/surgecheck/status', coords)
+      .then(function(data) { console.log('issued price check'); return data; })
       .then(function (data) {
         renderPriceCheck(data);
         view.coords = coords;
@@ -68,6 +72,7 @@ define('view/home', function(require) {
     view.map.addEventListener('dragend', endMapDrag);
     view.map.setCenter(coords);
     view.map.setZoom(15);
+    console.log('rendered map');
   };
 
   var renderPriceCheck = function(data){
@@ -95,6 +100,7 @@ define('view/home', function(require) {
   };
 
   var onMapLoaded = function() {
+    console.log('map loaded');
     $('.map-mask-canvas').hide();
   };
 

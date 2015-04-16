@@ -58,17 +58,17 @@ define('util/graph', function(require) {
       .interpolate('basis')
       .x (function (d) { return x(new Date(d.timestamp)) || 1; })
       .y0(function (d) { return y(d.high); })
-      .y1(function (d) { return y(d.avg); });
+      .y1(function (d) { return y(d.mid); });
 
     var medianLine = d3.svg.line()
       .interpolate('basis')
       .x(function (d) { return x(new Date(d.timestamp)); })
-      .y(function (d) { return y(d.avg); });
+      .y(function (d) { return y(d.mid); });
 
     var lowerArea = d3.svg.area()
       .interpolate('basis')
       .x (function (d) { return x(new Date(d.timestamp)) || 1; })
-      .y0(function (d) { return y(d.avg); })
+      .y0(function (d) { return y(d.mid); })
       .y1(function (d) { return y(d.low); });
 
     svg.datum(data);
@@ -93,7 +93,7 @@ define('util/graph', function(require) {
 
     var xPos = x(Date.now()),
       yPosStart = chartHeight,
-      yPosEnd = 140;
+      yPosEnd = 145;
 
     var markerG = svg.append('g')
       .attr('class', 'marker')

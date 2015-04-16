@@ -28,11 +28,7 @@ define('util/server-gateway', function(require) {
   }
 
   var exports = {
-    promotion: new Server(config.server.promotion),
-    payment: new Server(config.server.payment),
-    account: new Server(config.server.account),
-    place: new Server(config.server.place),
-    social: new Server(config.server.social)
+    pricecheck: new Server(config.server.pricecheck)
   };
 
   var asUrl = function(scheme, host, port, path, queryParams) {
@@ -57,7 +53,7 @@ define('util/server-gateway', function(require) {
             reject(request);
           },
           type: type,
-          data: JSON.stringify(payload || {}),
+          data: payload ? JSON.stringify(payload) : undefined,
           contentType: contentType || "application/json; charset=utf-8"
         }
       );
