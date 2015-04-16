@@ -427,4 +427,5 @@
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/org.apache.cordova.inappbrowser/www \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/res/client-icon.png \
+/Users/shane/Development/epsilontechnologies/client-app/platforms/android/assets/www/res/logo.png \
 /Users/shane/Development/epsilontechnologies/client-app/platforms/android/ant-build/AndroidManifest.xml \
