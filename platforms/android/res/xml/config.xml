@@ -19,5 +19,6 @@
     <content src="index.html" />
     <access origin="*" />
     <preference name="DisallowOverscroll" value="true" />
+    <preference name="orientation" value="portrait" />
     <icon src="www/res/client-icon.png" />
 </widget>
