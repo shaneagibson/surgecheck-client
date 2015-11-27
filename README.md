@@ -7,3 +7,6 @@ This application (alongside it's Java-based service) was developed from concept 
 Unfortunately, the application was in violation of Uber's Terms & Conditions (which prohibit aggregating their data), and had to be removed from the Play and App Stores.
 
 But it was a fun exercise in extremely-rapid delivery of a (temporarily) working product! :)
+
+Inline-style: 
+![alt text](https://github.com/shaneagibson/surgecheck-client/blob/master/screenshot.jpg "Screenshot")
