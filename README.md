@@ -9,3 +9,5 @@ Unfortunately, the application was in violation of Uber's Terms & Conditions (wh
 But it was a fun exercise in extremely-rapid delivery of a (temporarily) working product! :)
 
 ![alt text](https://github.com/shaneagibson/surgecheck-client/blob/master/screenshot.jpg "Screenshot")
+
+The service is available at: https://github.com/shaneagibson/surgecheck-service
